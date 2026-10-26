@@ -29,6 +29,8 @@
   .sitenav { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
   .sitenav a { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 10px 18px; font-size: 22px; font-weight: bold; text-decoration: none; color: #fff; background: var(--card); border: 2px solid var(--line); border-radius: 12px; }
   .sitenav a[aria-current="page"] { border-color: var(--br); color: var(--br); }
+  /* Selected control: brass ring on the outside, and a slightly brighter fill. */
+  .picked { box-shadow: 0 0 0 3px var(--bg), 0 0 0 6px var(--br); background: #243444; }
   .sitenav a:hover, .sitenav a:focus { border-color: var(--ac); color: var(--ac); outline: 3px solid var(--ac); outline-offset: 3px; }
   .banner { margin-top: 28px; padding: 18px 22px; border-radius: 12px; border: 2px solid var(--br); background: rgba(176, 141, 87, 0.14); font-size: 22px; }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 22px; margin-top: 28px; }
@@ -62,7 +64,7 @@
 
   <nav class="sitenav" aria-label="Site">
     <a href="../">USDC Resource Hub</a>
-    <a href="./" aria-current="page">Concepts</a>
+    <a href="./" class="picked" aria-current="page">Concepts</a>
   </nav>
 
   <p class="banner">Concept demos for illustration. Sample data unless a source is cited. Not an offer, and no agency has endorsed these concepts.</p>
