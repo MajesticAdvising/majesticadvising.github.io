@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>USDC Resource Hub embed</title>
+</head>
+<body style="margin:0">
+<!--
+  Paste everything inside this body into the GoDaddy HTML section on
+  /usdc-resource-hub. Replace the old frame that was locked at 5200px.
+  The frame listens for the page height and matches it, so Concepts
+  ends and the site footer follows with normal spacing.
+-->
+<iframe id="majestic-hub" title="USDC Resource Hub" src="https://majesticadvising.github.io/" style="width:100%;height:640px;border:0;display:block"></iframe>
+<script>
+(function () {
+  var frame = document.getElementById('majestic-hub');
+  window.addEventListener('message', function (event) {
+    var data = event.data || {};
+    if (event.origin !== 'https://majesticadvising.github.io') return;
+    if (data.source !== 'majestic-page' || !data.height) return;
+    frame.style.height = Math.ceil(data.height) + 'px';
+  });
+})();
+</script>
+</body>
+</html>
