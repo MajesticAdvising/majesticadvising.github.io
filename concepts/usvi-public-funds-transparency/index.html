@@ -65,6 +65,9 @@
   .pills { display: flex; flex-wrap: wrap; gap: 10px; }
   .pill { font: inherit; font-size: 20px; padding: 6px 16px; border-radius: 999px; border: 2px solid var(--navy-line); background: transparent; color: var(--body); cursor: pointer; }
   .pill.on { border-color: var(--electric); color: var(--electric); }
+  /* Selected control: brass ring on the outside, and a slightly brighter fill. */
+  .picked { box-shadow: 0 0 0 3px var(--navy), 0 0 0 6px var(--brass); background: #243444; color: var(--body); }
+  .controls button.picked, .controls select.picked, .pill.picked { background: #243444; border-color: var(--brass); color: var(--body); }
   table { width: 100%; border-collapse: collapse; font-size: 20px; }
   th { text-align: left; color: var(--brass); font-size: 19px; text-transform: uppercase; letter-spacing: 1px; padding: 10px 10px; border-bottom: 2px solid var(--navy-line); }
   td { padding: 12px 10px; border-bottom: 1px solid var(--navy-line); vertical-align: top; }
@@ -172,7 +175,7 @@
     <div class="controls">
       <input id="search" type="search" placeholder="Search: employee, vendor, program, note, signature" aria-label="Search the ledger" />
       <select id="kind-filter" aria-label="Filter by type"></select>
-      <button id="pause-button" type="button">Pause</button>
+      <button id="pause-button" type="button" aria-pressed="false">Pause</button>
       <span class="count" id="ledger-count"></span>
     </div>
     <div class="panel ledger-wrap">
@@ -592,11 +595,17 @@ function renderFilters() {
   for (const program of ["All programs", ...PROGRAMS]) {
     const b = document.createElement("button");
     b.type = "button";
-    b.className = `pill${program === "All programs" ? " on" : ""}`;
+    const chosen = program === "All programs";
+    b.className = `pill${chosen ? " picked" : ""}`;
+    b.setAttribute("aria-pressed", chosen ? "true" : "false");
     b.textContent = program;
     b.addEventListener("click", () => {
       state.program = program === "All programs" ? "" : program;
-      for (const other of pills.children) other.classList.toggle("on", other === b);
+      for (const other of pills.children) {
+        const on = other === b;
+        other.classList.toggle("picked", on);
+        other.setAttribute("aria-pressed", on ? "true" : "false");
+      }
       renderLedger();
     });
     pills.appendChild(b);
@@ -604,7 +613,11 @@ function renderFilters() {
   const select = document.getElementById("kind-filter");
   select.appendChild(new Option("All types", ""));
   for (const [key, label] of Object.entries(KINDS)) select.appendChild(new Option(label, key));
-  select.addEventListener("change", () => { state.kind = select.value; renderLedger(); });
+  select.addEventListener("change", () => {
+    state.kind = select.value;
+    select.classList.toggle("picked", !!select.value);
+    renderLedger();
+  });
   document.getElementById("search").addEventListener("input", (e) => { state.query = e.target.value.trim().toLowerCase(); renderLedger(); });
   document.getElementById("pause-button").addEventListener("click", togglePause);
 }
@@ -730,9 +743,13 @@ function togglePause() {
     clearInterval(state.timer);
     state.timer = null;
     button.textContent = "Play";
+    button.classList.add("picked");
+    button.setAttribute("aria-pressed", "true");
   } else {
     state.timer = setInterval(tick, TICK_MS);
     button.textContent = "Pause";
+    button.classList.remove("picked");
+    button.setAttribute("aria-pressed", "false");
   }
 }
 
