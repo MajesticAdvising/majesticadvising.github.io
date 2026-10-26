@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RT Park Public Funds Dashboard: a concept demo</title>
+<style>
+  /* Majestic Advising palette (from the MA master template NOTES.md) */
+  :root {
+    --navy: #0e1a26;
+    --navy-panel: #15253a;
+    --navy-line: #263b55;
+    --brass: #b08d57;
+    --electric: #0ff0ff;
+    --body: #e6ecf2;
+    --muted: #a3b1bf;
+    --good: #5be39b;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--navy); color: var(--body); }
+  body { font-family: Arial, Helvetica, sans-serif; font-size: 22px; line-height: 1.5; }
+  a { color: var(--electric); }
+  .page { max-width: 1360px; margin: 0 auto; padding: 32px 40px 64px; }
+  h1 { font-size: 56px; line-height: 1.15; margin: 0; color: #fff; }
+  h2 { font-size: 40px; line-height: 1.2; margin: 0 0 8px; color: #fff; }
+  h3 { font-size: 28px; margin: 0 0 6px; color: #fff; }
+  .eyebrow { font-size: 20px; letter-spacing: 2px; text-transform: uppercase; color: var(--brass); font-weight: bold; }
+  .lead { font-size: 26px; color: var(--body); max-width: 1100px; }
+  .muted { color: var(--muted); }
+  section { margin-top: 56px; }
+  .panel { background: var(--navy-panel); border: 1px solid var(--navy-line); border-radius: 16px; padding: 24px 28px; }
+
+  /* Header */
+  .top { display: flex; align-items: center; gap: 28px; border-bottom: 4px solid var(--brass); padding-bottom: 24px; }
+  .top img { width: 120px; height: auto; }
+  .top .by { font-size: 22px; color: var(--muted); margin-top: 6px; }
+
+  /* Sample data banner (same idea as Guil's ILLUSTRATIVE ASSUMPTIONS banner) */
+  .banner { display: flex; gap: 16px; align-items: flex-start; margin-top: 24px; padding: 18px 22px; border-radius: 12px; border: 2px solid var(--brass); background: rgba(176, 141, 87, 0.14); }
+  .banner .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--brass); margin-top: 10px; flex: none; }
+  .banner b { color: #fff; font-size: 24px; }
+
+  /* Big numbers */
+  .numbers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 20px; }
+  .num .value { font-size: 46px; font-weight: bold; color: var(--electric); line-height: 1.1; }
+  .num .label { font-size: 21px; margin-top: 8px; }
+  .num .src { font-size: 18px; color: var(--muted); margin-top: 6px; }
+
+  /* Flow */
+  .flow { display: grid; grid-template-columns: 1fr 40px 1fr 40px 1fr 40px 1fr 40px 1fr; align-items: stretch; margin-top: 20px; }
+  .node { background: var(--navy-panel); border: 2px solid var(--navy-line); border-radius: 16px; padding: 18px 16px; transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; }
+  .node h3 { font-size: 24px; }
+  .node ul { margin: 6px 0 0; padding-left: 20px; font-size: 20px; }
+  .node.bank { border-color: var(--brass); }
+  .node.active { border-color: var(--electric); box-shadow: 0 0 24px rgba(15, 240, 255, 0.55); transform: translateY(-4px); }
+  .arrow { display: flex; align-items: center; justify-content: center; color: var(--brass); font-size: 36px; font-weight: bold; }
+  .arrow.active { color: var(--electric); }
+  .flow-caption { margin-top: 16px; font-size: 22px; min-height: 34px; color: var(--electric); }
+
+  /* Ledger */
+  .controls { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin: 18px 0; }
+  .controls input, .controls select, .controls button { font: inherit; font-size: 22px; padding: 10px 14px; border-radius: 10px; border: 2px solid var(--navy-line); background: #0b1520; color: var(--body); }
+  .controls input { flex: 1 1 360px; }
+  .controls button { cursor: pointer; border-color: var(--brass); }
+  .pills { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill { font: inherit; font-size: 20px; padding: 6px 16px; border-radius: 999px; border: 2px solid var(--navy-line); background: transparent; color: var(--body); cursor: pointer; }
+  .pill.on { border-color: var(--electric); color: var(--electric); }
+  table { width: 100%; border-collapse: collapse; font-size: 20px; }
+  th { text-align: left; color: var(--brass); font-size: 19px; text-transform: uppercase; letter-spacing: 1px; padding: 10px 10px; border-bottom: 2px solid var(--navy-line); }
+  td { padding: 12px 10px; border-bottom: 1px solid var(--navy-line); vertical-align: top; }
+  td.amount { text-align: right; font-weight: bold; white-space: nowrap; }
+  tr.in td.amount { color: var(--good); }
+  tr.fresh { animation: flash 1.6s ease-out; }
+  @keyframes flash { from { background: rgba(15, 240, 255, 0.25); } to { background: transparent; } }
+  .status { display: inline-block; font-size: 18px; padding: 2px 10px; border-radius: 8px; border: 1px solid var(--brass); color: var(--brass); white-space: nowrap; }
+  .status.done { border-color: var(--good); color: var(--good); }
+  .sig { font-family: "Courier New", monospace; font-size: 18px; }
+  .ledger-wrap { max-height: 720px; overflow: auto; }
+  .count { font-size: 20px; color: var(--muted); }
+
+  /* Budget bars */
+  .bars { margin-top: 18px; }
+  .bar-row { display: grid; grid-template-columns: 320px 1fr 260px; gap: 18px; align-items: center; padding: 10px 0; }
+  .bar-name { font-size: 22px; }
+  .bar-track { position: relative; height: 34px; background: #0b1520; border: 1px solid var(--navy-line); border-radius: 8px; overflow: visible; }
+  .bar-fill { height: 100%; border-radius: 8px 0 0 8px; background: var(--electric); width: 0; transition: width 1.4s ease-out; max-width: 100%; }
+  .bar-fill.over { background: var(--brass); border-radius: 8px; }
+  .bar-pace { position: absolute; top: -6px; bottom: -6px; width: 3px; background: #fff; }
+  .bar-text { font-size: 20px; text-align: right; }
+  .legend { display: flex; flex-wrap: wrap; gap: 28px; font-size: 20px; color: var(--muted); margin-top: 8px; }
+  .swatch { display: inline-block; width: 22px; height: 16px; border-radius: 4px; vertical-align: middle; margin-right: 8px; }
+
+  /* Rules and notes */
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .rules li { margin-bottom: 10px; }
+  .devnet-out { font-family: "Courier New", monospace; font-size: 19px; white-space: pre-wrap; margin-top: 12px; color: var(--body); }
+  .sources ol { padding-left: 28px; }
+  .sources li { margin-bottom: 12px; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 4px solid var(--brass); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 22px; }
+  .back { margin: 0 0 22px; font-size: 22px; }
+  .back a { font-weight: bold; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <p class="back"><a href="../">Concepts</a></p>
+  <header class="top">
+    <img src="data:image/png;base64,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" alt="Majestic Advising monogram" />
+    <div>
+      <div class="eyebrow">A concept demo</div>
+      <h1>RT Park Public Funds Dashboard</h1>
+      <div class="by">How the University of the Virgin Islands Research and Technology Park could show every dollar in public, using USDC on Solana. Prepared by Majestic Advising.</div>
+    </div>
+  </header>
+
+  <div class="banner" role="status" data-testid="sample-banner">
+    <span class="dot" aria-hidden="true"></span>
+    <div>
+      <b>Sample data for illustration. Not real transactions.</b><br />
+      Budget figures are real and cited below. Every payment, wallet and link in the ledger is made up. RT Park has not agreed to this. Nothing here moves money.
+    </div>
+  </div>
+
+  <!-- Real figures from the July 13, 2026 hearing -->
+  <section>
+    <div class="eyebrow">Real figures, from public testimony</div>
+    <h2>RT Park at a glance</h2>
+    <div class="numbers" id="headline-numbers"></div>
+  </section>
+
+  <!-- Flow from Ryan's sketches -->
+  <section>
+    <div class="eyebrow">How the money moves</div>
+    <h2>Every payment goes through RT Park's bank</h2>
+    <p class="lead">Money comes in, RT Park's bank checks and authorizes it, and it lands in RT Park's treasury as USDC. From there it goes to programs, then out to employees and vendors. The public can watch each step.</p>
+    <div class="flow" id="flow">
+      <div class="node" data-node="sources">
+        <h3>1. Money in</h3>
+        <ul><li>Tenant company fees</li><li>Federal grants</li><li>GVI loan fund money (Act 8464)</li></ul>
+      </div>
+      <div class="arrow" data-arrow="1">&#9654;</div>
+      <div class="node bank" data-node="bank">
+        <h3>2. RT Park's bank</h3>
+        <ul><li>Authorizes every transaction</li><li>Circle signs it on the bank's instruction</li></ul>
+      </div>
+      <div class="arrow" data-arrow="2">&#9654;</div>
+      <div class="node" data-node="treasury">
+        <h3>3. RT Park treasury</h3>
+        <ul><li>Holds USDC</li><li>Balance is public</li></ul>
+      </div>
+      <div class="arrow" data-arrow="3">&#9654;</div>
+      <div class="node" data-node="programs">
+        <h3>4. Programs</h3>
+        <ul><li>STEM, business growth, office, UVI support</li><li>Each has its own wallet</li></ul>
+      </div>
+      <div class="arrow" data-arrow="4">&#9654;</div>
+      <div class="node" data-node="payees">
+        <h3>5. Paid out</h3>
+        <ul><li>Payroll in USDC</li><li>Vendors and loans</li><li>Only to the allowed payee list</li></ul>
+      </div>
+    </div>
+    <div class="flow-caption" id="flow-caption" aria-live="polite"></div>
+  </section>
+
+  <!-- Live public ledger -->
+  <section>
+    <div class="eyebrow">Live public ledger (sample)</div>
+    <h2>Watch the funds move</h2>
+    <p class="lead">A new sample payment appears every few seconds. Each one shows who paid, who was paid, the program, the amount, a short payment note and a link in the style of Solana Explorer.</p>
+    <div class="pills" id="program-pills" aria-label="Filter by program"></div>
+    <div class="controls">
+      <input id="search" type="search" placeholder="Search: employee, vendor, program, note, signature" aria-label="Search the ledger" />
+      <select id="kind-filter" aria-label="Filter by type"></select>
+      <button id="pause-button" type="button">Pause</button>
+      <span class="count" id="ledger-count"></span>
+    </div>
+    <div class="panel ledger-wrap">
+      <table data-testid="ledger">
+        <thead><tr><th>Time</th><th>From</th><th>To</th><th>Program</th><th>Note</th><th>Amount</th><th>Status</th><th>Explorer</th></tr></thead>
+        <tbody id="ledger-body"></tbody>
+      </table>
+    </div>
+    <p class="muted">Status goes from <b>Bank authorized</b> to <b>Circle signed</b> to <b>Confirmed</b>. Explorer links use the real Solana Explorer address format on devnet, the free test network. These sample transactions do not exist, so the links will show "not found."</p>
+  </section>
+
+  <!-- Budget versus spent -->
+  <section>
+    <div class="eyebrow">Real figures, cited</div>
+    <h2>Spending by category</h2>
+    <p class="lead">Each bar is last year's full spending in that category (FY 2025). The blue fill is what was spent this year through May 31, 2026 (FY 2026). The white line marks 67%, where spending would be if it ran evenly for 8 of 12 months.</p>
+    <div class="legend">
+      <span><span class="swatch" style="background: var(--electric)"></span>FY 2026 so far</span>
+      <span><span class="swatch" style="background: var(--brass)"></span>Already above last year's full amount</span>
+      <span><span class="swatch" style="background: #fff; width: 4px"></span>67% pace line</span>
+    </div>
+    <div class="panel bars" id="budget-bars"></div>
+    <p class="muted" id="budget-note"></p>
+  </section>
+
+  <!-- Why, privacy, rules -->
+  <section class="two">
+    <div class="panel">
+      <h3>Why a public ledger helps</h3>
+      <p>RT Park asks for no General Fund money for FY 2027 and pays its own way. A public ledger lets senators, UVI and residents check that claim at any time, not only at a yearly hearing.</p>
+      <p>The Legislature's Post Audit Division noted that RT Park's FY 2020 audit found weak controls over payments and payroll, and that RT Park reports it has since fixed them. A public record of every payment is one simple way to show that.</p>
+    </div>
+    <div class="panel">
+      <h3>Privacy choice</h3>
+      <p>A public ledger should not post a named person's pay. In this demo every worker is an ID such as <b>Employee 004</b>. RT Park would keep the list that links IDs to people private. The public sees totals, programs and timing, not who earns what.</p>
+      <p>Vendors and borrowers are shown by number too. The same rule could apply to anyone who asks for it.</p>
+    </div>
+  </section>
+
+  <section class="panel rules">
+    <h3>Ground rules for this concept</h3>
+    <ul>
+      <li>Funds always move through a bank. RT Park's bank authorizes every transaction, and Circle signs it on the bank's instruction.</li>
+      <li>Majestic Advising never holds funds or keys.</li>
+      <li>USDC is not a bank deposit and is not FDIC insured.</li>
+      <li>This is a concept demo. RT Park has not agreed to any part of it.</li>
+    </ul>
+  </section>
+
+  <!-- Optional read only devnet check -->
+  <section class="panel">
+    <h3>Optional: check the Solana test network (read only)</h3>
+    <p>This button asks Solana devnet, the free test network, two questions: which network is this, and how much test USDC exists. It reads only. It never sends anything, and it refuses the main network. The rest of this page works with no internet.</p>
+    <button id="devnet-button" type="button" class="pill on">Check devnet now</button>
+    <div class="devnet-out" id="devnet-out" aria-live="polite"></div>
+  </section>
+
+  <!-- Sources -->
+  <section class="sources">
+    <div class="eyebrow">Sources</div>
+    <h2>Where the real numbers come from</h2>
+    <ol id="source-list"></ol>
+  </section>
+
+  <footer>
+    <span><b>Majestic Advising</b> &middot; A concept demo for RT Park</span>
+    <span>MajesticAdvising.com &middot; <a href="mailto:Ryan@MajesticAdvising.com">Ryan@MajesticAdvising.com</a></span>
+  </footer>
+</div>
+
+<!--
+  =====================================================================
+  DATA AND SETTINGS. Change values here; nothing below needs editing.
+  Money is integer minor units, the same as majestic-usdc:
+    real budget figures  -> whole USD (as printed in the testimony)
+    sample transactions  -> micro-USDC (6 decimals; 1_000_000 = $1.00)
+  =====================================================================
+-->
+<script id="demo-data">
+// Solana devnet only. Mainnet URLs and the mainnet genesis are rejected.
+const DEFAULT_DEVNET_RPC_URL = "https://api.devnet.solana.com";
+const SOLANA_DEVNET_GENESIS_HASH = "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG";
+const SOLANA_MAINNET_GENESIS_HASH = "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d";
+/// Circle official Solana Devnet USDC mint. Identity is this pubkey, not metadata.
+const SOLANA_DEVNET_USDC_MINT = "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU";
+const SOLANA_DEVNET_USDC_DECIMALS = 6;
+const EXPLORER_TX_URL = "https://explorer.solana.com/tx/";
+const EXPLORER_CLUSTER = "devnet";
+const RPC_TIMEOUT_MS = 8_000;
+
+const MICRO_USDC = 1_000_000;
+const TICK_MS = 3_500;          // how often a new sample payment appears
+const STATUS_STEPS = ["bank_authorized", "circle_signed", "confirmed"];
+const STATUS_STEP_MS = 1_200;   // time between each status step
+const MAX_LEDGER_ROWS = 60;
+const FY2026_ELAPSED_PCT = 67;  // Oct 1 to May 31 = 8 of 12 months
+
+// REAL FIGURES (whole USD). Source ids point at SOURCES below.
+const HEADLINE_FIGURES = [
+  { label: "Total revenue, FY 2025", usd: 9_970_632, source: "testimony" },
+  { label: "Revenue, FY 2026 through May 31", usd: 5_953_375, source: "testimony" },
+  { label: "Sent to UVI, FY 2026 through May 31", usd: 2_737_001, source: "testimony" },
+  { label: "General Fund money requested for FY 2027", usd: 0, source: "legvi" },
+];
+
+// Cost centers, from the testimony appendix "Expenses by Cost Center".
+const COST_CENTERS = [
+  { name: "Support to UVI", fy2025Usd: 3_556_430, fy2026YtdUsd: 2_737_000 },
+  { name: "General and administrative", fy2025Usd: 1_317_310, fy2026YtdUsd: 1_129_749 },
+  { name: "Business development", fy2025Usd: 1_013_809, fy2026YtdUsd: 794_886 },
+  { name: "Capital projects", fy2025Usd: 906_100, fy2026YtdUsd: null },
+  { name: "64 West office space", fy2025Usd: 707_340, fy2026YtdUsd: 405_267 },
+  { name: "STEM programs", fy2025Usd: 485_118, fy2026YtdUsd: 557_920 },
+  { name: "Oversight and reporting", fy2025Usd: 393_646, fy2026YtdUsd: 313_026 },
+  { name: "Marketing", fy2025Usd: 313_026, fy2026YtdUsd: 300_899 },
+  { name: "AVICS", fy2025Usd: 187_463, fy2026YtdUsd: 124_177 },
+  { name: "Workforce preparedness", fy2025Usd: 139_083, fy2026YtdUsd: null },
+];
+const COST_CENTER_TOTALS = { fy2025Usd: 9_019_325, fy2026YtdUsd: 6_362_924 };
+
+// Salaries: Post Audit Exhibit II budget vs. Exhibit I salaries paid through May 31.
+const SALARY_BUDGET = { budgetUsd: 1_623_500, paidYtdUsd: 1_072_468, roles: 16 };
+
+const SOURCES = {
+  testimony: {
+    title: "UVI RTPark FY 2027 Budget Hearing Testimony, Eric Sonnier, Committee on Budget, Appropriations and Finance, July 13, 2026 (revenue and expenses by cost center, appendix)",
+    url: "https://legvi.org/committeemeetings/Budget,%20Appropriations%20and%20Finance/FY%202027%20Budget%20Hearings/July%2013,%202026%20RTPark%20DPP/UVI%20RT%20Park/Testimony/UVI%20RTPark%20Budget%20Hearing%20Testimony_36th%20Legislature_July%202026_FINAL_Updated.pdf",
+  },
+  postAudit: {
+    title: "Post Audit Division, FY 2027 Budget Analysis: UVI Research and Technology Park, July 13, 2026 (line item spending, salary budget, grants, FY 2020 audit findings)",
+    url: "https://legvi.org/committeemeetings/Budget,%20Appropriations%20and%20Finance/FY%202027%20Budget%20Hearings/July%2013,%202026%20RTPark%20DPP/UVI%20RT%20Park/Post%20Audit%20Analysis/UVI%20RT%20Park%20FY%202027.1.pdf",
+  },
+  legvi: {
+    title: "Legislature of the Virgin Islands news release: RT Park and DPP share FY 2027 budget, July 13, 2026",
+    url: "https://legvi.org/the-university-of-the-virgin-islands-research-and-technology-park-and-the-v-i-department-of-property-and-procurement-shares-fy-2027-budget/",
+  },
+  source: {
+    title: "St. John Source: RTPark tells Budget Committee it needs no General Fund appropriation, July 13, 2026",
+    url: "https://stjohnsource.com/2026/07/13/rtpark-tells-budget-committee-it-needs-no-general-fund-appropriation-expands-stem-programs/",
+  },
+  checkbook: {
+    title: "GVI Open Finance (budget, checkbook, payroll). RT Park is self funded, so its own spending is not broken out there; the hearing documents above are the source used.",
+    url: "https://transparency.vi.gov/",
+  },
+};
+
+// SAMPLE DATA. Every name, note and signature below is made up.
+const PROGRAMS = ["STEM programs", "Business development", "General and administrative", "64 West office space", "Support to UVI", "Loan fund"];
+
+const KINDS = {
+  incoming: "Money in",
+  internal: "Treasury to program",
+  payroll: "Payroll",
+  vendor: "Vendor",
+  loan: "Loan",
+};
+
+// Each template becomes a sample payment. amountMicros is a range [min, max] in whole USD x MICRO_USDC.
+const SAMPLE_TEMPLATES = [
+  { kind: "incoming", from: "Tenant company 014", to: "RT Park treasury", program: "General and administrative", note: "Quarterly park tenant fee", usd: [18_000, 65_000], path: ["sources", "bank", "treasury"] },
+  { kind: "incoming", from: "Tenant company 052", to: "RT Park treasury", program: "General and administrative", note: "Annual fee true up after tax filing", usd: [40_000, 120_000], path: ["sources", "bank", "treasury"] },
+  { kind: "incoming", from: "Federal STEM grant (sample draw)", to: "RT Park treasury", program: "STEM programs", note: "Grant draw for innovation centers", usd: [10_000, 40_000], path: ["sources", "bank", "treasury"] },
+  { kind: "incoming", from: "GVI loan fund (Act 8464, sample draw)", to: "Loan fund", program: "Loan fund", note: "Revolving loan fund draw", usd: [50_000, 150_000], path: ["sources", "bank", "treasury"] },
+  { kind: "internal", from: "RT Park treasury", to: "STEM programs wallet", program: "STEM programs", note: "Monthly program budget", usd: [40_000, 70_000], path: ["treasury", "bank", "programs"] },
+  { kind: "internal", from: "RT Park treasury", to: "Business development wallet", program: "Business development", note: "Monthly program budget", usd: [60_000, 100_000], path: ["treasury", "bank", "programs"] },
+  { kind: "internal", from: "RT Park treasury", to: "UVI support wallet", program: "Support to UVI", note: "Scheduled support to UVI", usd: [250_000, 400_000], path: ["treasury", "bank", "programs"] },
+  { kind: "payroll", from: "STEM programs wallet", to: "Employee 004 (STEM facilitator)", program: "STEM programs", note: "Biweekly pay, net of taxes", usd: [1_400, 2_600], path: ["programs", "bank", "payees"] },
+  { kind: "payroll", from: "STEM programs wallet", to: "Employee 011 (camp instructor)", program: "STEM programs", note: "Summer camp pay", usd: [900, 1_800], path: ["programs", "bank", "payees"] },
+  { kind: "payroll", from: "Business development wallet", to: "Employee 007 (client relations)", program: "Business development", note: "Biweekly pay, net of taxes", usd: [2_000, 3_400], path: ["programs", "bank", "payees"] },
+  { kind: "payroll", from: "Admin wallet", to: "Payroll batch: 9 employees", program: "General and administrative", note: "Biweekly payroll batch", usd: [28_000, 42_000], path: ["programs", "bank", "payees"] },
+  { kind: "vendor", from: "Office wallet", to: "Vendor 021 (electric utility)", program: "64 West office space", note: "Invoice 118, power for 64 West", usd: [3_000, 6_000], path: ["programs", "bank", "payees"] },
+  { kind: "vendor", from: "STEM programs wallet", to: "Vendor 033 (robotics kits)", program: "STEM programs", note: "Invoice 4471, robotics supplies", usd: [1_200, 9_000], path: ["programs", "bank", "payees"] },
+  { kind: "vendor", from: "Admin wallet", to: "Vendor 008 (insurance)", program: "General and administrative", note: "Monthly policy premium", usd: [12_000, 21_000], path: ["programs", "bank", "payees"] },
+  { kind: "vendor", from: "Business development wallet", to: "Vendor 040 (event venue)", program: "Business development", note: "Startup pitch event venue", usd: [4_000, 11_000], path: ["programs", "bank", "payees"] },
+  { kind: "loan", from: "Loan fund wallet", to: "Borrower 017 (small business)", program: "Loan fund", note: "Loan 0017 disbursement", usd: [25_000, 120_000], path: ["programs", "bank", "payees"] },
+  { kind: "vendor", from: "UVI support wallet", to: "University of the Virgin Islands", program: "Support to UVI", note: "Support to UVI per park agreement", usd: [200_000, 350_000], path: ["programs", "bank", "payees"] },
+];
+const SEED_TRANSACTION_COUNT = 10;
+</script>
+
+<script id="demo-app">
+"use strict";
+
+// ---------------------------------------------------------------------------
+// Formatting (same helpers as majestic-usdc lib/format.ts)
+// ---------------------------------------------------------------------------
+
+function usdWhole(dollars) {
+  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(dollars);
+}
+
+function compactUsd(dollars) {
+  const abs = Math.abs(dollars);
+  if (abs >= 1_000_000) return `$${(abs / 1_000_000).toFixed(2)}M`;
+  if (abs >= 1_000) return `$${(abs / 1_000).toFixed(0)}K`;
+  return usdWhole(abs);
+}
+
+function usdcFromMicros(micros) {
+  const whole = micros / MICRO_USDC;
+  return `${new Intl.NumberFormat("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(whole)} USDC`;
+}
+
+function pct(value) {
+  return `${value.toFixed(0)}%`;
+}
+
+function shortSignature(signature) {
+  return `${signature.slice(0, 8)}...${signature.slice(-6)}`;
+}
+
+function clockTime(date) {
+  return date.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", second: "2-digit" });
+}
+
+// ---------------------------------------------------------------------------
+// Sample transaction generator. Seeded so every run shows the same opening rows.
+// ---------------------------------------------------------------------------
+
+const BASE58_DEMO = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+let rngState = 42;
+
+function nextRandom() {
+  // Small LCG; deterministic, not for anything secret.
+  rngState = (rngState * 1_103_515_245 + 12_345) % 2_147_483_648;
+  return rngState / 2_147_483_648;
+}
+
+function randomBetween(min, max) {
+  return min + Math.floor(nextRandom() * (max - min + 1));
+}
+
+/// Fake signature. Starts with "DEMO" (not valid base58) so it can never match a real transaction.
+function fakeSignature() {
+  let body = "";
+  for (let i = 0; i < 84; i += 1) body += BASE58_DEMO[Math.floor(nextRandom() * BASE58_DEMO.length)];
+  return `DEMO${body}`;
+}
+
+function explorerUrl(signature) {
+  return `${EXPLORER_TX_URL}${signature}?cluster=${EXPLORER_CLUSTER}`;
+}
+
+function buildSampleTransaction(template, when) {
+  const usd = randomBetween(template.usd[0], template.usd[1]);
+  return {
+    id: fakeSignature(),
+    time: when,
+    kind: template.kind,
+    from: template.from,
+    to: template.to,
+    program: template.program,
+    note: template.note,
+    amountMicros: usd * MICRO_USDC,
+    path: template.path,
+    status: "bank_authorized",
+  };
+}
+
+function pickTemplate() {
+  return SAMPLE_TEMPLATES[Math.floor(nextRandom() * SAMPLE_TEMPLATES.length)];
+}
+
+// ---------------------------------------------------------------------------
+// Validation (mirrors crates/solana-adapter/src/config.rs). Fail closed.
+// ---------------------------------------------------------------------------
+
+function validateRpcUrl(url) {
+  const trimmed = (url || "").trim();
+  if (!trimmed) return { ok: false, errors: ["RPC URL is empty"] };
+  if (trimmed.toLowerCase().includes("mainnet")) return { ok: false, errors: [`refusing to use mainnet: ${trimmed}`] };
+  return { ok: true, url: trimmed };
+}
+
+function identifyCluster(genesisHash) {
+  if (genesisHash === SOLANA_DEVNET_GENESIS_HASH) return { ok: true, cluster: "devnet" };
+  if (genesisHash === SOLANA_MAINNET_GENESIS_HASH) return { ok: false, errors: [`refusing to use mainnet: genesis ${genesisHash}`] };
+  return { ok: false, errors: [`RPC cluster is not Devnet (genesis ${genesisHash}); failing closed`] };
+}
+
+function requireUsdcDecimals(decimals) {
+  if (decimals !== SOLANA_DEVNET_USDC_DECIMALS) {
+    return { ok: false, errors: [`USDC mint decimals must be ${SOLANA_DEVNET_USDC_DECIMALS}, on-chain value is ${decimals}`] };
+  }
+  return { ok: true };
+}
+
+function validateTransaction(tx) {
+  const errors = [];
+  if (!Number.isInteger(tx.amountMicros) || tx.amountMicros <= 0) errors.push(`amount must be positive micro-USDC, got ${tx.amountMicros}`);
+  if (!tx.id.startsWith("DEMO")) errors.push("sample signature must start with DEMO");
+  if (!KINDS[tx.kind]) errors.push(`unknown kind ${tx.kind}`);
+  return errors.length ? { ok: false, errors } : { ok: true };
+}
+
+// ---------------------------------------------------------------------------
+// Read only devnet check: plain JSON-RPC over fetch, no libraries.
+// ---------------------------------------------------------------------------
+
+async function rpcCall(url, method, params) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), RPC_TIMEOUT_MS);
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ jsonrpc: "2.0", id: 1, method, params }),
+      signal: controller.signal,
+    });
+    if (!response.ok) throw new Error(`RPC unavailable: HTTP ${response.status}`);
+    const body = await response.json();
+    if (body.error) throw new Error(`RPC error: ${body.error.message}`);
+    return body.result;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function checkDevnet() {
+  const out = document.getElementById("devnet-out");
+  const lines = [];
+  const show = () => { out.textContent = lines.join("\n"); };
+
+  const rpc = validateRpcUrl(DEFAULT_DEVNET_RPC_URL);
+  if (!rpc.ok) { lines.push(...rpc.errors); show(); return; }
+  lines.push(`RPC: ${rpc.url}`, "Asking which network this is..."); show();
+
+  try {
+    const genesis = await rpcCall(rpc.url, "getGenesisHash", []);
+    const cluster = identifyCluster(genesis);
+    if (!cluster.ok) { lines.push(...cluster.errors); show(); return; }
+    lines.push(`Network: ${cluster.cluster} (genesis ${genesis.slice(0, 10)}...)`); show();
+
+    const supply = await rpcCall(rpc.url, "getTokenSupply", [SOLANA_DEVNET_USDC_MINT]);
+    const decimals = requireUsdcDecimals(supply.value.decimals);
+    if (!decimals.ok) { lines.push(...decimals.errors); show(); return; }
+    lines.push(`Circle devnet USDC mint: ${SOLANA_DEVNET_USDC_MINT}`);
+    lines.push(`Test USDC in existence: ${Number(supply.value.uiAmountString).toLocaleString("en-US")} (test money, no value)`);
+    lines.push("Read only. Nothing was sent.");
+  } catch (err) {
+    lines.push(`Could not reach devnet: ${err.message}`, "That is fine. The demo works fully offline.");
+  }
+  show();
+}
+
+// ---------------------------------------------------------------------------
+// Rendering
+// ---------------------------------------------------------------------------
+
+function renderHeadlineNumbers() {
+  const host = document.getElementById("headline-numbers");
+  const cards = [
+    ...HEADLINE_FIGURES.map((f) => ({ value: usdWhole(f.usd), label: f.label, source: f.source })),
+  ];
+  for (const card of cards) {
+    const el = document.createElement("div");
+    el.className = "panel num";
+    el.innerHTML = `<div class="value"></div><div class="label"></div><div class="src"></div>`;
+    el.querySelector(".value").textContent = card.value;
+    el.querySelector(".label").textContent = card.label;
+    el.querySelector(".src").textContent = `Source ${sourceNumber(card.source)}`;
+    host.appendChild(el);
+  }
+}
+
+function sourceNumber(key) {
+  return Object.keys(SOURCES).indexOf(key) + 1;
+}
+
+function renderBudgetBars() {
+  const host = document.getElementById("budget-bars");
+  const rows = [
+    ...COST_CENTERS,
+    { name: "Total", fy2025Usd: COST_CENTER_TOTALS.fy2025Usd, fy2026YtdUsd: COST_CENTER_TOTALS.fy2026YtdUsd },
+  ];
+  for (const row of rows) {
+    const spent = row.fy2026YtdUsd;
+    const share = spent == null ? 0 : (spent / row.fy2025Usd) * 100;
+    const el = document.createElement("div");
+    el.className = "bar-row";
+    el.innerHTML = `<div class="bar-name"></div><div class="bar-track"><div class="bar-fill"></div><div class="bar-pace"></div></div><div class="bar-text"></div>`;
+    el.querySelector(".bar-name").textContent = row.name;
+    if (row.name === "Total") el.querySelector(".bar-name").style.fontWeight = "bold";
+    el.querySelector(".bar-pace").style.left = `${FY2026_ELAPSED_PCT}%`;
+    el.querySelector(".bar-text").textContent = spent == null
+      ? `none yet of ${compactUsd(row.fy2025Usd)}`
+      : `${compactUsd(spent)} of ${compactUsd(row.fy2025Usd)} (${pct(share)})`;
+    const fill = el.querySelector(".bar-fill");
+    if (share > 100) fill.classList.add("over");
+    host.appendChild(el);
+    // Animate after layout so the bars grow in.
+    requestAnimationFrame(() => requestAnimationFrame(() => { fill.style.width = `${Math.min(share, 100)}%`; }));
+  }
+  document.getElementById("budget-note").textContent =
+    `Salaries: the Post Audit Division lists a salary budget of ${usdWhole(SALARY_BUDGET.budgetUsd)} for ${SALARY_BUDGET.roles} roles; ` +
+    `${usdWhole(SALARY_BUDGET.paidYtdUsd)} in salaries was paid through May 31, 2026 (${pct((SALARY_BUDGET.paidYtdUsd / SALARY_BUDGET.budgetUsd) * 100)}). ` +
+    `RT Park's FY 2026 budget by category was not in these documents, so last year's full spending is used as the yardstick. ` +
+    `Category names are shortened. "None yet" means the testimony reported nothing in that category for FY 2026. Sources ${sourceNumber("testimony")} and ${sourceNumber("postAudit")}.`;
+}
+
+function renderSources() {
+  const host = document.getElementById("source-list");
+  for (const key of Object.keys(SOURCES)) {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = SOURCES[key].url;
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.textContent = SOURCES[key].title;
+    li.appendChild(a);
+    host.appendChild(li);
+  }
+}
+
+function renderFilters() {
+  const pills = document.getElementById("program-pills");
+  for (const program of ["All programs", ...PROGRAMS]) {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = `pill${program === "All programs" ? " on" : ""}`;
+    b.textContent = program;
+    b.addEventListener("click", () => {
+      state.program = program === "All programs" ? "" : program;
+      for (const other of pills.children) other.classList.toggle("on", other === b);
+      renderLedger();
+    });
+    pills.appendChild(b);
+  }
+  const select = document.getElementById("kind-filter");
+  select.appendChild(new Option("All types", ""));
+  for (const [key, label] of Object.entries(KINDS)) select.appendChild(new Option(label, key));
+  select.addEventListener("change", () => { state.kind = select.value; renderLedger(); });
+  document.getElementById("search").addEventListener("input", (e) => { state.query = e.target.value.trim().toLowerCase(); renderLedger(); });
+  document.getElementById("pause-button").addEventListener("click", togglePause);
+}
+
+function matchesFilters(tx) {
+  if (state.program && tx.program !== state.program) return false;
+  if (state.kind && tx.kind !== state.kind) return false;
+  if (!state.query) return true;
+  const haystack = [tx.from, tx.to, tx.program, tx.note, tx.id, KINDS[tx.kind]].join(" ").toLowerCase();
+  return haystack.includes(state.query);
+}
+
+function statusLabel(status) {
+  switch (status) {
+    case "bank_authorized":
+      return "Bank authorized";
+    case "circle_signed":
+      return "Circle signed";
+    case "confirmed":
+      return "Confirmed";
+    default:
+      return status;
+  }
+}
+
+function renderLedger(freshId) {
+  const body = document.getElementById("ledger-body");
+  body.textContent = "";
+  const visible = state.transactions.filter(matchesFilters);
+  for (const tx of visible) {
+    const tr = document.createElement("tr");
+    tr.className = tx.kind === "incoming" ? "in" : "";
+    if (tx.id === freshId) tr.classList.add("fresh");
+    const cells = [clockTime(tx.time), tx.from, tx.to, tx.program, tx.note, usdcFromMicros(tx.amountMicros)];
+    cells.forEach((text, i) => {
+      const td = document.createElement("td");
+      td.textContent = text;
+      if (i === 5) td.className = "amount";
+      tr.appendChild(td);
+    });
+    const statusTd = document.createElement("td");
+    const badge = document.createElement("span");
+    badge.className = `status${tx.status === "confirmed" ? " done" : ""}`;
+    badge.textContent = statusLabel(tx.status);
+    statusTd.appendChild(badge);
+    tr.appendChild(statusTd);
+    const sigTd = document.createElement("td");
+    const link = document.createElement("a");
+    link.className = "sig";
+    link.href = explorerUrl(tx.id);
+    link.target = "_blank";
+    link.rel = "noopener";
+    link.title = "Sample link. This transaction does not exist.";
+    link.textContent = shortSignature(tx.id);
+    sigTd.appendChild(link);
+    tr.appendChild(sigTd);
+    body.appendChild(tr);
+  }
+  document.getElementById("ledger-count").textContent =
+    `Showing ${visible.length} of ${state.transactions.length} sample payments`;
+}
+
+// ---------------------------------------------------------------------------
+// Flow animation: light each step of the path, bank first on every payment.
+// ---------------------------------------------------------------------------
+
+const NODE_ORDER = ["sources", "bank", "treasury", "programs", "payees"];
+
+function animateFlow(tx) {
+  const nodes = document.querySelectorAll("#flow .node");
+  const arrows = document.querySelectorAll("#flow .arrow");
+  nodes.forEach((n) => n.classList.remove("active"));
+  arrows.forEach((a) => a.classList.remove("active"));
+  document.getElementById("flow-caption").textContent =
+    `${KINDS[tx.kind]}: ${usdcFromMicros(tx.amountMicros)} from ${tx.from} to ${tx.to}. RT Park's bank authorizes it; Circle signs on the bank's instruction.`;
+  tx.path.forEach((key, step) => {
+    setTimeout(() => {
+      document.querySelector(`#flow [data-node="${key}"]`).classList.add("active");
+      const prev = tx.path[step - 1];
+      if (prev) {
+        // Light the arrows between the previous node and this one.
+        const lo = Math.min(NODE_ORDER.indexOf(prev), NODE_ORDER.indexOf(key));
+        const hi = Math.max(NODE_ORDER.indexOf(prev), NODE_ORDER.indexOf(key));
+        for (let i = lo + 1; i <= hi; i += 1) document.querySelector(`#flow [data-arrow="${i}"]`).classList.add("active");
+      }
+    }, step * 500);
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Ledger loop
+// ---------------------------------------------------------------------------
+
+const state = { transactions: [], program: "", kind: "", query: "", timer: null };
+
+function addTransaction(tx) {
+  const check = validateTransaction(tx);
+  if (!check.ok) {
+    console.error("sample transaction rejected:", check.errors);
+    return;
+  }
+  state.transactions.unshift(tx);
+  state.transactions.length = Math.min(state.transactions.length, MAX_LEDGER_ROWS);
+  renderLedger(tx.id);
+  animateFlow(tx);
+  advanceStatus(tx);
+}
+
+/// Bank authorizes first, then Circle signs on the bank's instruction, then the chain confirms.
+function advanceStatus(tx) {
+  STATUS_STEPS.slice(1).forEach((status, i) => {
+    setTimeout(() => { tx.status = status; renderLedger(); }, STATUS_STEP_MS * (i + 1));
+  });
+}
+
+function tick() {
+  addTransaction(buildSampleTransaction(pickTemplate(), new Date()));
+}
+
+function togglePause() {
+  const button = document.getElementById("pause-button");
+  if (state.timer) {
+    clearInterval(state.timer);
+    state.timer = null;
+    button.textContent = "Play";
+  } else {
+    state.timer = setInterval(tick, TICK_MS);
+    button.textContent = "Pause";
+  }
+}
+
+function seedLedger() {
+  const now = Date.now();
+  for (let i = SEED_TRANSACTION_COUNT; i > 0; i -= 1) {
+    const tx = buildSampleTransaction(SAMPLE_TEMPLATES[(i * 5) % SAMPLE_TEMPLATES.length], new Date(now - i * 47_000));
+    tx.status = "confirmed";
+    state.transactions.unshift(tx);
+  }
+  renderLedger();
+}
+
+function main() {
+  renderHeadlineNumbers();
+  renderBudgetBars();
+  renderSources();
+  renderFilters();
+  seedLedger();
+  document.getElementById("devnet-button").addEventListener("click", checkDevnet);
+  tick();
+  state.timer = setInterval(tick, TICK_MS);
+}
+
+main();
+</script>
+</body>
+</html>
