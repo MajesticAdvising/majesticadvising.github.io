@@ -315,4 +315,6 @@ document.querySelectorAll('#mausdc .tabs a, #mausdc .toc a').forEach(a=>a.addEve
 window.addEventListener('hashchange',()=>show(location.hash));
 show(location.hash||'overview');draw();rates();liveRates();refresh();cg();if(!window.Chart)$('status').textContent='Charts need internet access to load; numbers are shown in the tables.';
 
-</script></body></html>
+</script>
+<script src="embed-height.js"></script>
+</body></html>
