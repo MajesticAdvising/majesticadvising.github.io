@@ -16,5 +16,12 @@ var CONCEPTS = [
     region: "USVI",
     status: "Concept demo",
     href: "usvi-public-funds-transparency/"
+  },
+  {
+    title: "First City USDC Payments (Oklahoma)",
+    description: "Shows how an Oklahoma city could accept USDC payments for utility bills, permits and fees, while the city's bank converts them to dollars. The payments on the page are sample data, and the name is held in confidence.",
+    region: "Oklahoma",
+    status: "Concept demo",
+    href: "first-city-usdc-payments/"
   }
 ];
