@@ -1,0 +1,61 @@
+# Save GDELT headlines into data/news.json twice a day.
+# About 5:00 AM and 5:00 PM Central during daylight saving time
+# (10:00 and 22:00 UTC). In winter those runs land an hour earlier.
+# A contents: write token is required so the job can push the file.
+# This file has no push trigger, so that commit does not start the job again.
+
+name: Update headlines
+
+on:
+  schedule:
+    - cron: "0 10,22 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Fetch headlines
+        run: node scripts/fetch-news.js
+
+      - name: Commit headlines if they changed
+        id: commit
+        run: |
+          git add data/news.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update saved headlines"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # A push made with the workflow token does not start the Pages
+      # build workflow. Ask Pages to rebuild main so the new file is published.
+      - name: Ask GitHub Pages to rebuild
+        if: steps.commit.outputs.changed == 'true'
+        continue-on-error: true
+        run: |
+          code=$(curl -sS -o /tmp/pages-build.txt -w "%{http_code}" -X POST \
+            -H "Authorization: Bearer ${{ github.token }}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/pages/builds")
+          echo "Pages build request HTTP ${code}"
+          cat /tmp/pages-build.txt
+          test "$code" = "200" -o "$code" = "201" -o "$code" = "204"

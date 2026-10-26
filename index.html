@@ -283,13 +283,24 @@ const BAN=new RegExp('\\b('+['liar','sliar','rentrap','srentrap','pihsrentrap','
 function cg2(){}
 async function cg(){try{const r=await fetch('https://api.coingecko.com/api/v3/coins/usd-coin?localization=false&tickers=false&community_data=false&developer_data=false');const j=await r.json();const m=j.market_data;
 D.cg={mcap:m.market_cap.usd,vol24:m.total_volume.usd,price:m.current_price.usd};kpis();$('k2s').textContent='Price $'+m.current_price.usd.toFixed(4)+' · CoinGecko, live';}catch(e){}}
-function news(k,list,live){const box=$('news-'+k);if(!box)return;if(!list.length){box.innerHTML='<li class="mu">No saved headlines for this topic yet. Live headlines load when available.</li>';}else box.innerHTML=list.slice(0,8).map(a=>{const d=a.s?new Date(a.s.replace(/(\d{4})(\d\d)(\d\d)T(\d\d)(\d\d)(\d\d)Z/,'$1-$2-$3T$4:$5:$6Z')).toLocaleString('en-US',{timeZone:'America/Chicago',dateStyle:'medium',timeStyle:'short'})+' CT':'';
-return `<li><a href="${a.u}" target="_blank" rel="noopener">${a.t.replace(/</g,'&lt;')}</a><div class="src">${a.d}${d?' · '+d:''}</div></li>`}).join('');$('newsst-'+k).textContent=live?'Live headlines from the GDELT Project news index (updates on each visit).':'Live news unavailable right now; showing headlines saved '+SAVED+'.'}
-let gq=Promise.resolve(),last=0;
-function loadNews(k,force){if(!Q[k]||(NL[k]&&!force))return;NL[k]=1;news(k,NEWS[k]||[],0);$('newsst-'+k).textContent='Checking for newer headlines…';
-gq=gq.then(async()=>{const w=6000-(Date.now()-last);if(w>0)await new Promise(r=>setTimeout(r,w));last=Date.now();const ac=new AbortController();setTimeout(()=>ac.abort(),12000);
-try{const r=await fetch('https://api.gdeltproject.org/api/v2/doc/doc?query='+encodeURIComponent(Q[k]+' sourcelang:english')+'&mode=artlist&maxrecords=25&format=json&sort=datedesc',{signal:ac.signal});const j=await r.json();const seen={};
-const L=(j.articles||[]).filter(a=>{const t=a.title.trim().toLowerCase();if(seen[t]||BAN.test(a.title+' '+a.url))return 0;return seen[t]=1}).map(a=>({t:a.title.replace(/ ,/g,','),u:a.url,d:a.domain,s:a.seendate}));if(L.length<3)throw 0;news(k,L,1)}catch(e){news(k,NEWS[k]||[],0)}})}
+// Draw up to 8 headlines. when is the file timestamp, or empty for the saved fallback.
+function news(k,list,when){const box=$('news-'+k);if(!box)return;
+if(!list.length){box.innerHTML='<li class="mu">No saved headlines for this topic yet. Live headlines load when available.</li>';}
+else box.innerHTML=list.slice(0,8).map(a=>{const d=a.s?new Date(a.s.replace(/(\d{4})(\d\d)(\d\d)T(\d\d)(\d\d)(\d\d)Z/,'$1-$2-$3T$4:$5:$6Z')).toLocaleString('en-US',{timeZone:'America/Chicago',dateStyle:'medium',timeStyle:'short'})+' CT':'';
+return `<li><a href="${a.u}" target="_blank" rel="noopener">${a.t.replace(/</g,'&lt;')}</a><div class="src">${a.d}${d?' · '+d:''}</div></li>`}).join('');
+const st=$('newsst-'+k);if(!st)return;
+const t=when?new Date(when):null;
+if(t&&!isNaN(t.getTime())&&list.length)st.textContent='Headlines last updated '+t.toLocaleString('en-US',{timeZone:'America/Chicago',dateStyle:'medium',timeStyle:'short'})+' CT.';
+else st.textContent='Live news unavailable right now; showing headlines saved '+SAVED+'.'}
+// One shared read of data/news.json. The browser does not call GDELT.
+let newsP=null;
+function loadNews(k,force){if(!Q[k]||(NL[k]&&!force))return;NL[k]=1;
+const paint=j=>{const raw=j&&j.topics&&j.topics[k];const seen={};
+const L=(raw||[]).filter(a=>{const t=(a.t||'').trim().toLowerCase();if(!t||seen[t]||BAN.test((a.t||'')+' '+(a.u||'')))return 0;return seen[t]=1;});
+if(L.length)news(k,L,j.fetched_at);else news(k,NEWS[k]||[],0)};
+if(!force&&newsP){newsP.then(paint).catch(()=>paint(null));return;}
+newsP=fetch('data/news.json'+(force?'?t='+Date.now():'')).then(r=>{if(!r.ok)throw 0;return r.json()});
+newsP.then(paint).catch(()=>{newsP=null;paint(null)})}
 const ALIAS={dashboard:'overview',home:'overview',bank:'banks',bankers:'banks',regulation:'policy',rules:'policy',cities:'public',government:'public',gov:'public',learn:'learn',basics:'learn'};
 function show(k,scroll){k=(k||'').replace('#','').toLowerCase();k=ALIAS[k]||k;if(!document.getElementById('mausdc-'+k))k='overview';cur=k;
 document.querySelectorAll('#mausdc .tabs a').forEach(a=>{const on=a.dataset.p===k;a.classList.toggle('on',on);a.setAttribute('aria-selected',on)});
