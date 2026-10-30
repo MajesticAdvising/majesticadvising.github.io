@@ -18,6 +18,13 @@ var CONCEPTS = [
     href: "usvi-public-funds-transparency/"
   },
   {
+    title: "Employee USDC Income (USVI)",
+    description: "Shows how Government of the Virgin Islands employees could choose to receive part of their pay in USDC, with a bank authorizing every payment and GotSOL.app only showing what the bank already approved. Public DoP and OpenGov figures are cited, nothing on the page moves money, and this is a later phase concept, not the first pilot.",
+    region: "USVI",
+    status: "Concept demo",
+    href: "usvi-employee-usdc-income/"
+  },
+  {
     title: "First City USDC Payments (Oklahoma)",
     description: "Shows how an Oklahoma city could accept USDC payments for utility bills, permits and fees, while the city's bank converts them to dollars. The payments on the page are sample data, and the name is held in confidence.",
     region: "Oklahoma",
