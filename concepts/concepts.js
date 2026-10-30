@@ -25,6 +25,13 @@ var CONCEPTS = [
     href: "usvi-employee-usdc-income/"
   },
   {
+    title: "On Chain Munis ERP (USVI)",
+    description: "Shows how Tyler Munis modules for the general ledger, budget, purchasing and accounts payable, payroll, grants, and fixed assets could leave a Solana audit trail. The figures are sample data, funds would move through a bank, and Majestic Advising never holds keys.",
+    region: "USVI",
+    status: "Concept demo",
+    href: "usvi-munis-onchain/"
+  },
+  {
     title: "First City USDC Payments (Oklahoma)",
     description: "Shows how an Oklahoma city could accept USDC payments for utility bills, permits and fees, while the city's bank converts them to dollars. The payments on the page are sample data, and the name is held in confidence.",
     region: "Oklahoma",
