@@ -11,21 +11,21 @@
    ===================================================================== */
 var CONCEPTS = [
   {
-    title: "Public Funds Transparency (USVI)",
+    title: "Public Funds Transparency (USVI / RT Park)",
     description: "Shows how the University of the Virgin Islands Research and Technology Park could publish its public funds in USDC on Solana. Payments on the page are sample data, and any real funds would move through a bank.",
     region: "USVI",
     status: "Concept demo",
     href: "usvi-public-funds-transparency/"
   },
   {
-    title: "Employee USDC Payroll (USVI)",
+    title: "Employee USDC Payroll (USVI / RT Park)",
     description: "Shows how Government of the Virgin Islands employees could choose to receive part of their pay in USDC, with a bank authorizing every payment and GotSOL.app only showing what the bank already approved. Public DoP and OpenGov figures are cited, nothing on the page moves money, and this is a later phase concept, not the first pilot.",
     region: "USVI",
     status: "Concept demo",
     href: "usvi-employee-usdc-income/"
   },
   {
-    title: "On Chain Munis ERP (USVI)",
+    title: "On Chain Munis ERP (USVI / RT Park)",
     description: "Shows how Tyler Munis modules for the general ledger, budget, purchasing and accounts payable, payroll, grants, and fixed assets could leave a Solana audit trail. The figures are sample data, funds would move through a bank, and Majestic Advising never holds keys.",
     region: "USVI",
     status: "Concept demo",

@@ -1,4 +1,4 @@
-# On Chain Munis ERP (USVI) v1
+# On Chain Munis ERP (USVI / RT Park) v1
 
 **Concept demo** of how Tyler Munis modules for the Government of the Virgin Islands could leave a Solana audit trail.
 
@@ -36,6 +36,6 @@ open index.html
 
 On the public site the page is `concepts/usvi-munis-onchain/`.
 
-The card title on the Concepts page is **On Chain Munis ERP (USVI)**.
+The card title on the Concepts page is **On Chain Munis ERP (USVI / RT Park)**.
 
 The payroll screen links to `concepts/usvi-employee-usdc-income/`.
