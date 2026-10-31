@@ -328,7 +328,7 @@
   var screens = Array.prototype.slice.call(document.querySelectorAll(".screen"));
   var names = ["overview", "budget", "purchasing", "payroll", "grants", "assets", "guardrails"];
 
-  function show(index) {
+  function show(index, fromUser) {
     if (index < 0 || index >= screens.length) index = 0;
     buttons.forEach(function (button, i) {
       var on = i === index;
@@ -341,14 +341,18 @@
       if (on) screen.removeAttribute("hidden");
       else screen.setAttribute("hidden", "");
     });
-    var nextHash = "#" + names[index];
-    if (location.hash !== nextHash) history.replaceState(null, "", nextHash);
+    /* A hash that matches no id can make the browser jump to the bottom on load.
+       Write one only after a person picks a screen. */
+    if (fromUser) {
+      var nextHash = "#" + names[index];
+      if (location.hash !== nextHash) history.replaceState(null, "", nextHash);
+    }
     window.scrollTo(0, 0);
   }
 
   buttons.forEach(function (button) {
     button.addEventListener("click", function () {
-      show(Number(button.getAttribute("data-screen")));
+      show(Number(button.getAttribute("data-screen")), true);
     });
   });
 
