@@ -37,5 +37,12 @@ var CONCEPTS = [
     region: "Oklahoma",
     status: "Concept demo",
     href: "first-city-usdc-payments/"
+  },
+  {
+    title: "Political USDC Donations (Oklahoma)",
+    description: "Shows how a donor could give USDC to Ryan Skeffington's sample Oklahoma candidate committee, while a bank receives and settles the funds. Amounts are sample data, Majestic Advising never holds keys or funds, and this is a later phase concept, not legal advice.",
+    region: "Oklahoma",
+    status: "Concept demo",
+    href: "ok-political-usdc-donations/"
   }
 ];
