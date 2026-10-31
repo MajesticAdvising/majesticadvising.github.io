@@ -18,7 +18,7 @@ var CONCEPTS = [
     href: "usvi-public-funds-transparency/"
   },
   {
-    title: "Employee USDC Income (USVI)",
+    title: "Employee USDC Payroll (USVI)",
     description: "Shows how Government of the Virgin Islands employees could choose to receive part of their pay in USDC, with a bank authorizing every payment and GotSOL.app only showing what the bank already approved. Public DoP and OpenGov figures are cited, nothing on the page moves money, and this is a later phase concept, not the first pilot.",
     region: "USVI",
     status: "Concept demo",
