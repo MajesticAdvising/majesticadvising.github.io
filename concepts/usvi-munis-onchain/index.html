@@ -346,8 +346,8 @@
     if (fromUser) {
       var nextHash = "#" + names[index];
       if (location.hash !== nextHash) history.replaceState(null, "", nextHash);
+      if (window.majesticShowSection) window.majesticShowSection(screens[index]);
     }
-    window.scrollTo(0, 0);
   }
 
   buttons.forEach(function (button) {
