@@ -22,6 +22,11 @@
     if (data.height) frame.style.height = Math.ceil(data.height) + 'px';
     /* A newly opened page asks once. Resize updates do not. */
     if (data.scrollToTop) frame.scrollIntoView({ block: 'start' });
+    /* An in-page tab asks to show that section, not the top of the frame. */
+    if (typeof data.scrollTo === 'number' && isFinite(data.scrollTo)) {
+      var frameTop = frame.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo(0, frameTop + data.scrollTo);
+    }
   });
 })();
 </script>

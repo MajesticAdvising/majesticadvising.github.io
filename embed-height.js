@@ -26,9 +26,24 @@
     setTimeout(toTop, 60);
   }
 
-  toTopSoon();
+   toTopSoon();
   window.addEventListener('pageshow', toTopSoon);
   window.addEventListener('load', toTopSoon);
+
+  /* In-page tabs call this. A new page load does not.
+     The offset is inside this document. The parent frame, if any,
+     scrolls by the same amount so the section stays in view. */
+  window.majesticShowSection = function (el) {
+    if (!el || !el.getBoundingClientRect) return;
+    var banner = document.querySelector('.demo-only');
+    var bannerH = banner ? banner.offsetHeight : 0;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - bannerH - 12;
+    if (y < 0) y = 0;
+    window.scrollTo(0, y);
+    if (window.parent !== window) {
+      window.parent.postMessage({ source: 'majestic-page', scrollTo: y }, '*');
+    }
+  };
 
   if (window.parent === window) return;
 
