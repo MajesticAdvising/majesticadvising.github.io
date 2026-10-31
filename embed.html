@@ -18,8 +18,10 @@
   window.addEventListener('message', function (event) {
     var data = event.data || {};
     if (event.origin !== 'https://majesticadvising.github.io') return;
-    if (data.source !== 'majestic-page' || !data.height) return;
-    frame.style.height = Math.ceil(data.height) + 'px';
+    if (data.source !== 'majestic-page') return;
+    if (data.height) frame.style.height = Math.ceil(data.height) + 'px';
+    /* A newly opened page asks once. Resize updates do not. */
+    if (data.scrollToTop) frame.scrollIntoView({ block: 'start' });
   });
 })();
 </script>
