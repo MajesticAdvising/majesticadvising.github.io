@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Political USDC Donations (Oklahoma): a concept demo</title>
+<meta name="description" content="A concept demo of a USDC contribution to one Oklahoma candidate committee. Demo only. Sample data. No live transfers. Not legal advice." />
+<style>
+  /* Majestic Advising palette (same as the other concept demos) */
+  :root {
+    --navy: #0e1a26;
+    --navy-panel: #15253a;
+    --navy-line: #263b55;
+    --brass: #b08d57;
+    --electric: #0ff0ff;
+    --body: #e6ecf2;
+    --muted: #a3b1bf;
+    --good: #5be39b;
+    --warn: #e6c07b;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--navy); color: var(--body); }
+  body { font-family: Arial, Helvetica, sans-serif; font-size: 22px; line-height: 1.5; }
+  a { color: var(--electric); }
+  .page { max-width: 1360px; margin: 0 auto; padding: 32px 40px 64px; }
+  h1 { font-size: 56px; line-height: 1.15; margin: 0.2em 0; color: #fff; }
+  h2 { font-size: 40px; line-height: 1.2; margin: 0 0 8px; color: #fff; }
+  h3 { font-size: 28px; margin: 0 0 6px; color: #fff; }
+  .eyebrow { font-size: 20px; letter-spacing: 2px; text-transform: uppercase; color: var(--brass); font-weight: bold; }
+  .lead { font-size: 26px; color: var(--body); max-width: 1100px; }
+  .muted, .note { color: var(--muted); }
+  .note { font-size: 20px; }
+  .panel { background: var(--navy-panel); border: 1px solid var(--navy-line); border-radius: 16px; padding: 24px 28px; margin-top: 20px; }
+  .back { margin: 0 0 22px; font-size: 22px; }
+  .back a { font-weight: bold; }
+
+  .demo-only {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    margin: 0;
+    padding: 12px 18px;
+    text-align: center;
+    color: #fff;
+    background: #3d2a14;
+    border-bottom: 4px solid var(--brass);
+  }
+  .demo-only b { display: block; font-size: 20px; letter-spacing: 0.2px; }
+  .demo-sub { display: block; margin-top: 4px; font-size: 18px; font-weight: normal; color: #f2e6d4; }
+
+  .top { display: flex; align-items: center; gap: 28px; border-bottom: 4px solid var(--brass); padding-bottom: 24px; }
+  .top img { width: 120px; height: auto; }
+  .top .by { font-size: 22px; color: var(--muted); margin-top: 6px; }
+
+  .banner { display: flex; gap: 16px; align-items: flex-start; margin-top: 24px; padding: 18px 22px; border-radius: 12px; border: 2px solid var(--brass); background: rgba(176, 141, 87, 0.14); }
+  .banner .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--brass); margin-top: 10px; flex: none; }
+  .banner b { color: #fff; font-size: 24px; }
+
+  .screen-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .screen-nav button {
+    font: inherit;
+    font-size: 20px;
+    font-weight: bold;
+    min-height: 52px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 2px solid var(--navy-line);
+    background: transparent;
+    color: var(--body);
+    cursor: pointer;
+  }
+  .screen-nav button.on { border-color: var(--electric); background: var(--electric); color: var(--navy); }
+  .screen-nav button:hover, .screen-nav button:focus { outline: 3px solid var(--electric); outline-offset: 3px; }
+
+  .screen { display: none; margin-top: 36px; }
+  .screen.on { display: block; animation: rise 0.3s ease; }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  .hero { margin: 24px 0 0; max-width: 800px; border-radius: 16px; overflow: hidden; border: 1px solid var(--navy-line); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45); }
+  .hero img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 1; object-fit: cover; }
+  .hero figcaption { font-size: 18px; color: var(--muted); padding: 8px 14px; background: #0b1520; }
+
+  .flow { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 16px; }
+  .flow div { border: 2px solid var(--navy-line); border-radius: 12px; padding: 12px 14px; background: var(--navy-panel); }
+  .flow span { color: var(--brass); font-weight: bold; }
+
+  .callout { border-left: 4px solid var(--warn); padding: 12px 16px; background: #1a1606; margin-top: 16px; }
+
+  .btn, .btn2 { font: inherit; font-size: 22px; font-weight: bold; min-height: 56px; margin-top: 16px; margin-right: 10px; padding: 12px 22px; border-radius: 12px; cursor: pointer; }
+  .btn { border: 2px solid var(--electric); background: var(--electric); color: var(--navy); }
+  .btn2 { border: 2px solid var(--electric); background: transparent; color: var(--electric); }
+  .btn:hover, .btn:focus, .btn2:hover, .btn2:focus { outline: 3px solid var(--electric); outline-offset: 3px; }
+
+  .prof { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+  .av { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid var(--electric); background: #0b1520; display: flex; align-items: center; justify-content: center; font-size: 38px; font-weight: bold; color: var(--electric); flex: none; }
+  .tag { display: inline-block; background: var(--warn); color: #1a1204; font-size: 16px; font-weight: bold; padding: 4px 8px; border-radius: 6px; margin-top: 8px; }
+  .ph { border: 1px dashed var(--warn); border-radius: 8px; padding: 4px 10px; color: var(--warn); display: inline-block; margin: 3px 0; }
+
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 28px; }
+  label { display: block; font-size: 20px; color: var(--muted); margin-top: 8px; }
+  input[type="text"], input[type="number"], input[type="email"] {
+    width: 100%;
+    font: inherit;
+    font-size: 22px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 2px solid var(--navy-line);
+    background: #0b1520;
+    color: var(--body);
+    margin-top: 4px;
+  }
+  .check { display: flex; gap: 12px; align-items: flex-start; margin-top: 14px; color: var(--body); font-size: 22px; }
+  .check input { width: 28px; height: 28px; margin-top: 4px; flex: none; accent-color: var(--electric); }
+  .amts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .amts button { font: inherit; font-size: 20px; padding: 10px 14px; border-radius: 10px; border: 2px solid var(--navy-line); background: #0b1520; color: var(--body); cursor: pointer; }
+  .amts button.on { border-color: var(--electric); color: var(--electric); }
+
+  .numbers { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 16px; }
+  .kpi { font-size: 40px; font-weight: bold; color: var(--electric); line-height: 1.15; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 20px; }
+  th { text-align: left; color: var(--brass); font-size: 18px; text-transform: uppercase; letter-spacing: 1px; padding: 10px; border-bottom: 2px solid var(--navy-line); }
+  td { padding: 12px 10px; border-bottom: 1px solid var(--navy-line); vertical-align: top; }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .table-wrap { overflow: auto; }
+
+  .mail { background: #f8fafc; color: #0f172a; border-radius: 16px; padding: 22px; margin-top: 16px; }
+  .mail h3 { color: #0f172a; }
+  .mail .wm { color: #991b1b; font-weight: bold; }
+  .mail .meta { color: #475569; font-size: 18px; }
+  .mail table th, .mail table td { border-bottom: 1px solid #e2e8f0; color: #0f172a; }
+  .mail table th { color: #334155; }
+  .mail .fine { font-size: 18px; color: #475569; }
+
+  .sources ol { padding-left: 28px; }
+  .sources li { margin-bottom: 12px; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 4px solid var(--brass); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 22px; }
+
+  @media (max-width: 800px) {
+    .page { padding: 24px 16px 48px; }
+    h1 { font-size: 40px; }
+    h2 { font-size: 32px; }
+    .top { align-items: flex-start; }
+    .form-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<p class="demo-only" role="status" data-testid="sample-banner">
+  <b>DEMO ONLY — sample data — no live transfers — later phase concept — not legal advice.</b>
+  <span class="demo-sub">A bank receives and settles the funds. Majestic Advising and GotSOL.app never hold keys or funds. One sample candidate only.</span>
+</p>
+<div class="page">
+
+  <p class="back"><a href="../">Concepts</a></p>
+  <header class="top">
+    <img src="data:image/png;base64,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" alt="Majestic Advising monogram" />
+    <div>
+      <div class="eyebrow">A concept demo</div>
+      <h1>Political USDC Donations</h1>
+      <div class="by">How a donor could give USDC to one Oklahoma candidate committee. Prepared by Majestic Advising.</div>
+    </div>
+  </header>
+
+  <div class="banner">
+    <span class="dot" aria-hidden="true"></span>
+    <div>
+      <b>Demo only. Sample data. No live transfers. Not legal advice.</b><br />
+      Ryan Skeffington is the only example. No office or committee has been filed or announced in this demo. Oklahoma Ethics Commission rules apply to state and local campaigns. FEC rules apply to federal campaigns. Steph (Compliance) is still researching the requirements. Every rule on this page is illustrative.
+    </div>
+  </div>
+
+  <nav class="screen-nav" role="tablist" aria-label="Demo screens">
+    <button type="button" role="tab" id="tab-0" data-screen="0">1 Home</button>
+    <button type="button" role="tab" id="tab-1" data-screen="1">2 About Ryan</button>
+    <button type="button" role="tab" id="tab-2" data-screen="2">3 Details</button>
+    <button type="button" role="tab" id="tab-3" data-screen="3">4 Confirm</button>
+    <button type="button" role="tab" id="tab-4" data-screen="4">5 Email</button>
+    <button type="button" role="tab" id="tab-5" data-screen="5">6 Ledger</button>
+    <button type="button" role="tab" id="tab-6" data-screen="6">7 Compliance</button>
+  </nav>
+
+  <section class="screen" id="screen-0" role="tabpanel" aria-labelledby="tab-0">
+    <figure class="hero">
+      <img id="hero" src="assets/okc-linkedin-background.jpg" alt="Oklahoma City skyline at night" />
+      <figcaption>Oklahoma City skyline. Image from Ryan Skeffington's public LinkedIn banner.</figcaption>
+    </figure>
+    <div class="panel">
+      <div class="eyebrow">The idea</div>
+      <h2>Support Ryan Skeffington in USDC</h2>
+      <p class="lead">A donor gives USDC to Ryan Skeffington's candidate committee. This is a sample. No committee or office has been filed or announced in this demo. A regulated bank partner receives and settles the funds. The donor gets an emailed contribution acknowledgment with the disclosure fields that campaign finance rules typically require, and the committee gets a ledger ready for its reports.</p>
+      <div class="flow" aria-label="How a sample contribution would move">
+        <div>Donor wallet (USDC)</div><span>→</span>
+        <div>Bank partner custody and settlement</div><span>→</span>
+        <div>Candidate committee account</div><span>→</span>
+        <div>Acknowledgment email and committee ledger</div>
+      </div>
+      <p class="callout">Majestic Advising and GotSOL.app never hold keys or funds. Funds move through a bank. Oklahoma Ethics Commission rules apply to state and local campaigns. FEC rules apply to federal campaigns. Steph (Compliance) is researching the requirements. Every rule shown here is illustrative.</p>
+      <button class="btn" type="button" id="meet-ryan">Meet Ryan</button>
+      <button class="btn2" type="button" id="start-sample">Start sample contribution</button>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-1" role="tabpanel" aria-labelledby="tab-1">
+    <div class="eyebrow">One sample candidate</div>
+    <h2>Learn more about Ryan</h2>
+    <div class="panel prof">
+      <img class="av" id="ryan-photo" src="assets/ryan-skeffington-linkedin.jpg" alt="Ryan Skeffington" />
+      <div>
+        <h3>Ryan Skeffington</h3>
+        <div class="muted">Engineer, Author, MBA, Fmr-Founder | Considering Public Service Soon</div>
+        <div class="note">Oklahoma City, Oklahoma · <a href="https://www.linkedin.com/in/ryan-skeffington/" target="_blank" rel="noopener">LinkedIn profile</a></div>
+        <span class="tag">SAMPLE CANDIDATE · NO OFFICE OR COMMITTEE FILED</span>
+      </div>
+    </div>
+    <div class="panel">
+      <p>From Ryan's public LinkedIn profile:</p>
+      <ul>
+        <li><b>Senior Engineer, Energy Transfer</b> — Jan 2022 to present, Oklahoma City</li>
+        <li><b>Science fiction author</b> — Oct 2023 to present (published: <i>Lost Souls</i>, <i>Eternal Dreams</i>)</li>
+        <li><b>Co-Founder, Cheers!</b> — Nov 2020 to Apr 2023, Oklahoma City</li>
+        <li>Earlier roles: Project Engineer, Enable Midstream Partners; multiple engineering roles, Devon Energy</li>
+        <li><b>Education:</b> B.S. Petroleum Engineering, Texas A&amp;M University; MBA (Energy &amp; Entrepreneurship), University of Oklahoma Price College of Business</li>
+        <li>Community: runs the Oklahoma City Memorial half marathon to raise scholarship funds for Folds of Honor (per his LinkedIn posts)</li>
+      </ul>
+      <p class="note">Source: <a href="https://www.linkedin.com/in/ryan-skeffington/" target="_blank" rel="noopener">linkedin.com/in/ryan-skeffington</a> (public profile and posts, viewed 2026-10-30). Platform positions, office sought, and committee name are placeholders for Ryan to supply.</p>
+      <span class="ph">[Placeholder: Ryan's platform / priorities]</span>
+    </div>
+    <div class="panel">
+      <h3>Volunteer to support Ryan</h3>
+      <p class="muted">Want to help? Pick a way to get involved. All items below are placeholders until Ryan's team provides details.</p>
+      <ul>
+        <li>Sign up to volunteer: <span class="ph">[Volunteer form link]</span></li>
+        <li>Upcoming events and coffee meetups: <span class="ph">[Events link]</span></li>
+        <li>Door knocking and phone banks: <span class="ph">[Info and sign up link]</span></li>
+        <li>Host a meet and greet: <span class="ph">[Contact email or form]</span></li>
+        <li>Follow Ryan: <a href="https://www.linkedin.com/in/ryan-skeffington/" target="_blank" rel="noopener">LinkedIn</a> · <span class="ph">[Campaign site]</span> · <span class="ph">[Other social]</span></li>
+        <li>Volunteer contact: <span class="ph">[Name, email, phone]</span></li>
+      </ul>
+    </div>
+    <button class="btn" type="button" id="contribute">Contribute in USDC (sample)</button>
+  </section>
+
+  <section class="screen" id="screen-2" role="tabpanel" aria-labelledby="tab-2">
+    <div class="eyebrow">Sample form</div>
+    <h2>Your details and amount</h2>
+    <div class="panel">
+      <p class="muted">Campaign finance rules typically require contributor name, address, employer, and occupation. Sample values are filled in.</p>
+      <div class="form-grid">
+        <div>
+          <label for="fn">Full name</label>
+          <input id="fn" type="text" value="Jordan Sample" />
+          <label for="fa">Street address</label>
+          <input id="fa" type="text" value="100 Sample St" />
+          <label for="fc">City, State ZIP</label>
+          <input id="fc" type="text" value="Tulsa, OK 74103" />
+        </div>
+        <div>
+          <label for="fe">Employer</label>
+          <input id="fe" type="text" value="Sample Energy Co" />
+          <label for="fo">Occupation</label>
+          <input id="fo" type="text" value="Engineer" />
+          <label for="fm">Email</label>
+          <input id="fm" type="email" value="jordan@example.com" />
+        </div>
+      </div>
+      <label for="amt">Amount (USDC)</label>
+      <div class="amts" id="amts"></div>
+      <input id="amt" type="number" value="100" min="1" />
+      <label class="check" for="attest">
+        <input id="attest" type="checkbox" checked />
+        <span>I attest this contribution is from my own funds, I am a US citizen or lawful permanent resident, and I am not a federal contractor or otherwise prohibited (sample attestation)</span>
+      </label>
+      <button class="btn" type="button" id="review">Review</button>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-3" role="tabpanel" aria-labelledby="tab-3">
+    <div class="eyebrow">Sample checks</div>
+    <h2>Confirm</h2>
+    <div class="panel" id="confirm-box"></div>
+  </section>
+
+  <section class="screen" id="screen-4" role="tabpanel" aria-labelledby="tab-4">
+    <div class="eyebrow">Preview only</div>
+    <h2>Email sent (preview)</h2>
+    <div class="mail" id="mail"></div>
+  </section>
+
+  <section class="screen" id="screen-5" role="tabpanel" aria-labelledby="tab-5">
+    <div class="eyebrow">Per candidate</div>
+    <h2>Committee ledger and audit trail</h2>
+    <p class="lead">Every contribution is accounted for per candidate. Sample data, with the demo contribution added when you confirm.</p>
+    <div class="numbers" id="totals"></div>
+    <div class="panel table-wrap">
+      <table>
+        <thead><tr><th>Receipt</th><th>Date</th><th>Candidate</th><th>Contributor</th><th>Employer / occupation</th><th class="n">USDC</th><th>Bank ref</th><th>Status</th></tr></thead>
+        <tbody id="ledger"></tbody>
+      </table>
+    </div>
+    <div class="panel">
+      <b>Audit trail per entry:</b> on chain transaction hash, then bank receipt reference, then committee deposit, then acknowledgment email ID, then report line. Export as CSV for the committee treasurer's filing (sample).
+    </div>
+  </section>
+
+  <section class="screen" id="screen-6" role="tabpanel" aria-labelledby="tab-6">
+    <div class="eyebrow">Open questions</div>
+    <h2>Compliance handoff</h2>
+    <div class="panel">
+      <p>Owner: <b>Steph (Compliance)</b>. Status: <span class="tag">RESEARCH IN PROGRESS</span></p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Question for Steph</th><th>Why it matters</th></tr></thead>
+          <tbody>
+            <tr><td>Does the Oklahoma Ethics Commission treat USDC as a cash or in kind contribution, and how is it valued?</td><td>Reporting line and valuation date</td></tr>
+            <tr><td>Contribution limits per election by office type (state, county, local government)</td><td>Block overlimit gifts at checkout</td></tr>
+            <tr><td>Itemization threshold for name, address, employer, occupation</td><td>Which fields are required and which are optional</td></tr>
+            <tr><td>Anonymous and cash limits; identity verification needed?</td><td>KYC depth at the bank partner</td></tr>
+            <tr><td>Prohibited sources (corporate, foreign national, contractor rules)</td><td>Attestation wording and screening</td></tr>
+            <tr><td>Federal (FEC) candidates: crypto guidance and $200 itemization</td><td>Whether federal is in scope at all</td></tr>
+            <tr><td>Required acknowledgment and disclaimer text; refund process</td><td>Email template and refund flow</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted">Nothing in this demo is legal advice. Final rules come from Steph, counsel, and the bank partner.</p>
+    </div>
+    <div class="sources">
+      <div class="eyebrow">Sources</div>
+      <h2>What is cited</h2>
+      <ol>
+        <li>Ryan Skeffington's public LinkedIn profile and posts, viewed 2026-10-30. <a href="https://www.linkedin.com/in/ryan-skeffington/">linkedin.com/in/ryan-skeffington</a>. The skyline is his public LinkedIn banner. The headshot is his public LinkedIn photo.</li>
+        <li>Office, committee name, platform, and volunteer links are placeholders. They are not a filing and not an announcement.</li>
+        <li>Contributor rows, amounts, bank references, and the acknowledgment email are sample data.</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>
+    <span><b>Majestic Advising</b> &middot; A concept demo for Oklahoma political USDC donations</span>
+    <span><a href="https://majesticadvising.com/">MajesticAdvising.com</a> &middot; <a href="mailto:Ryan@MajesticAdvising.com">Ryan@MajesticAdvising.com</a></span>
+  </footer>
+</div>
+<script>
+"use strict";
+(function () {
+  var candidate = {
+    name: "Ryan Skeffington",
+    office: "[Office TBD] (SAMPLE)",
+    committee: "Friends of Ryan Skeffington (SAMPLE committee)"
+  };
+  var ledger = [
+    ["R-0001", "2026-10-01", "Pat Sample", "Sample Farms / Rancher", 250, "BK-88120"],
+    ["R-0002", "2026-10-03", "Lee Example", "Self / Attorney", 100, "BK-88131"],
+    ["R-0003", "2026-10-07", "Sam Demo", "Sample School District / Teacher", 50, "BK-88167"],
+    ["R-0004", "2026-10-12", "Riley Test", "Sample Clinic / Nurse", 75, "BK-88201"],
+    ["R-0005", "2026-10-20", "Taylor Mock", "Retired / Retired", 500, "BK-88240"]
+  ];
+  var presets = [25, 50, 100, 250, 500];
+  var amount = 100;
+  var confirmed = false;
+  var today = "2026-10-30";
+  var names = ["home", "about", "details", "confirm", "email", "ledger", "compliance"];
+  var buttons = Array.prototype.slice.call(document.querySelectorAll(".screen-nav button"));
+  var screens = Array.prototype.slice.call(document.querySelectorAll(".screen"));
+
+  function field(id) {
+    return document.getElementById(id).value;
+  }
+
+  function show(index) {
+    if (index < 0 || index >= screens.length) index = 0;
+    if (index === 3) renderConfirm();
+    if (index === 4) renderMail();
+    if (index === 5) renderLedger();
+    buttons.forEach(function (button, i) {
+      var on = i === index;
+      button.classList.toggle("on", on);
+      button.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    screens.forEach(function (screen, i) {
+      screen.classList.toggle("on", i === index);
+    });
+    var nextHash = "#" + names[index];
+    if (location.hash !== nextHash) history.replaceState(null, "", nextHash);
+    window.scrollTo(0, 0);
+  }
+
+  buttons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      show(Number(button.getAttribute("data-screen")));
+    });
+  });
+
+  function renderAmounts() {
+    var box = document.getElementById("amts");
+    box.textContent = "";
+    presets.forEach(function (value) {
+      var button = document.createElement("button");
+      button.type = "button";
+      button.textContent = value + " USDC";
+      if (value === amount) button.className = "on";
+      button.addEventListener("click", function () { setAmt(value); });
+      box.appendChild(button);
+    });
+  }
+
+  function setAmt(value) {
+    amount = Math.max(1, Number(value) || 0);
+    document.getElementById("amt").value = String(amount);
+    renderAmounts();
+  }
+
+  function addText(parent, tag, text, className) {
+    var el = document.createElement(tag);
+    if (className) el.className = className;
+    el.textContent = text;
+    parent.appendChild(el);
+    return el;
+  }
+
+  function renderConfirm() {
+    var box = document.getElementById("confirm-box");
+    box.textContent = "";
+    addText(box, "p", amount.toFixed(2) + " USDC to " + candidate.committee);
+    var from = document.createElement("p");
+    from.className = "muted";
+    from.textContent = "From " + field("fn") + ", " + field("fa") + ", " + field("fc") + ". " + field("fe") + " / " + field("fo");
+    box.appendChild(from);
+    var note = document.createElement("p");
+    note.className = "callout";
+    var attested = document.getElementById("attest").checked;
+    note.textContent = "Sample checks: within sample limit. Attestation " + (attested ? "accepted" : "not accepted") + ". Bank partner screening passed (simulated). No transfer occurs.";
+    box.appendChild(note);
+    var confirm = document.createElement("button");
+    confirm.type = "button";
+    confirm.className = "btn";
+    confirm.id = "confirm-sample";
+    confirm.textContent = "Confirm sample contribution";
+    confirm.addEventListener("click", confirmIt);
+    box.appendChild(confirm);
+    var edit = document.createElement("button");
+    edit.type = "button";
+    edit.className = "btn2";
+    edit.textContent = "Edit";
+    edit.addEventListener("click", function () { show(2); });
+    box.appendChild(edit);
+  }
+
+  function confirmIt() {
+    if (!confirmed) {
+      ledger.push(["R-0006", today, field("fn"), field("fe") + " / " + field("fo"), amount, "BK-88302"]);
+      confirmed = true;
+    }
+    show(4);
+  }
+
+  function mailRow(table, label, value) {
+    var row = document.createElement("tr");
+    addText(row, "th", label);
+    addText(row, "td", value);
+    table.appendChild(row);
+  }
+
+  function renderMail() {
+    var box = document.getElementById("mail");
+    box.textContent = "";
+    addText(box, "div", "SAMPLE EMAIL · DEMO ONLY · ILLUSTRATIVE, NOT LEGAL ADVICE", "wm");
+    addText(box, "p", "To: " + field("fm") + " · From: receipts@gotsol.app (sample) · Subject: Your contribution acknowledgment, " + candidate.committee, "meta");
+    addText(box, "h3", "Contribution acknowledgment and disclosure record");
+    var table = document.createElement("table");
+    var attested = document.getElementById("attest").checked;
+    mailRow(table, "Receipt no.", "R-0006");
+    mailRow(table, "Date", today);
+    mailRow(table, "Candidate committee", candidate.committee);
+    mailRow(table, "Candidate / office", candidate.name + ", " + candidate.office);
+    mailRow(table, "Contributor", field("fn"));
+    mailRow(table, "Address", field("fa") + ", " + field("fc"));
+    mailRow(table, "Employer", field("fe"));
+    mailRow(table, "Occupation", field("fo"));
+    mailRow(table, "Amount", amount.toFixed(2) + " USDC (USD value " + amount.toFixed(2) + " at receipt, sample)");
+    mailRow(table, "Method", "USDC via bank partner (sample); on chain transaction 0xSAMPLE…; bank ref BK-88302");
+    mailRow(table, "Attestation", (attested ? "Accepted" : "Not accepted") + " on " + today);
+    box.appendChild(table);
+    addText(box, "p", "Contributions to Oklahoma state and local candidates are subject to Oklahoma Ethics Commission rules (Title 257). Federal candidates are subject to FEC rules. Contributions are not tax deductible. Contributor information may be publicly reported. Paid for by " + candidate.committee + " (sample disclaimer).", "fine");
+    var next = document.createElement("button");
+    next.type = "button";
+    next.className = "btn";
+    next.textContent = "View committee ledger";
+    next.addEventListener("click", function () { show(5); });
+    box.appendChild(next);
+  }
+
+  function renderLedger() {
+    var totals = document.getElementById("totals");
+    totals.textContent = "";
+    var card = document.createElement("div");
+    card.className = "panel";
+    var sum = ledger.reduce(function (total, row) { return total + row[4]; }, 0);
+    addText(card, "span", "SAMPLE", "tag");
+    addText(card, "div", candidate.committee, "muted");
+    addText(card, "div", sum.toFixed(2), "kpi");
+    addText(card, "small", "USDC · " + ledger.length + " contributions", "muted");
+    totals.appendChild(card);
+
+    var body = document.getElementById("ledger");
+    body.textContent = "";
+    ledger.forEach(function (row) {
+      var tr = document.createElement("tr");
+      addText(tr, "td", row[0]);
+      addText(tr, "td", row[1]);
+      addText(tr, "td", candidate.name);
+      addText(tr, "td", row[2]);
+      addText(tr, "td", row[3]);
+      addText(tr, "td", row[4].toFixed(2), "n");
+      addText(tr, "td", row[5]);
+      addText(tr, "td", "Settled (sample)");
+      body.appendChild(tr);
+    });
+  }
+
+  document.getElementById("amt").addEventListener("input", function () {
+    setAmt(this.value);
+  });
+  document.getElementById("meet-ryan").addEventListener("click", function () { show(1); });
+  document.getElementById("start-sample").addEventListener("click", function () { show(2); });
+  document.getElementById("contribute").addEventListener("click", function () { show(2); });
+  document.getElementById("review").addEventListener("click", function () { show(3); });
+
+  var photo = document.getElementById("ryan-photo");
+  photo.addEventListener("error", function () {
+    var fallback = document.createElement("div");
+    fallback.className = "av";
+    fallback.textContent = "RS";
+    fallback.title = "Photo placeholder";
+    photo.replaceWith(fallback);
+  });
+
+  setAmt(100);
+  var start = names.indexOf((location.hash || "").replace("#", ""));
+  show(start === -1 ? 0 : start);
+})();
+</script>
+<script src="../../embed-height.js"></script>
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Employee USDC Income (USVI): a concept demo</title>
+<meta name="description" content="A concept demo of how Government of the Virgin Islands employees could choose to receive part of their pay in USDC. Demo only. No live transfers." />
+<style>
+  /* Majestic Advising palette (same as the USVI public funds concept) */
+  :root {
+    --navy: #0e1a26;
+    --navy-panel: #15253a;
+    --navy-line: #263b55;
+    --brass: #b08d57;
+    --electric: #0ff0ff;
+    --body: #e6ecf2;
+    --muted: #a3b1bf;
+    --good: #5be39b;
+    --warn: #e6c07b;
+    --bad: #f3c1c1;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--navy); color: var(--body); }
+  body { font-family: Arial, Helvetica, sans-serif; font-size: 22px; line-height: 1.5; }
+  a { color: var(--electric); }
+  .page { max-width: 1360px; margin: 0 auto; padding: 32px 40px 64px; }
+  h1 { font-size: 56px; line-height: 1.15; margin: 0; color: #fff; }
+  h2 { font-size: 40px; line-height: 1.2; margin: 0 0 8px; color: #fff; }
+  h3 { font-size: 28px; margin: 0 0 6px; color: #fff; }
+  .eyebrow { font-size: 20px; letter-spacing: 2px; text-transform: uppercase; color: var(--brass); font-weight: bold; }
+  .lead { font-size: 26px; color: var(--body); max-width: 1100px; }
+  .muted, .note { color: var(--muted); }
+  .note { font-size: 20px; }
+  .accent { color: var(--electric); }
+  .panel { background: var(--navy-panel); border: 1px solid var(--navy-line); border-radius: 16px; padding: 24px 28px; }
+  .back { margin: 0 0 22px; font-size: 22px; }
+  .back a { font-weight: bold; }
+
+  .demo-only {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    margin: 0;
+    padding: 12px 18px;
+    text-align: center;
+    color: #fff;
+    background: #3d2a14;
+    border-bottom: 4px solid var(--brass);
+  }
+  .demo-only b { display: block; font-size: 20px; letter-spacing: 0.2px; }
+  .demo-sub { display: block; margin-top: 4px; font-size: 18px; font-weight: normal; color: #f2e6d4; }
+
+  .top { display: flex; align-items: center; gap: 28px; border-bottom: 4px solid var(--brass); padding-bottom: 24px; }
+  .top img { width: 120px; height: auto; }
+  .top .by { font-size: 22px; color: var(--muted); margin-top: 6px; }
+
+  .banner { display: flex; gap: 16px; align-items: flex-start; margin-top: 24px; padding: 18px 22px; border-radius: 12px; border: 2px solid var(--brass); background: rgba(176, 141, 87, 0.14); }
+  .banner .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--brass); margin-top: 10px; flex: none; }
+  .banner b { color: #fff; font-size: 24px; }
+
+  .screen-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .screen-nav button {
+    font: inherit;
+    font-size: 20px;
+    font-weight: bold;
+    min-height: 52px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 2px solid var(--navy-line);
+    background: transparent;
+    color: var(--body);
+    cursor: pointer;
+  }
+  .screen-nav button.on { border-color: var(--electric); background: var(--electric); color: var(--navy); }
+  .screen-nav button:hover, .screen-nav button:focus { outline: 3px solid var(--electric); outline-offset: 3px; }
+
+  .screen { display: none; margin-top: 36px; }
+  .screen.on { display: block; animation: rise 0.3s ease; }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  .numbers { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
+  .num .value { font-size: 40px; font-weight: bold; color: var(--electric); line-height: 1.15; }
+  .num .value.warn { color: var(--warn); }
+  .num .label { font-size: 21px; margin-top: 8px; }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+  .rules li { margin-bottom: 10px; }
+
+  .bars { margin-top: 8px; }
+  .bar { display: grid; grid-template-columns: minmax(140px, 280px) 1fr minmax(140px, 180px); gap: 12px; align-items: center; padding: 8px 0; font-size: 20px; }
+  .track { position: relative; height: 22px; background: #0b1520; border: 1px solid var(--navy-line); border-radius: 8px; }
+  .track i, .track b { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 8px; }
+  .track i { background: #3d5a73; }
+  .track b { background: var(--electric); height: 8px; top: 7px; border-radius: 4px; }
+  .bar em { font-style: normal; text-align: right; font-variant-numeric: tabular-nums; }
+  .legend { display: flex; flex-wrap: wrap; gap: 22px; font-size: 20px; color: var(--muted); margin: 8px 0 4px; }
+  .swatch { display: inline-block; width: 22px; height: 12px; border-radius: 4px; vertical-align: middle; margin-right: 8px; }
+
+  .table-wrap { max-height: 720px; overflow: auto; margin-top: 16px; }
+  table { width: 100%; border-collapse: collapse; font-size: 20px; }
+  th { text-align: left; color: var(--brass); font-size: 18px; text-transform: uppercase; letter-spacing: 1px; padding: 10px; border-bottom: 2px solid var(--navy-line); position: sticky; top: 0; background: var(--navy-panel); }
+  td { padding: 12px 10px; border-bottom: 1px solid var(--navy-line); vertical-align: top; }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.n { font-weight: bold; }
+  tr.bad td { color: var(--bad); }
+  tr.miss td { color: var(--warn); }
+  .pill { display: inline-block; background: #083344; color: var(--electric); border: 1px solid var(--electric); padding: 2px 10px; border-radius: 999px; font-size: 18px; white-space: nowrap; }
+
+  .receive { display: grid; grid-template-columns: minmax(280px, 380px) 1fr; gap: 24px; align-items: start; }
+  .phone { background: #04141b; border: 2px solid var(--navy-line); border-radius: 28px; padding: 22px; }
+  .phone .panel { margin: 14px 0; padding: 14px; }
+  input[type="range"] { width: 100%; accent-color: var(--electric); height: 32px; }
+  label.choice { display: block; font-size: 22px; }
+
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-top: 16px; }
+  .step { border: 2px solid var(--navy-line); border-radius: 16px; padding: 16px; background: var(--navy-panel); transition: 0.3s; }
+  .step b { color: var(--electric); }
+  .step.done { border-color: var(--electric); box-shadow: 0 0 24px rgba(15, 240, 255, 0.35); }
+  .btn { font: inherit; font-size: 22px; font-weight: bold; min-height: 56px; margin-top: 16px; padding: 12px 22px; border-radius: 12px; border: 2px solid var(--electric); background: var(--electric); color: var(--navy); cursor: pointer; }
+  .btn:hover, .btn:focus { background: transparent; color: var(--electric); outline: 3px solid var(--electric); outline-offset: 3px; }
+  #log { margin-left: 12px; }
+
+  .sources ol { padding-left: 28px; }
+  .sources li { margin-bottom: 12px; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 4px solid var(--brass); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 22px; }
+
+  @media (max-width: 800px) {
+    .page { padding: 24px 16px 48px; }
+    h1 { font-size: 40px; }
+    h2 { font-size: 32px; }
+    .top { align-items: flex-start; }
+    .receive { grid-template-columns: 1fr; }
+    .bar { grid-template-columns: 1fr; }
+    .bar em { text-align: left; }
+    #log { display: block; margin: 8px 0 0; }
+  }
+</style>
+</head>
+<body>
+<p class="demo-only" role="status" data-testid="sample-banner">
+  <b>DEMO ONLY — public DoP/OpenGov data — no live transfers.</b>
+  <span class="demo-sub">The bank authorizes every payment. GotSOL.app never holds keys. Funds move through the bank. Later phase concept, not the first pilot.</span>
+</p>
+<div class="page">
+
+  <p class="back"><a href="../">Concepts</a></p>
+  <header class="top">
+    <img src="data:image/png;base64,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" alt="Majestic Advising monogram" />
+    <div>
+      <div class="eyebrow">A concept demo</div>
+      <h1>Employee USDC Income</h1>
+      <div class="by">How Government of the Virgin Islands employees could choose to receive part of their pay in USDC. Prepared by Majestic Advising.</div>
+    </div>
+  </header>
+
+  <div class="banner">
+    <span class="dot" aria-hidden="true"></span>
+    <div>
+      <b>Demo only. No live transfers.</b><br />
+      Roster counts, names, titles, and annual pay are public Division of Personnel (DoP) and OpenGov records. Biweekly amounts are illustrations (annual divided by 26), not net pay, and no withholding is shown. USDC is not a bank deposit and is not FDIC insured. Nothing here moves money.
+    </div>
+  </div>
+
+  <nav class="screen-nav" role="tablist" aria-label="Demo screens">
+    <button type="button" role="tab" id="tab-concept" class="on" data-screen="0" aria-controls="screen-concept" aria-selected="true">1 Concept</button>
+    <button type="button" role="tab" id="tab-roster" data-screen="1" aria-controls="screen-roster" aria-selected="false">2 Roster</button>
+    <button type="button" role="tab" id="tab-receive" data-screen="2" aria-controls="screen-receive" aria-selected="false">3 Employee receive</button>
+    <button type="button" role="tab" id="tab-authorize" data-screen="3" aria-controls="screen-authorize" aria-selected="false">4 Bank authorize</button>
+    <button type="button" role="tab" id="tab-assumptions" data-screen="4" aria-controls="screen-assumptions" aria-selected="false">5 Assumptions</button>
+  </nav>
+
+  <section class="screen on" id="screen-concept" role="tabpanel" aria-labelledby="tab-concept">
+    <div class="eyebrow">The idea</div>
+    <h2>Get paid in USDC.<br /><span class="accent">The bank stays in charge.</span></h2>
+    <p class="lead">A concept for how Government of the Virgin Islands employees could choose to receive part of their pay in USDC, with a local bank and the Department of Finance approving every payment.</p>
+    <div class="numbers">
+      <div class="panel num"><div class="value">5,551</div><div class="label">employees listed in the public DoP database (Oct 30, 2026)</div></div>
+      <div class="panel num"><div class="value">7,253</div><div class="label">authorized positions in OpenGov (data stamp Mar 28, 2025)</div></div>
+      <div class="panel num"><div class="value">Opt in</div><div class="label">employee choice only; dollars stay the default</div></div>
+      <div class="panel num"><div class="value">Bank leads</div><div class="label">the bank authorizes every transaction; Circle signs on the bank's instruction</div></div>
+    </div>
+    <div class="panel" style="margin-top:20px">
+      <p><b>What GotSOL.app does:</b> gives the employee a simple screen to see and receive what the bank has already approved.</p>
+      <p><b>What it does not do:</b> hold keys, move money, convert money, or act as a bank or money transmitter.</p>
+      <p class="note">Majestic Advising never holds funds or keys. This is a later phase concept, not the first pilot. Current pilot plans leave out payroll and federal funds.</p>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-roster" role="tabpanel" aria-labelledby="tab-roster">
+    <div class="eyebrow">Public records</div>
+    <h2>Roster snapshot: OpenGov and DoP</h2>
+    <p class="lead">OpenGov authorized positions and the public DoP listing do not count the same thing. The gap is a reason to settle the head count before anyone sizes a pilot.</p>
+    <div class="numbers">
+      <div class="panel num"><div class="value">7,253</div><div class="label">OpenGov authorized</div></div>
+      <div class="panel num"><div class="value">6,685.74</div><div class="label">OpenGov implied filled (authorized minus 567.26 vacant FTE)</div></div>
+      <div class="panel num"><div class="value">5,551</div><div class="label">DoP public listing</div></div>
+      <div class="panel num"><div class="value warn">&minus;1,135</div><div class="label">DoP compared with implied filled</div></div>
+    </div>
+    <div class="panel" style="margin-top:20px">
+      <b>Largest entities: DoP listed (bright) and implied filled (dark)</b>
+      <div class="legend">
+        <span><span class="swatch" style="background:#3d5a73"></span>Implied filled</span>
+        <span><span class="swatch" style="background:var(--electric)"></span>DoP listed</span>
+      </div>
+      <div class="bars">
+        <div class="bar"><span>Education</span><div class="track"><i style="width:100.0%"></i><b style="width:93.3%"></b></div><em>2,067 / 2,214.75</em></div>
+        <div class="bar"><span>Human Services</span><div class="track"><i style="width:35.0%"></i><b style="width:25.8%"></b></div><em>572 / 774.50</em></div>
+        <div class="bar"><span>Police</span><div class="track"><i style="width:24.2%"></i><b style="width:21.1%"></b></div><em>467 / 535.50</em></div>
+        <div class="bar"><span>Health</span><div class="track"><i style="width:17.5%"></i><b style="width:13.7%"></b></div><em>304 / 388</em></div>
+        <div class="bar"><span>Planning and natural resources</span><div class="track"><i style="width:16.5%"></i><b style="width:7.0%"></b></div><em>154 / 366</em></div>
+        <div class="bar"><span>Fire</span><div class="track"><i style="width:14.6%"></i><b style="width:12.8%"></b></div><em>284 / 324</em></div>
+        <div class="bar"><span>Public Works</span><div class="track"><i style="width:10.6%"></i><b style="width:8.8%"></b></div><em>196 / 235.50</em></div>
+        <div class="bar"><span>Justice</span><div class="track"><i style="width:10.1%"></i><b style="width:6.2%"></b></div><em>138 / 224.50</em></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="table-wrap">
+        <table><tr><th>OpenGov entity</th><th class=n>Authorized</th><th class=n>Implied filled</th><th class=n>DoP</th><th class=n>Delta</th><th>Flag</th></tr><tr class='bad'><td>Department Of Education</td><td class=n>2,259</td><td class=n>2,214.75</td><td class=n>2,067</td><td class=n>-147.75</td><td>Large shortfall</td></tr><tr class='bad'><td>Department Of Human Services</td><td class=n>902</td><td class=n>774.50</td><td class=n>572</td><td class=n>-202.50</td><td>Large shortfall</td></tr><tr class=''><td>Virgin Islands Police Department</td><td class=n>572</td><td class=n>535.50</td><td class=n>467</td><td class=n>-68.50</td><td></td></tr><tr class='bad'><td>Department Of Health</td><td class=n>440</td><td class=n>388</td><td class=n>304</td><td class=n>-84</td><td>Large shortfall</td></tr><tr class='bad'><td>Department Of Planning And Natural Resources</td><td class=n>416</td><td class=n>366</td><td class=n>154</td><td class=n>-212</td><td>Large shortfall</td></tr><tr class=''><td>Virgin Islands Fire And Emergency Medical Services</td><td class=n>337</td><td class=n>324</td><td class=n>284</td><td class=n>-40</td><td></td></tr><tr class=''><td>Department Of Public Works</td><td class=n>247</td><td class=n>235.50</td><td class=n>196</td><td class=n>-39.50</td><td></td></tr><tr class='bad'><td>Department Of Justice</td><td class=n>240</td><td class=n>224.50</td><td class=n>138</td><td class=n>-86.50</td><td>Large shortfall</td></tr><tr class='bad'><td>Bureau Of Corrections</td><td class=n>225</td><td class=n>210</td><td class=n>142</td><td class=n>-68</td><td>Large shortfall</td></tr><tr class=''><td>Office Of The Lieutenant Governor</td><td class=n>152</td><td class=n>133</td><td class=n>115</td><td class=n>-18</td><td></td></tr><tr class='bad'><td>Department Of Sports Parks &amp; Recreation</td><td class=n>138</td><td class=n>137</td><td class=n>76</td><td class=n>-61</td><td>Large shortfall</td></tr><tr class=''><td>Internal Revenue Bureau</td><td class=n>135</td><td class=n>127.50</td><td class=n>104</td><td class=n>-23.50</td><td></td></tr><tr class=''><td>Department Of Labor</td><td class=n>135</td><td class=n>122</td><td class=n>126</td><td class=n>4</td><td></td></tr><tr class=''><td>Virgin Islands Territorial Emergency Management Agency</td><td class=n>104</td><td class=n>89</td><td class=n>88</td><td class=n>-1</td><td></td></tr><tr class='miss'><td>Disaster Recovery</td><td class=n>104</td><td class=n>68</td><td class=n>—</td><td class=n>—</td><td>Missing in DoP</td></tr><tr class=''><td>Office Of The Governor</td><td class=n>99</td><td class=n>93.50</td><td class=n>80</td><td class=n>-13.50</td><td></td></tr><tr class=''><td>Department Of Property &amp; Procurement</td><td class=n>88</td><td class=n>77.50</td><td class=n>77</td><td class=n>-0.50</td><td></td></tr><tr class=''><td>Office Of Management &amp; Budget</td><td class=n>85</td><td class=n>59.49</td><td class=n>47</td><td class=n>-12.49</td><td></td></tr><tr class=''><td>Department Of Licensing &amp; Consumer Affairs</td><td class=n>71</td><td class=n>65</td><td class=n>61</td><td class=n>-4</td><td></td></tr><tr class=''><td>Department Of Agriculture</td><td class=n>70</td><td class=n>61.50</td><td class=n>59</td><td class=n>-2.50</td><td></td></tr><tr class=''><td>Bureau Of Motor Vehicles</td><td class=n>64</td><td class=n>63</td><td class=n>56</td><td class=n>-7</td><td></td></tr><tr class=''><td>Department Of Finance</td><td class=n>64</td><td class=n>60</td><td class=n>47</td><td class=n>-13</td><td></td></tr><tr class=''><td>Office Of The Adjutant General</td><td class=n>57</td><td class=n>48</td><td class=n>44</td><td class=n>-4</td><td></td></tr><tr class=''><td>Division Of Personnel</td><td class=n>49</td><td class=n>45</td><td class=n>64</td><td class=n>19</td><td>DoP higher than authorized</td></tr><tr class='miss'><td>Department Of Tourism</td><td class=n>49</td><td class=n>30</td><td class=n>—</td><td class=n>—</td><td>Missing in DoP</td></tr><tr class=''><td>Bureau Of Information Technology</td><td class=n>38</td><td class=n>35.50</td><td class=n>28</td><td class=n>-7.50</td><td></td></tr><tr class=''><td>Virgin Islands Inspector General</td><td class=n>23</td><td class=n>19.50</td><td class=n>18</td><td class=n>-1.50</td><td></td></tr><tr class=''><td>Virgin Islands Energy Office</td><td class=n>20</td><td class=n>20</td><td class=n>20</td><td class=n>0</td><td></td></tr><tr class=''><td>Board Of Education</td><td class=n>19</td><td class=n>15</td><td class=n>14</td><td class=n>-1</td><td>Partial label match</td></tr><tr class=''><td>Virgin Islands Election System</td><td class=n>12</td><td class=n>11</td><td class=n>12</td><td class=n>1</td><td></td></tr><tr class='miss'><td>Office Of Collective Bargaining</td><td class=n>12</td><td class=n>8</td><td class=n>—</td><td class=n>—</td><td>Missing in DoP</td></tr><tr class=''><td>Law Enforcement Planning Commission</td><td class=n>9</td><td class=n>8</td><td class=n>7</td><td class=n>-1</td><td></td></tr><tr class=''><td>Office Of Veteran Affairs</td><td class=n>7</td><td class=n>6</td><td class=n>4</td><td class=n>-2</td><td>Small entity, >30% short</td></tr><tr class=''><td>Career &amp; Technical Education Board</td><td class=n>5</td><td class=n>4.50</td><td class=n>4</td><td class=n>-0.50</td><td></td></tr><tr class=''><td>Virgin Islands Taxicab Commission</td><td class=n>5</td><td class=n>5</td><td class=n>6</td><td class=n>1</td><td>DoP higher than authorized</td></tr><tr class='miss'><td>Public Defender&#x27;S Office</td><td class=n>1</td><td class=n>1</td><td class=n>—</td><td class=n>—</td><td>Missing in DoP</td></tr><tr><td>DoP only (BSCM 61, Nurse Licensure 8, Board of Elections 1)</td><td></td><td></td><td class=n>70</td><td></td><td>DoP only</td></tr></table>
+      </div>
+      <p class="note">Sources: dopusvi.org/employee-database (retrieved Oct 30, 2026) and OpenGov Authorized Personnel (data stamp Mar 28, 2025). Gaps are expected. Budgeted positions and a public directory measure different things. The directory may lag and leave out some classes. The largest gaps are in Planning and Natural Resources, Human Services, Education, Justice, and Health. An official DoP export, or a report of who is on the payroll from the government's own system, would settle the head count before any sizing.</p>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-receive" role="tabpanel" aria-labelledby="tab-receive">
+    <div class="eyebrow">Sample screen</div>
+    <h2>Employee receive</h2>
+    <p class="lead">A sample of the public DoP listing, with an illustrative split between dollars and USDC. The phone is a picture of GotSOL.app. It is not a live paycheck.</p>
+    <div class="receive">
+      <div class="phone" data-testid="pay-preview">
+        <div class="muted" style="font-size:18px">GotSOL.app &middot; Pay day preview</div>
+        <h3 style="margin:0.4em 0">Hi, Jason</h3>
+        <div class="value accent" style="font-size:40px;font-weight:bold">$1,874.35</div>
+        <p class="note">Illustrative biweekly gross, annual divided by 26. Not net pay.</p>
+        <div class="panel">
+          <div class="muted" style="font-size:18px">Your choice</div>
+          <label class="choice" for="pct"><span id="pv">20</span>% in USDC</label>
+          <input type="range" id="pct" min="0" max="100" step="10" value="20" />
+          <div id="split" class="note" data-testid="split"></div>
+        </div>
+        <p class="note">Status: waiting for bank approval. Wallet keys are held by the employee or a bank custodian, never by GotSOL.app.</p>
+      </div>
+      <div class="panel">
+        <b>Sample public DoP rows</b>
+        <div class="table-wrap">
+          <table><tr><th>Name</th><th>DoP dept</th><th>Title</th><th class=n>Annual (DoP)</th><th class=n>Biweekly (÷26)</th><th>Status</th></tr><tr><td>Jason Archibald</td><td>ADJ GENERAL</td><td>Base Security Guard</td><td class=n>$48,733.16</td><td class=n>$1,874.35</td><td><span class=pill>Ready (demo)</span></td></tr><tr><td>Billy Abraham</td><td>AGRICULTURE</td><td>Asst. Commissioner</td><td class=n>$95,000.00</td><td class=n>$3,653.85</td><td><span class=pill>Ready (demo)</span></td></tr><tr><td>Zakee Abdurrasheed</td><td>BIT</td><td>It Project Manager</td><td class=n>$92,400.00</td><td class=n>$3,553.85</td><td><span class=pill>Ready (demo)</span></td></tr><tr><td>Richard Wilson</td><td>BOARD OF ELECTIONS</td><td>Executive Assistant</td><td class=n>$70,000.00</td><td class=n>$2,692.31</td><td><span class=pill>Ready (demo)</span></td></tr><tr><td>Kimberley Cruz</td><td>BOARD OF NURSE LICENSURE</td><td>Compliance Admin Specialist Vibnl</td><td class=n>$55,000.00</td><td class=n>$2,115.38</td><td><span class=pill>Ready (demo)</span></td></tr><tr><td>Khalfani Acosta</td><td>BSCM</td><td>Laborer</td><td class=n>$35,000.00</td><td class=n>$1,346.15</td><td><span class=pill>Ready (demo)</span></td></tr><tr><td>Haneef Abiff</td><td>CORRECTIONS</td><td>Correction Technician</td><td class=n>$37,000.00</td><td class=n>$1,423.08</td><td><span class=pill>Ready (demo)</span></td></tr><tr><td>Maria Doris Abarquez</td><td>EDUCATION</td><td>Secondary Teacher</td><td class=n>$61,711.44</td><td class=n>$2,373.52</td><td><span class=pill>Ready (demo)</span></td></tr><tr><td>Patricia Alexander</td><td>EDUCATION(BD)</td><td>Student Aid Assistan</td><td class=n>$48,966.33</td><td class=n>$1,883.32</td><td><span class=pill>Ready (demo)</span></td></tr><tr><td>Mariana Aaron-Romero</td><td>ELECTION SYSTEM</td><td>Election Assistant</td><td class=n>$44,202.41</td><td class=n>$1,700.09</td><td><span class=pill>Ready (demo)</span></td></tr><tr><td>Tess Berg</td><td>ENERGY OFFICE</td><td>Human Res &amp; Labor Relation Mgr</td><td class=n>$92,000.00</td><td class=n>$3,538.46</td><td><span class=pill>Ready (demo)</span></td></tr><tr><td>Sylvia Amaro</td><td>FINANCE</td><td>Capital Assets Coordinator</td><td class=n>$55,000.00</td><td class=n>$2,115.38</td><td><span class=pill>Ready (demo)</span></td></tr><tr><td colspan=4><b>Total illustrative biweekly (12 samples)</b></td><td class=n><b>$28,269.74</b></td><td></td></tr></table>
+        </div>
+        <p class="note">Names, titles, and annual salaries are as published on the public DoP Employee Database. Biweekly equals annual divided by 26, for illustration. No tax, pension, or other withholding is shown or implied. "Ready (demo)" is not a real payroll status.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-authorize" role="tabpanel" aria-labelledby="tab-authorize">
+    <div class="eyebrow">Who approves</div>
+    <h2>Bank and Department of Finance authorize, then Circle signs</h2>
+    <p class="lead">Every payment goes through the bank. Nothing moves until people at Finance and the bank approve it.</p>
+    <div class="steps" id="steps">
+      <div class="step"><b>1. Payroll file</b><br />Finance prepares the normal payroll run, including opt in USDC amounts.</div>
+      <div class="step"><b>2. Finance approves</b><br />The Department of Finance approves the batch in its usual controls.</div>
+      <div class="step"><b>3. Bank authorizes</b><br />The bank reviews and authorizes each transaction. Dollars are funded through the bank.</div>
+      <div class="step"><b>4. Circle signs</b><br />Circle signs only on the bank's instruction and sends USDC to employee wallets.</div>
+      <div class="step"><b>5. Employee sees it</b><br />GotSOL.app shows the receipt. It never touches keys or funds.</div>
+    </div>
+    <button class="btn" id="run" type="button">Run demo walkthrough</button>
+    <span class="note" id="log" aria-live="polite"></span>
+    <div class="panel rules" style="margin-top:20px">
+      <b>Control rules shown here</b>
+      <ul>
+        <li>GotSOL.app never holds keys.</li>
+        <li>The bank authorizes every transaction.</li>
+        <li>Circle signs on the bank's instruction.</li>
+        <li>Funds always move through the bank.</li>
+        <li>Dollar pay stays the default. USDC is opt in.</li>
+        <li>Majestic Advising never holds funds or keys.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-assumptions" role="tabpanel" aria-labelledby="tab-assumptions">
+    <div class="eyebrow">Limits</div>
+    <h2>Assumptions and out of scope</h2>
+    <div class="cards">
+      <div class="panel rules">
+        <h3>Assumptions</h3>
+        <ul>
+          <li>Biweekly equals annual divided by 26, gross, for illustration only.</li>
+          <li>Employee names, titles, and salaries are public DoP records as listed Oct 30, 2026.</li>
+          <li>Head counts compare the DoP public listing with OpenGov authorized positions (Mar 28, 2025). They measure different things.</li>
+          <li>A bank partner and a Circle relationship would have to be in place before any pilot.</li>
+        </ul>
+      </div>
+      <div class="panel rules">
+        <h3>Out of scope</h3>
+        <ul>
+          <li>Live transfers of any kind.</li>
+          <li>Tax, pension, and other withholding.</li>
+          <li>Key custody by GotSOL.app.</li>
+          <li>Money transmission or conversion by GotSOL.app.</li>
+          <li>Federal funds. Current pilot plans leave out payroll. This is a concept for a later phase, not the first pilot.</li>
+        </ul>
+      </div>
+      <div class="panel rules">
+        <h3>Important</h3>
+        <ul>
+          <li>USDC is not a bank deposit and is not FDIC insured.</li>
+          <li>Whether any party needs a license depends on the facts. USVI and federal counsel must review before any pilot.</li>
+          <li>No regulator or government endorsement is claimed.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sources" style="margin-top:36px">
+      <div class="eyebrow">Sources</div>
+      <h2>Where the public numbers come from</h2>
+      <ol>
+        <li>Division of Personnel, Employee Database, retrieved Oct 30, 2026. <a href="https://dopusvi.org/employee-database">dopusvi.org/employee-database</a></li>
+        <li>OpenGov Authorized Personnel, data stamp Mar 28, 2025. Authorized positions, vacant FTE, and the implied filled counts in the roster table.</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>
+    <span><b>Majestic Advising</b> &middot; A concept demo for USVI employee USDC income</span>
+    <span>MajesticAdvising.com &middot; <a href="mailto:Ryan@MajesticAdvising.com">Ryan@MajesticAdvising.com</a></span>
+  </footer>
+</div>
+<script>
+"use strict";
+(function () {
+  var buttons = Array.prototype.slice.call(document.querySelectorAll(".screen-nav button"));
+  var screens = Array.prototype.slice.call(document.querySelectorAll(".screen"));
+  var names = ["concept", "roster", "receive", "authorize", "assumptions"];
+
+  function show(index) {
+    if (index < 0 || index >= screens.length) index = 0;
+    buttons.forEach(function (button, i) {
+      var on = i === index;
+      button.classList.toggle("on", on);
+      button.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    screens.forEach(function (screen, i) {
+      var on = i === index;
+      screen.classList.toggle("on", on);
+      if (on) screen.removeAttribute("hidden");
+      else screen.setAttribute("hidden", "");
+    });
+    var nextHash = "#" + names[index];
+    if (location.hash !== nextHash) history.replaceState(null, "", nextHash);
+    window.scrollTo(0, 0);
+  }
+
+  buttons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      show(Number(button.getAttribute("data-screen")));
+    });
+  });
+
+  var start = names.indexOf((location.hash || "").replace("#", ""));
+  show(start === -1 ? 0 : start);
+
+  var gross = 1874.35;
+  var pct = document.getElementById("pct");
+  var pv = document.getElementById("pv");
+  var split = document.getElementById("split");
+
+  function money(amount) {
+    return Number(amount.toFixed(2)).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function updateSplit() {
+    var share = Number(pct.value);
+    pv.textContent = String(share);
+    var totalCents = Math.round(gross * 100);
+    var usdcCents = Math.round(totalCents * share / 100);
+    var usdCents = totalCents - usdcCents;
+    split.textContent = "USDC " + money(usdcCents / 100) + " · USD " + money(usdCents / 100) + " (illustrative gross)";
+  }
+
+  pct.addEventListener("input", updateSplit);
+  updateSplit();
+
+  var walkTimers = [];
+  document.getElementById("run").addEventListener("click", function () {
+    walkTimers.forEach(function (id) { clearTimeout(id); });
+    walkTimers = [];
+    var steps = Array.prototype.slice.call(document.querySelectorAll(".step"));
+    var log = document.getElementById("log");
+    steps.forEach(function (step) { step.classList.remove("done"); });
+    log.textContent = "Running a simulated walkthrough. Nothing is sent.";
+    steps.forEach(function (step, i) {
+      walkTimers.push(setTimeout(function () {
+        step.classList.add("done");
+        log.textContent = i < steps.length - 1
+          ? "Step " + (i + 1) + " complete (simulated)."
+          : "Done. Simulated only. Nothing was sent.";
+      }, 700 * (i + 1)));
+    });
+  });
+})();
+</script>
+<script src="../../embed-height.js"></script>
+</body>
+</html>
