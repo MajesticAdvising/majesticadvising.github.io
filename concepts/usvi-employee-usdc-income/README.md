@@ -1,4 +1,4 @@
-# Employee USDC Income (USVI) v1
+# Employee USDC Payroll (USVI / RT Park) v1
 
 **Concept demo** of how Government of the Virgin Islands employees could choose to receive part of their pay in USDC.
 
@@ -35,4 +35,4 @@ open index.html
 
 On the public site the page is `concepts/usvi-employee-usdc-income/`.
 
-The card title on the Concepts page is **Employee USDC Income (USVI)**.
+The card title on the Concepts page is **Employee USDC Payroll (USVI / RT Park)**. The page path stays `concepts/usvi-employee-usdc-income/`.

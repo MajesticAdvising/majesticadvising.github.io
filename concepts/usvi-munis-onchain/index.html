@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>On Chain Munis ERP (USVI): a concept demo</title>
+<title>On Chain Munis ERP (USVI / RT Park): a concept demo</title>
 <meta name="description" content="A concept demo of Tyler Munis modules with a Solana audit trail for the US Virgin Islands. Demo only. Sample data. No live transfers." />
 <style>
   /* Majestic Advising palette (same as the other USVI concept demos) */
@@ -245,7 +245,7 @@
     <h2>Payroll receive</h2>
     <div class="panel">
       <p>Payroll stays in Munis, fed by Tyler Time and Attendance. The on chain step is optional and chosen by the employee. The bank authorizes. Circle moves USDC only on the bank's instruction. The employee sees it in a wallet the employee controls, not a wallet held by Majestic Advising or GotSOL.app.</p>
-      <p><a href="../usvi-employee-usdc-income/">Open the employee USDC income demo</a></p>
+      <p><a href="../usvi-employee-usdc-income/">Open the employee USDC payroll demo</a></p>
     </div>
     <div class="cards">
       <div class="panel num"><div class="value">Opt in</div><div class="label">dollars stay the default</div></div>
@@ -328,7 +328,7 @@
   var screens = Array.prototype.slice.call(document.querySelectorAll(".screen"));
   var names = ["overview", "budget", "purchasing", "payroll", "grants", "assets", "guardrails"];
 
-  function show(index) {
+  function show(index, fromUser) {
     if (index < 0 || index >= screens.length) index = 0;
     buttons.forEach(function (button, i) {
       var on = i === index;
@@ -341,14 +341,18 @@
       if (on) screen.removeAttribute("hidden");
       else screen.setAttribute("hidden", "");
     });
-    var nextHash = "#" + names[index];
-    if (location.hash !== nextHash) history.replaceState(null, "", nextHash);
+    /* A hash that matches no id can make the browser jump to the bottom on load.
+       Write one only after a person picks a screen. */
+    if (fromUser) {
+      var nextHash = "#" + names[index];
+      if (location.hash !== nextHash) history.replaceState(null, "", nextHash);
+    }
     window.scrollTo(0, 0);
   }
 
   buttons.forEach(function (button) {
     button.addEventListener("click", function () {
-      show(Number(button.getAttribute("data-screen")));
+      show(Number(button.getAttribute("data-screen")), true);
     });
   });
 

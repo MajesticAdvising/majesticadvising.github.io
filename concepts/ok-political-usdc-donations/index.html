@@ -367,7 +367,7 @@
     return document.getElementById(id).value;
   }
 
-  function show(index) {
+  function show(index, fromUser) {
     if (index < 0 || index >= screens.length) index = 0;
     if (index === 3) renderConfirm();
     if (index === 4) renderMail();
@@ -380,14 +380,18 @@
     screens.forEach(function (screen, i) {
       screen.classList.toggle("on", i === index);
     });
-    var nextHash = "#" + names[index];
-    if (location.hash !== nextHash) history.replaceState(null, "", nextHash);
+    /* A hash that matches no id can make the browser jump to the bottom on load.
+       Write one only after a person picks a screen. */
+    if (fromUser) {
+      var nextHash = "#" + names[index];
+      if (location.hash !== nextHash) history.replaceState(null, "", nextHash);
+    }
     window.scrollTo(0, 0);
   }
 
   buttons.forEach(function (button) {
     button.addEventListener("click", function () {
-      show(Number(button.getAttribute("data-screen")));
+      show(Number(button.getAttribute("data-screen")), true);
     });
   });
 
@@ -442,7 +446,7 @@
     edit.type = "button";
     edit.className = "btn2";
     edit.textContent = "Edit";
-    edit.addEventListener("click", function () { show(2); });
+    edit.addEventListener("click", function () { show(2, true); });
     box.appendChild(edit);
   }
 
@@ -451,7 +455,7 @@
       ledger.push(["R-0006", today, field("fn"), field("fe") + " / " + field("fo"), amount, "BK-88302"]);
       confirmed = true;
     }
-    show(4);
+    show(4, true);
   }
 
   function mailRow(table, label, value) {
@@ -486,7 +490,7 @@
     next.type = "button";
     next.className = "btn";
     next.textContent = "View committee ledger";
-    next.addEventListener("click", function () { show(5); });
+    next.addEventListener("click", function () { show(5, true); });
     box.appendChild(next);
   }
 
@@ -521,10 +525,10 @@
   document.getElementById("amt").addEventListener("input", function () {
     setAmt(this.value);
   });
-  document.getElementById("meet-ryan").addEventListener("click", function () { show(1); });
-  document.getElementById("start-sample").addEventListener("click", function () { show(2); });
-  document.getElementById("contribute").addEventListener("click", function () { show(2); });
-  document.getElementById("review").addEventListener("click", function () { show(3); });
+  document.getElementById("meet-ryan").addEventListener("click", function () { show(1, true); });
+  document.getElementById("start-sample").addEventListener("click", function () { show(2, true); });
+  document.getElementById("contribute").addEventListener("click", function () { show(2, true); });
+  document.getElementById("review").addEventListener("click", function () { show(3, true); });
 
   var photo = document.getElementById("ryan-photo");
   photo.addEventListener("error", function () {
