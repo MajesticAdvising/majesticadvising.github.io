@@ -1,7 +1,13 @@
 {
-  "fetched_at": "2026-11-02T20:10:30.699Z",
+  "fetched_at": "2026-11-03T03:26:03.858Z",
   "topics": {
     "overview": [
+      {
+        "t": "Mercado Bitcoin drain moved $40M in plain transactions",
+        "u": "https://techreport.com/news/software/mercado-bitcoin-drain-moved-40-million-in-plain-transactions-pointing-to-stolen-signing-keys/",
+        "d": "techreport.com",
+        "s": "20261103T021500Z"
+      },
       {
         "t": "WORPT Now Available Under Thailand Tourist DigiPay Regulatory Sandbox",
         "u": "https://www.manilatimes.net/2026/10/26/tmt-newswire/globenewswire/worpt-now-available-under-thailands-tourist-digipay-regulatory-sandbox/2453651",
@@ -121,15 +127,15 @@
         "u": "https://decrypt.co/380281/morning-minute-okx-raises-at-25b-from-circle-ripple-and-stanchart&t=Morning%20Minute:%20OKX%20Raises%20at%20$25B%20From%20Circle,%20Ripple,%20and%20StanChart&fnp_t=1792807260.6e58ef21708aa457",
         "d": "decrypt.co",
         "s": "20261024T024500Z"
-      },
-      {
-        "t": "Blumenthal Demands Tether Records Over Ex - Adviser Payments",
-        "u": "https://insidebitcoins.com/news/sen-blumenthal-demands-tether-records-over-payments-to-ex-white-house-crypto-advisers-firm",
-        "d": "insidebitcoins.com",
-        "s": "20261024T023000Z"
       }
     ],
     "banks": [
+      {
+        "t": "Mercado Bitcoin drain moved $40M in plain transactions",
+        "u": "https://techreport.com/news/software/mercado-bitcoin-drain-moved-40-million-in-plain-transactions-pointing-to-stolen-signing-keys/",
+        "d": "techreport.com",
+        "s": "20261103T021500Z"
+      },
       {
         "t": "WORPT Now Available Under Thailand Tourist DigiPay Regulatory Sandbox",
         "u": "https://www.manilatimes.net/2026/10/26/tmt-newswire/globenewswire/worpt-now-available-under-thailands-tourist-digipay-regulatory-sandbox/2453651",
@@ -255,12 +261,6 @@
         "u": "https://www.coindesk.com/business/2026/10/23/hsbc-rolls-out-its-first-stablecoin-to-over-3-million-everyday-app-users",
         "d": "coindesk.com",
         "s": "20261023T143000Z"
-      },
-      {
-        "t": "Ramp Seeks OCC Trust Charter for Digital Asset Custody",
-        "u": "https://www.forexcrunch.com/blog/2026/10/23/ramp-occ-trust-charter-digital-asset-custody/",
-        "d": "forexcrunch.com",
-        "s": "20261023T071500Z"
       }
     ],
     "policy": [
