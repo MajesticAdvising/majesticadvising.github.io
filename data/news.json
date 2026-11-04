@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-03T17:40:54.826Z",
+  "fetched_at": "2026-11-04T02:04:15.078Z",
   "topics": {
     "overview": [
       {
@@ -131,6 +131,12 @@
     ],
     "banks": [
       {
+        "t": "The Binance heist took 30 minutes . The groundwork took days",
+        "u": "https://www.insurancebusinessmag.com/au/news/cyber/the-binance-heist-took-30-minutes--the-groundwork-took-days-595917.aspx",
+        "d": "insurancebusinessmag.com",
+        "s": "20261103T111500Z"
+      },
+      {
         "t": "Mercado Bitcoin drain moved $40M in plain transactions",
         "u": "https://techreport.com/news/software/mercado-bitcoin-drain-moved-40-million-in-plain-transactions-pointing-to-stolen-signing-keys/",
         "d": "techreport.com",
@@ -255,12 +261,6 @@
         "u": "https://www.bancaditalia.it/pubblicazioni/interventi-direttorio/int-dir-2026/20261023-scotti/",
         "d": "bancaditalia.it",
         "s": "20261023T150000Z"
-      },
-      {
-        "t": "HSBC rolls out its firststablecoin to over 3 million everyday app users",
-        "u": "https://www.coindesk.com/business/2026/10/23/hsbc-rolls-out-its-first-stablecoin-to-over-3-million-everyday-app-users",
-        "d": "coindesk.com",
-        "s": "20261023T143000Z"
       }
     ],
     "policy": [
@@ -380,6 +380,12 @@
       }
     ],
     "public": [
+      {
+        "t": "The Binance heist took 30 minutes . The groundwork took days",
+        "u": "https://www.insurancebusinessmag.com/au/news/cyber/the-binance-heist-took-30-minutes--the-groundwork-took-days-595917.aspx",
+        "d": "insurancebusinessmag.com",
+        "s": "20261103T111500Z"
+      },
       {
         "t": "JPMorgan Has Nearly $900 Million in Tokenized Funds on Ethereum and Solana . Which Chain Benefits More ? ",
         "u": "https://www.aol.com/articles/jpmorgan-nearly-900-million-tokenized-183043000.html",
