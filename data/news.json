@@ -1,7 +1,31 @@
 {
-  "fetched_at": "2026-11-05T17:58:29.452Z",
+  "fetched_at": "2026-11-06T02:09:24.500Z",
   "topics": {
     "overview": [
+      {
+        "t": "French Bank Loses 100 Million Euros in Cyberattack",
+        "u": "https://www.bankinfosecurity.com/french-bank-loses-100-million-euros-in-cyberattack-a-33309",
+        "d": "bankinfosecurity.com",
+        "s": "20261105T233000Z"
+      },
+      {
+        "t": "Conflux – Web3 Next Billion Users - Brave New Coin",
+        "u": "https://bravenewcoin.com/insights/conflux-web3s-next-billion-users",
+        "d": "bravenewcoin.com",
+        "s": "20261105T223000Z"
+      },
+      {
+        "t": "Everything unveiled at the Wealthsimple Presents event",
+        "u": "https://www.moneysense.ca/news/wealthsimple-presents-canada-launches/",
+        "d": "moneysense.ca",
+        "s": "20261105T220000Z"
+      },
+      {
+        "t": "US stocks nosedive as Democrat victory sparks investor panic",
+        "u": "https://www.aol.com/articles/us-stocks-nosedive-democrat-victory-213240000.html",
+        "d": "aol.com",
+        "s": "20261105T220000Z"
+      },
       {
         "t": "The Binance heist took 30 minutes . The groundwork took days",
         "u": "https://www.insurancebusinessmag.com/au/news/cyber/the-binance-heist-took-30-minutes--the-groundwork-took-days-595917.aspx",
@@ -103,30 +127,6 @@
         "u": "https://leftfootforward.org/2026/10/coining-in-how-crypto-is-buying-right-wing-politics/",
         "d": "leftfootforward.org",
         "s": "20261024T101500Z"
-      },
-      {
-        "t": "Ripple news : Franklin Templeton adds $150 million of money - market shares to XRP Ledger",
-        "u": "https://www.coindesk.com/markets/2026/10/24/franklin-templeton-adds-usd150-million-in-fund-shares-to-xrp-ledger-all-in-one-wallet",
-        "d": "coindesk.com",
-        "s": "20261024T090000Z"
-      },
-      {
-        "t": "The global sovereign debt crisis is coming to a head",
-        "u": "https://cyprus-mail.com/2026/10/24/the-global-sovereign-debt-crisis-is-coming-to-a-head",
-        "d": "cyprus-mail.com",
-        "s": "20261024T090000Z"
-      },
-      {
-        "t": "Korea Still Has a Window to Become a Global Crypto Power, SCI Head Says",
-        "u": "https://www.edaily.co.kr/News/Read?newsId=02341926645616200&mediaCodeNo=257",
-        "d": "edaily.co.kr",
-        "s": "20261024T071500Z"
-      },
-      {
-        "t": "Coinbase Global ( NASDAQ : COIN ) Price Target Raised to $205 . 00",
-        "u": "https://www.themarketsdaily.com/2026/10/24/coinbase-global-nasdaqcoin-price-target-raised-to-205-00.html",
-        "d": "themarketsdaily.com",
-        "s": "20261024T064500Z"
       }
     ],
     "banks": [
@@ -380,6 +380,12 @@
       }
     ],
     "public": [
+      {
+        "t": "US stocks nosedive as Democrat victory sparks investor panic",
+        "u": "https://www.aol.com/articles/us-stocks-nosedive-democrat-victory-213240000.html",
+        "d": "aol.com",
+        "s": "20261105T220000Z"
+      },
       {
         "t": "The Binance heist took 30 minutes . The groundwork took days",
         "u": "https://www.insurancebusinessmag.com/au/news/cyber/the-binance-heist-took-30-minutes--the-groundwork-took-days-595917.aspx",
