@@ -1,7 +1,61 @@
 {
-  "fetched_at": "2026-11-06T02:09:24.500Z",
+  "fetched_at": "2026-11-07T01:45:39.432Z",
   "topics": {
     "overview": [
+      {
+        "t": "PYMNTS | Study Finds Most Stablecoins Fail GENIUS Act Requirements",
+        "u": "https://www.pymnts.com/news/2026/study-finds-most-stablecoins-fail-genius-act-requirements/",
+        "d": "pymnts.com",
+        "s": "20261107T000000Z"
+      },
+      {
+        "t": "PYMNTS | Nubank, Mercado Pago Pause Crypto Ops After Provider Issues",
+        "u": "https://www.pymnts.com/cryptocurrency/2026/nubank-mercado-pago-pause-crypto-operations-following-provider-issues/",
+        "d": "pymnts.com",
+        "s": "20261107T000000Z"
+      },
+      {
+        "t": "How hackers stole $6 . 3bn from Binance with a $15 transaction – the security loophole they exploited",
+        "u": "https://sofokleous10.gr/2026/11/06/how-hackers-stole-6-3bn-from-binance-with-a-15-transaction-the-security-loophole-they-exploited/",
+        "d": "sofokleous10.gr",
+        "s": "20261106T113000Z"
+      },
+      {
+        "t": "The Democrats Won Congress . Here What Could Come Next for Crypto . ",
+        "u": "https://www.fool.com/investing/2026/11/06/the-democrats-won-congress-heres-what-could-come-n/",
+        "d": "fool.com",
+        "s": "20261106T113000Z"
+      },
+      {
+        "t": "Metaverse Wallets Statistics And Market Growth ( 2026 ) ",
+        "u": "https://www.sci-tech-today.com/news/metaverse-wallets-statistics/",
+        "d": "sci-tech-today.com",
+        "s": "20261106T093000Z"
+      },
+      {
+        "t": "FBI confirms record $6 . 3 Billion Binance crypto heist linked to North Korea elite state - sponsored hackers",
+        "u": "https://www.thenews.com.pk/latest/1422655-fbi-confirms-record-63-billion-binance-crypto-heist-linked-to-north-koreas-elite-state-sponsored-hackers",
+        "d": "thenews.com.pk",
+        "s": "20261106T083000Z"
+      },
+      {
+        "t": "Trump Crypto Vehicle World Liberty Financial to Buy Back Tokens After Post - Election Nose Dive",
+        "u": "https://gizmodo.com/trumps-crypto-vehicle-world-liberty-financial-to-buy-back-tokens-after-post-election-nose-dive-2000836068",
+        "d": "gizmodo.com",
+        "s": "20261106T053000Z"
+      },
+      {
+        "t": "Jamie Dimon said on CLARITY Act allowing yield - paying stablecoins that JP Morgan will fight it, if we lose, we lose ; here how Democrat win means end of ... ",
+        "u": "https://timesofindia.indiatimes.com/technology/tech-news/jamie-dimon-said-on-clarity-act-allowing-yield-paying-stablecoins-that-jp-morgan-will-fight-it-if-we-lose-we-lose-heres-how-democrat-win-means-end-of-/articleshow/135592947.cms",
+        "d": "timesofindia.indiatimes.com",
+        "s": "20261106T050000Z"
+      },
+      {
+        "t": "Ondo Leads RWA . xyz Ranking With $4 . 07 Billion in RWA Value Excluding Stablecoins",
+        "u": "https://econotimes.com/Ondo-Leads-RWA-xyz-Ranking-With-4-07-Billion-in-RWA-Value-Excluding-Stablecoins-1771784",
+        "d": "econotimes.com",
+        "s": "20261106T030000Z"
+      },
       {
         "t": "French Bank Loses 100 Million Euros in Cyberattack",
         "u": "https://www.bankinfosecurity.com/french-bank-loses-100-million-euros-in-cyberattack-a-33309",
@@ -91,42 +145,6 @@
         "u": "https://econotimes.com/OCC-Rule-Sets-Reserve-and-Redemption-Requirements-for-Stablecoin-Issuers-1762370",
         "d": "econotimes.com",
         "s": "20261024T151500Z"
-      },
-      {
-        "t": "Dividends, Crypto, and Margin Wars : The 3 Battlelines for Visa for Q4 Earnings on Oct . 27",
-        "u": "https://www.aol.com/articles/dividends-crypto-margin-wars-3-132309000.html",
-        "d": "aol.com",
-        "s": "20261024T144500Z"
-      },
-      {
-        "t": "Franklin Templeton Just Put $150 Million on the XRP Ledger . Why Is It All in One Wallet ? ",
-        "u": "https://www.aol.com/articles/franklin-templeton-just-put-150-135552000.html",
-        "d": "aol.com",
-        "s": "20261024T144500Z"
-      },
-      {
-        "t": "Is Stripe New Stablecoin Card a Major Threat to XRP ? ",
-        "u": "https://www.fool.com/investing/2026/10/24/is-stripes-new-stablecoin-card-a-major-threat-to-x/",
-        "d": "fool.com",
-        "s": "20261024T113000Z"
-      },
-      {
-        "t": "Better Buy : Solana vs . XRP | The Motley Fool",
-        "u": "https://www.fool.com/investing/2026/10/24/better-buy-solana-vs-xrp/",
-        "d": "fool.com",
-        "s": "20261024T113000Z"
-      },
-      {
-        "t": "OCC drops affiliate rewards presumption, yield ban stays",
-        "u": "https://www.forexcrunch.com/blog/2026/10/24/occ-genius-act-final-rule-stablecoin-yield-ban/",
-        "d": "forexcrunch.com",
-        "s": "20261024T113000Z"
-      },
-      {
-        "t": "Coining in : How crypto is buying right - wing politics",
-        "u": "https://leftfootforward.org/2026/10/coining-in-how-crypto-is-buying-right-wing-politics/",
-        "d": "leftfootforward.org",
-        "s": "20261024T101500Z"
       }
     ],
     "banks": [
@@ -265,6 +283,48 @@
     ],
     "policy": [
       {
+        "t": "PYMNTS | Study Finds Most Stablecoins Fail GENIUS Act Requirements",
+        "u": "https://www.pymnts.com/news/2026/study-finds-most-stablecoins-fail-genius-act-requirements/",
+        "d": "pymnts.com",
+        "s": "20261107T000000Z"
+      },
+      {
+        "t": "PYMNTS | Nubank, Mercado Pago Pause Crypto Ops After Provider Issues",
+        "u": "https://www.pymnts.com/cryptocurrency/2026/nubank-mercado-pago-pause-crypto-operations-following-provider-issues/",
+        "d": "pymnts.com",
+        "s": "20261107T000000Z"
+      },
+      {
+        "t": "Trump Crypto Vehicle World Liberty Financial to Buy Back Tokens After Post - Election Nose Dive",
+        "u": "https://gizmodo.com/trumps-crypto-vehicle-world-liberty-financial-to-buy-back-tokens-after-post-election-nose-dive-2000836068",
+        "d": "gizmodo.com",
+        "s": "20261106T053000Z"
+      },
+      {
+        "t": "Jamie Dimon said on CLARITY Act allowing yield - paying stablecoins that JP Morgan will fight it, if we lose, we lose ; here how Democrat win means end of ... ",
+        "u": "https://timesofindia.indiatimes.com/technology/tech-news/jamie-dimon-said-on-clarity-act-allowing-yield-paying-stablecoins-that-jp-morgan-will-fight-it-if-we-lose-we-lose-heres-how-democrat-win-means-end-of-/articleshow/135592947.cms",
+        "d": "timesofindia.indiatimes.com",
+        "s": "20261106T050000Z"
+      },
+      {
+        "t": "Ondo Leads RWA . xyz Ranking With $4 . 07 Billion in RWA Value Excluding Stablecoins",
+        "u": "https://econotimes.com/Ondo-Leads-RWA-xyz-Ranking-With-4-07-Billion-in-RWA-Value-Excluding-Stablecoins-1771784",
+        "d": "econotimes.com",
+        "s": "20261106T030000Z"
+      },
+      {
+        "t": "French Bank Loses 100 Million Euros in Cyberattack",
+        "u": "https://www.bankinfosecurity.com/french-bank-loses-100-million-euros-in-cyberattack-a-33309",
+        "d": "bankinfosecurity.com",
+        "s": "20261105T233000Z"
+      },
+      {
+        "t": "US stocks nosedive as Democrat victory sparks investor panic",
+        "u": "https://www.aol.com/articles/us-stocks-nosedive-democrat-victory-213240000.html",
+        "d": "aol.com",
+        "s": "20261105T220000Z"
+      },
+      {
         "t": "WORPT Now Available Under Thailand Tourist DigiPay Regulatory Sandbox",
         "u": "https://www.manilatimes.net/2026/10/26/tmt-newswire/globenewswire/worpt-now-available-under-thailands-tourist-digipay-regulatory-sandbox/2453651",
         "d": "manilatimes.net",
@@ -359,27 +419,33 @@
         "u": "https://www.aol.com/articles/top-investment-strategist-thinks-bitcoin-062000000.html",
         "d": "aol.com",
         "s": "20261023T071500Z"
-      },
-      {
-        "t": "Ramp Seeks OCC Trust Charter for Digital Asset Custody",
-        "u": "https://www.forexcrunch.com/blog/2026/10/23/ramp-occ-trust-charter-digital-asset-custody/",
-        "d": "forexcrunch.com",
-        "s": "20261023T071500Z"
-      },
-      {
-        "t": "New DeepSeek Ban In US, Swiss - Asia Crypto Ties Deepen : Asia Express",
-        "u": "https://cointelegraph.com/magazine/new-deepseek-ban-in-us-swiss-asia-crypto-ties-deepen-asia-express",
-        "d": "cointelegraph.com",
-        "s": "20261023T031500Z"
-      },
-      {
-        "t": "Spout Finance – Let Your Stocks Pay the Interest",
-        "u": "https://bravenewcoin.com/insights/spout-finance-let-your-stocks-pay-the-interest",
-        "d": "bravenewcoin.com",
-        "s": "20261023T010000Z"
       }
     ],
     "public": [
+      {
+        "t": "FBI confirms record $6 . 3 Billion Binance crypto heist linked to North Korea elite state - sponsored hackers",
+        "u": "https://www.thenews.com.pk/latest/1422655-fbi-confirms-record-63-billion-binance-crypto-heist-linked-to-north-koreas-elite-state-sponsored-hackers",
+        "d": "thenews.com.pk",
+        "s": "20261106T083000Z"
+      },
+      {
+        "t": "Trump Crypto Vehicle World Liberty Financial to Buy Back Tokens After Post - Election Nose Dive",
+        "u": "https://gizmodo.com/trumps-crypto-vehicle-world-liberty-financial-to-buy-back-tokens-after-post-election-nose-dive-2000836068",
+        "d": "gizmodo.com",
+        "s": "20261106T053000Z"
+      },
+      {
+        "t": "Jamie Dimon said on CLARITY Act allowing yield - paying stablecoins that JP Morgan will fight it, if we lose, we lose ; here how Democrat win means end of ... ",
+        "u": "https://timesofindia.indiatimes.com/technology/tech-news/jamie-dimon-said-on-clarity-act-allowing-yield-paying-stablecoins-that-jp-morgan-will-fight-it-if-we-lose-we-lose-heres-how-democrat-win-means-end-of-/articleshow/135592947.cms",
+        "d": "timesofindia.indiatimes.com",
+        "s": "20261106T050000Z"
+      },
+      {
+        "t": "Ondo Leads RWA . xyz Ranking With $4 . 07 Billion in RWA Value Excluding Stablecoins",
+        "u": "https://econotimes.com/Ondo-Leads-RWA-xyz-Ranking-With-4-07-Billion-in-RWA-Value-Excluding-Stablecoins-1771784",
+        "d": "econotimes.com",
+        "s": "20261106T030000Z"
+      },
       {
         "t": "US stocks nosedive as Democrat victory sparks investor panic",
         "u": "https://www.aol.com/articles/us-stocks-nosedive-democrat-victory-213240000.html",
