@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-08T16:37:03.058Z",
+  "fetched_at": "2026-11-09T01:34:32.454Z",
   "topics": {
     "overview": [
       {
@@ -429,6 +429,12 @@
     ],
     "public": [
       {
+        "t": "Vitalik  Pivot ETH To Store Of Value, Crypto Suffers After US Election : Hodler Digest",
+        "u": "https://cointelegraph.com/magazine/vitaliks-pivots-to-eth-as-a-store-of-value-us-election-weighs-on-crypto-hodlers-digest",
+        "d": "cointelegraph.com",
+        "s": "20261109T010000Z"
+      },
+      {
         "t": "FBI confirms record $6 . 3 Billion Binance crypto heist linked to North Korea elite state - sponsored hackers",
         "u": "https://www.thenews.com.pk/latest/1422655-fbi-confirms-record-63-billion-binance-crypto-heist-linked-to-north-koreas-elite-state-sponsored-hackers",
         "d": "thenews.com.pk",
@@ -553,12 +559,6 @@
         "u": "https://www.thedailybeast.com/trump-humiliated-in-bombshell-crypto-lawsuit",
         "d": "thedailybeast.com",
         "s": "20261023T063000Z"
-      },
-      {
-        "t": "New DeepSeek Ban In US, Swiss - Asia Crypto Ties Deepen : Asia Express",
-        "u": "https://cointelegraph.com/magazine/new-deepseek-ban-in-us-swiss-asia-crypto-ties-deepen-asia-express",
-        "d": "cointelegraph.com",
-        "s": "20261023T031500Z"
       }
     ]
   }
