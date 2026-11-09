@@ -1,7 +1,43 @@
 {
-  "fetched_at": "2026-11-09T01:34:32.454Z",
+  "fetched_at": "2026-11-09T20:35:06.765Z",
   "topics": {
     "overview": [
+      {
+        "t": "CBN Stablecoin Rules : Licences, Capital, Reserves",
+        "u": "https://www.forexcrunch.com/blog/2026/11/09/nigeria-cbn-stablecoin-licensing-rules/",
+        "d": "forexcrunch.com",
+        "s": "20261109T063000Z"
+      },
+      {
+        "t": "What happened today",
+        "u": "https://www.interest.co.nz/economy/141016/review-things-you-need-know-you-sign-monday-qv-downbeat-property-values-anz-profits",
+        "d": "interest.co.nz",
+        "s": "20261109T053000Z"
+      },
+      {
+        "t": "FMA Consults On Clearer Regulatory Pathway For NZD Referenced And Backed Payment Stablecoins",
+        "u": "https://www.scoop.co.nz/stories/BU2611/S00081/fma-consults-on-clearer-regulatory-pathway-for-nzd-referenced-and-backed-payment-stablecoins.htm",
+        "d": "scoop.co.nz",
+        "s": "20261109T053000Z"
+      },
+      {
+        "t": "PYMNTS | Samsung Bet Shows Stablecoin Wars Moving Beyond Crypto",
+        "u": "https://www.pymnts.com/blockchain/2026/samsungs-82-million-device-bet-shows-stablecoin-wars-moving-beyond-crypto/",
+        "d": "pymnts.com",
+        "s": "20261109T050000Z"
+      },
+      {
+        "t": "Vitalik  Pivot ETH To Store Of Value, Crypto Suffers After US Election : Hodler Digest",
+        "u": "https://cointelegraph.com/magazine/vitaliks-pivots-to-eth-as-a-store-of-value-us-election-weighs-on-crypto-hodlers-digest",
+        "d": "cointelegraph.com",
+        "s": "20261109T010000Z"
+      },
+      {
+        "t": "Crypto Looks Steadier, but Is Demand Returning ? ",
+        "u": "https://www.dailyforex.com/forex-technical-analysis/2026/11/crypto-overview-8-november-2026/251558",
+        "d": "dailyforex.com",
+        "s": "20261108T193000Z"
+      },
       {
         "t": "CBN Tightens Stablecoin Rules, Sets N15bn Capital Floor for Dollar Tokens – THISDAYLIVE",
         "u": "https://www.thisdaylive.com/2026/11/07/cbn-tightens-stablecoin-rules-sets-n15bn-capital-floor-for-dollar-tokens/",
@@ -109,45 +145,33 @@
         "u": "https://www.newsbtc.com/xrp-news/ripple-swell-2026-preview-finance-developers-evidence/",
         "d": "newsbtc.com",
         "s": "20261026T050000Z"
-      },
-      {
-        "t": "JPMorgan Has Nearly $900 Million in Tokenized Funds on Ethereum and Solana . Which Chain Benefits More ? ",
-        "u": "https://www.aol.com/articles/jpmorgan-nearly-900-million-tokenized-183043000.html",
-        "d": "aol.com",
-        "s": "20261025T191500Z"
-      },
-      {
-        "t": "Cardano Leios Roadmap Stages Capacity Increases",
-        "u": "https://www.newsbtc.com/news/cardano/cardano-leios-staged-throughput-governance-roadmap/",
-        "d": "newsbtc.com",
-        "s": "20261025T191500Z"
-      },
-      {
-        "t": "Singapore Crypto Economy Reaches $284B on Institutional Growth",
-        "u": "https://cointelegraph.com/news/singapore-crypto-economy-284b-institutional-activity-chainalysis?t=Singapore%20crypto%20activity%20grows%2055%%20as%20broader%20region%20contracts&fnp_t=1792921484.54649fbd0843409a",
-        "d": "cointelegraph.com",
-        "s": "20261025T103000Z"
-      },
-      {
-        "t": "Visa ( NYSE : V ) Shares Up 1 . 6 % – Still a Buy ? ",
-        "u": "https://www.dailypolitical.com/2026/10/24/visa-nysev-shares-up-1-6-still-a-buy.html",
-        "d": "dailypolitical.com",
-        "s": "20261024T180000Z"
-      },
-      {
-        "t": "Visa : No firm timeline for stablecoin adoption in Philippines",
-        "u": "https://www.philstar.com/business/2026/10/25/2565469/visa-no-firm-timeline-stablecoin-adoption-philippines",
-        "d": "philstar.com",
-        "s": "20261024T171500Z"
-      },
-      {
-        "t": "Initia Ties $2 . 7 Million Exploit to MoveVM Script - Cache Flaw",
-        "u": "https://econotimes.com/Initia-Ties-2-7-Million-Exploit-to-MoveVM-Script-Cache-Flaw-1762534",
-        "d": "econotimes.com",
-        "s": "20261024T151500Z"
       }
     ],
     "banks": [
+      {
+        "t": "CBN Stablecoin Rules : Licences, Capital, Reserves",
+        "u": "https://www.forexcrunch.com/blog/2026/11/09/nigeria-cbn-stablecoin-licensing-rules/",
+        "d": "forexcrunch.com",
+        "s": "20261109T063000Z"
+      },
+      {
+        "t": "FMA Consults On Clearer Regulatory Pathway For NZD Referenced And Backed Payment Stablecoins",
+        "u": "https://www.scoop.co.nz/stories/BU2611/S00081/fma-consults-on-clearer-regulatory-pathway-for-nzd-referenced-and-backed-payment-stablecoins.htm",
+        "d": "scoop.co.nz",
+        "s": "20261109T053000Z"
+      },
+      {
+        "t": "PYMNTS | Samsung Bet Shows Stablecoin Wars Moving Beyond Crypto",
+        "u": "https://www.pymnts.com/blockchain/2026/samsungs-82-million-device-bet-shows-stablecoin-wars-moving-beyond-crypto/",
+        "d": "pymnts.com",
+        "s": "20261109T050000Z"
+      },
+      {
+        "t": "Vitalik  Pivot ETH To Store Of Value, Crypto Suffers After US Election : Hodler Digest",
+        "u": "https://cointelegraph.com/magazine/vitaliks-pivots-to-eth-as-a-store-of-value-us-election-weighs-on-crypto-hodlers-digest",
+        "d": "cointelegraph.com",
+        "s": "20261109T010000Z"
+      },
       {
         "t": "CBN Tightens Stablecoin Rules, Sets N15bn Capital Floor for Dollar Tokens – THISDAYLIVE",
         "u": "https://www.thisdaylive.com/2026/11/07/cbn-tightens-stablecoin-rules-sets-n15bn-capital-floor-for-dollar-tokens/",
@@ -261,33 +285,21 @@
         "u": "https://www.aol.com/articles/franklin-templeton-just-put-150-135552000.html",
         "d": "aol.com",
         "s": "20261024T144500Z"
-      },
-      {
-        "t": "Is Stripe New Stablecoin Card a Major Threat to XRP ? ",
-        "u": "https://www.fool.com/investing/2026/10/24/is-stripes-new-stablecoin-card-a-major-threat-to-x/",
-        "d": "fool.com",
-        "s": "20261024T113000Z"
-      },
-      {
-        "t": "Better Buy : Solana vs . XRP | The Motley Fool",
-        "u": "https://www.fool.com/investing/2026/10/24/better-buy-solana-vs-xrp/",
-        "d": "fool.com",
-        "s": "20261024T113000Z"
-      },
-      {
-        "t": "OCC drops affiliate rewards presumption, yield ban stays",
-        "u": "https://www.forexcrunch.com/blog/2026/10/24/occ-genius-act-final-rule-stablecoin-yield-ban/",
-        "d": "forexcrunch.com",
-        "s": "20261024T113000Z"
-      },
-      {
-        "t": "Coining in : How crypto is buying right - wing politics",
-        "u": "https://leftfootforward.org/2026/10/coining-in-how-crypto-is-buying-right-wing-politics/",
-        "d": "leftfootforward.org",
-        "s": "20261024T101500Z"
       }
     ],
     "policy": [
+      {
+        "t": "FMA Consults On Clearer Regulatory Pathway For NZD Referenced And Backed Payment Stablecoins",
+        "u": "https://www.scoop.co.nz/stories/BU2611/S00081/fma-consults-on-clearer-regulatory-pathway-for-nzd-referenced-and-backed-payment-stablecoins.htm",
+        "d": "scoop.co.nz",
+        "s": "20261109T053000Z"
+      },
+      {
+        "t": "PYMNTS | Samsung Bet Shows Stablecoin Wars Moving Beyond Crypto",
+        "u": "https://www.pymnts.com/blockchain/2026/samsungs-82-million-device-bet-shows-stablecoin-wars-moving-beyond-crypto/",
+        "d": "pymnts.com",
+        "s": "20261109T050000Z"
+      },
       {
         "t": "PYMNTS | Study Finds Most Stablecoins Fail GENIUS Act Requirements",
         "u": "https://www.pymnts.com/news/2026/study-finds-most-stablecoins-fail-genius-act-requirements/",
@@ -413,18 +425,6 @@
         "u": "https://classifieds.miaminewtimes.com/",
         "d": "classifieds.miaminewtimes.com",
         "s": "20261023T234500Z"
-      },
-      {
-        "t": "Banca dItalia - The two - tier system in transition : public foundations, private innovation",
-        "u": "https://www.bancaditalia.it/pubblicazioni/interventi-direttorio/int-dir-2026/20261023-scotti/",
-        "d": "bancaditalia.it",
-        "s": "20261023T150000Z"
-      },
-      {
-        "t": "This Top Investment Strategist Thinks a Bitcoin Supercycle Is Coming Soon . Here Why He Wrong . ",
-        "u": "https://www.aol.com/articles/top-investment-strategist-thinks-bitcoin-062000000.html",
-        "d": "aol.com",
-        "s": "20261023T071500Z"
       }
     ],
     "public": [
