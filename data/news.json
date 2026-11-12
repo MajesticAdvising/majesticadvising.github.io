@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-12T02:48:52.297Z",
+  "fetched_at": "2026-11-12T18:04:16.373Z",
   "topics": {
     "overview": [
       {
@@ -381,6 +381,12 @@
     ],
     "public": [
       {
+        "t": "Netcoins Appoints Andrew Leigh as Chief Compliance Officer – IT Business Net",
+        "u": "https://itbusinessnet.com/2026/11/netcoins-appoints-andrew-leigh-as-chief-compliance-officer/",
+        "d": "itbusinessnet.com",
+        "s": "20261112T064500Z"
+      },
+      {
         "t": "Ondo Claims $4B in Tokenized Assets as RWA Market Gains",
         "u": "https://www.newsbtc.com/news/ondo-claims-4b-in-tokenized-assets-as-rwa-market-gains-institutional-depth/",
         "d": "newsbtc.com",
@@ -511,12 +517,6 @@
         "u": "https://www.theguardian.com/commentisfree/2026/oct/23/trump-moral-squalor",
         "d": "theguardian.com",
         "s": "20261023T093000Z"
-      },
-      {
-        "t": "Trump Humiliated in Bombshell Crypto Lawsuit",
-        "u": "https://www.thedailybeast.com/trump-humiliated-in-bombshell-crypto-lawsuit",
-        "d": "thedailybeast.com",
-        "s": "20261023T063000Z"
       }
     ]
   }
