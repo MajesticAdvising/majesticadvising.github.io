@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-12T18:04:16.373Z",
+  "fetched_at": "2026-11-13T02:32:38.906Z",
   "topics": {
     "overview": [
       {
@@ -247,6 +247,12 @@
     ],
     "policy": [
       {
+        "t": "Netcoins Appoints Andrew Leigh as Chief Compliance Officer – IT Business Net",
+        "u": "https://itbusinessnet.com/2026/11/netcoins-appoints-andrew-leigh-as-chief-compliance-officer/",
+        "d": "itbusinessnet.com",
+        "s": "20261112T064500Z"
+      },
+      {
         "t": "Financial Analysis : Nuveen Churchill Direct Lending ( NYSE : NCDL ) versus Gemini Space Station ( NASDAQ : GEMI ) ",
         "u": "https://www.themarketsdaily.com/2026/11/10/financial-analysis-nuveen-churchill-direct-lending-nysencdl-versus-gemini-space-station-nasdaqgemi.html",
         "d": "themarketsdaily.com",
@@ -371,12 +377,6 @@
         "u": "https://leftfootforward.org/2026/10/coining-in-how-crypto-is-buying-right-wing-politics/",
         "d": "leftfootforward.org",
         "s": "20261024T101500Z"
-      },
-      {
-        "t": "The global sovereign debt crisis is coming to a head",
-        "u": "https://cyprus-mail.com/2026/10/24/the-global-sovereign-debt-crisis-is-coming-to-a-head",
-        "d": "cyprus-mail.com",
-        "s": "20261024T090000Z"
       }
     ],
     "public": [
