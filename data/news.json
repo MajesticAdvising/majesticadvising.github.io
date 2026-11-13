@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-13T02:32:38.906Z",
+  "fetched_at": "2026-11-13T17:38:35.618Z",
   "topics": {
     "overview": [
       {
@@ -107,6 +107,36 @@
     ],
     "banks": [
       {
+        "t": "Netcoins Appoints Andrew Leigh as Chief Compliance Officer – IT Business Net",
+        "u": "https://itbusinessnet.com/2026/11/netcoins-appoints-andrew-leigh-as-chief-compliance-officer/",
+        "d": "itbusinessnet.com",
+        "s": "20261112T064500Z"
+      },
+      {
+        "t": "NetNewsLedger - Ontario Gambling Sites : How Roobet Stacks Up Against Stake and Cloudbet",
+        "u": "https://www.netnewsledger.com/2026/11/10/ontario-gambling-sites-how-roobet-stacks-up-against-stake-and-cloudbet/",
+        "d": "netnewsledger.com",
+        "s": "20261111T000000Z"
+      },
+      {
+        "t": "PhotonPay Strengthens North American Regulatory Footprint with Canada RPAA Registration",
+        "u": "https://businessdayghana.com/photonpay-strengthens-north-american-regulatory-footprint-with-canadas-rpaa-registration/",
+        "d": "businessdayghana.com",
+        "s": "20261110T043000Z"
+      },
+      {
+        "t": " [ WDAF 2026 ] Institutions turn to tokenization as buyers, issuers : Ondo Finance",
+        "u": "https://www.koreaherald.com/article/10931814",
+        "d": "koreaherald.com",
+        "s": "20261110T023000Z"
+      },
+      {
+        "t": "Sharplink ( SBET ) Q3 2026 Earnings Call Transcript",
+        "u": "https://www.aol.com/articles/sharplink-sbet-q3-2026-earnings-001351000.html",
+        "d": "aol.com",
+        "s": "20261110T010000Z"
+      },
+      {
         "t": "CBN Stablecoin Rules : Licences, Capital, Reserves",
         "u": "https://www.forexcrunch.com/blog/2026/11/09/nigeria-cbn-stablecoin-licensing-rules/",
         "d": "forexcrunch.com",
@@ -171,78 +201,6 @@
         "u": "https://www.bankinfosecurity.com/french-bank-loses-100-million-euros-in-cyberattack-a-33309",
         "d": "bankinfosecurity.com",
         "s": "20261105T233000Z"
-      },
-      {
-        "t": "Everything unveiled at the Wealthsimple Presents event",
-        "u": "https://www.moneysense.ca/news/wealthsimple-presents-canada-launches/",
-        "d": "moneysense.ca",
-        "s": "20261105T220000Z"
-      },
-      {
-        "t": "US stocks nosedive as Democrat victory sparks investor panic",
-        "u": "https://www.aol.com/articles/us-stocks-nosedive-democrat-victory-213240000.html",
-        "d": "aol.com",
-        "s": "20261105T220000Z"
-      },
-      {
-        "t": "The Binance heist took 30 minutes . The groundwork took days",
-        "u": "https://www.insurancebusinessmag.com/au/news/cyber/the-binance-heist-took-30-minutes--the-groundwork-took-days-595917.aspx",
-        "d": "insurancebusinessmag.com",
-        "s": "20261103T111500Z"
-      },
-      {
-        "t": "Mercado Bitcoin drain moved $40M in plain transactions",
-        "u": "https://techreport.com/news/software/mercado-bitcoin-drain-moved-40-million-in-plain-transactions-pointing-to-stolen-signing-keys/",
-        "d": "techreport.com",
-        "s": "20261103T021500Z"
-      },
-      {
-        "t": "WORPT Now Available Under Thailand Tourist DigiPay Regulatory Sandbox",
-        "u": "https://www.manilatimes.net/2026/10/26/tmt-newswire/globenewswire/worpt-now-available-under-thailands-tourist-digipay-regulatory-sandbox/2453651",
-        "d": "manilatimes.net",
-        "s": "20261026T071500Z"
-      },
-      {
-        "t": "Ripple Swell 2026 Preview : What Evidence To Watch",
-        "u": "https://www.newsbtc.com/xrp-news/ripple-swell-2026-preview-finance-developers-evidence/",
-        "d": "newsbtc.com",
-        "s": "20261026T050000Z"
-      },
-      {
-        "t": "JPMorgan Has Nearly $900 Million in Tokenized Funds on Ethereum and Solana . Which Chain Benefits More ? ",
-        "u": "https://www.aol.com/articles/jpmorgan-nearly-900-million-tokenized-183043000.html",
-        "d": "aol.com",
-        "s": "20261025T191500Z"
-      },
-      {
-        "t": "Singapore Crypto Economy Reaches $284B on Institutional Growth",
-        "u": "https://cointelegraph.com/news/singapore-crypto-economy-284b-institutional-activity-chainalysis?t=Singapore%20crypto%20activity%20grows%2055%%20as%20broader%20region%20contracts&fnp_t=1792921484.54649fbd0843409a",
-        "d": "cointelegraph.com",
-        "s": "20261025T103000Z"
-      },
-      {
-        "t": "Visa ( NYSE : V ) Shares Up 1 . 6 % – Still a Buy ? ",
-        "u": "https://www.dailypolitical.com/2026/10/24/visa-nysev-shares-up-1-6-still-a-buy.html",
-        "d": "dailypolitical.com",
-        "s": "20261024T180000Z"
-      },
-      {
-        "t": "Visa : No firm timeline for stablecoin adoption in Philippines",
-        "u": "https://www.philstar.com/business/2026/10/25/2565469/visa-no-firm-timeline-stablecoin-adoption-philippines",
-        "d": "philstar.com",
-        "s": "20261024T171500Z"
-      },
-      {
-        "t": "OCC Rule Sets Reserve and Redemption Requirements for Stablecoin Issuers",
-        "u": "https://econotimes.com/OCC-Rule-Sets-Reserve-and-Redemption-Requirements-for-Stablecoin-Issuers-1762370",
-        "d": "econotimes.com",
-        "s": "20261024T151500Z"
-      },
-      {
-        "t": "Franklin Templeton Just Put $150 Million on the XRP Ledger . Why Is It All in One Wallet ? ",
-        "u": "https://www.aol.com/articles/franklin-templeton-just-put-150-135552000.html",
-        "d": "aol.com",
-        "s": "20261024T144500Z"
       }
     ],
     "policy": [
