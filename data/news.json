@@ -1,7 +1,13 @@
 {
-  "fetched_at": "2026-11-17T19:02:41.389Z",
+  "fetched_at": "2026-11-18T03:31:09.220Z",
   "topics": {
     "overview": [
+      {
+        "t": "Hyperliquid Address Deposits $8 . 3 Million to Protect HYPE Long",
+        "u": "https://econotimes.com/Hyperliquid-Address-Deposits-8-3-Million-to-Protect-HYPE-Long-1777162",
+        "d": "econotimes.com",
+        "s": "20261115T074500Z"
+      },
       {
         "t": "Bitcoin Faces $14 . 2B Liquidity Drain . Is Crypto Running Dry ? ",
         "u": "https://www.finanznachrichten.de/nachrichten-2026-11/70128044-bitcoin-faces-dollar-14-2b-liquidity-drain-is-crypto-running-dry-385.htm",
@@ -91,15 +97,15 @@
         "u": "https://www.pymnts.com/blockchain/2026/samsungs-82-million-device-bet-shows-stablecoin-wars-moving-beyond-crypto/",
         "d": "pymnts.com",
         "s": "20261109T050000Z"
-      },
-      {
-        "t": "Vitalik  Pivot ETH To Store Of Value, Crypto Suffers After US Election : Hodler Digest",
-        "u": "https://cointelegraph.com/magazine/vitaliks-pivots-to-eth-as-a-store-of-value-us-election-weighs-on-crypto-hodlers-digest",
-        "d": "cointelegraph.com",
-        "s": "20261109T010000Z"
       }
     ],
     "banks": [
+      {
+        "t": "Hyperliquid Address Deposits $8 . 3 Million to Protect HYPE Long",
+        "u": "https://econotimes.com/Hyperliquid-Address-Deposits-8-3-Million-to-Protect-HYPE-Long-1777162",
+        "d": "econotimes.com",
+        "s": "20261115T074500Z"
+      },
       {
         "t": "Netcoins Appoints Andrew Leigh as Chief Compliance Officer – IT Business Net",
         "u": "https://itbusinessnet.com/2026/11/netcoins-appoints-andrew-leigh-as-chief-compliance-officer/",
@@ -189,12 +195,6 @@
         "u": "https://timesofindia.indiatimes.com/technology/tech-news/jamie-dimon-said-on-clarity-act-allowing-yield-paying-stablecoins-that-jp-morgan-will-fight-it-if-we-lose-we-lose-heres-how-democrat-win-means-end-of-/articleshow/135592947.cms",
         "d": "timesofindia.indiatimes.com",
         "s": "20261106T050000Z"
-      },
-      {
-        "t": "French Bank Loses 100 Million Euros in Cyberattack",
-        "u": "https://www.bankinfosecurity.com/french-bank-loses-100-million-euros-in-cyberattack-a-33309",
-        "d": "bankinfosecurity.com",
-        "s": "20261105T233000Z"
       }
     ],
     "policy": [
