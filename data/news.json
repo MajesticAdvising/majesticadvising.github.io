@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-19T18:57:46.105Z",
+  "fetched_at": "2026-11-20T02:58:06.687Z",
   "topics": {
     "overview": [
       {
@@ -101,6 +101,12 @@
     ],
     "banks": [
       {
+        "t": "PYMNTS | MoonPay Joins Wave of Crypto Firms Seeking Banking Licenses",
+        "u": "https://www.pymnts.com/cryptocurrency/2026/moonpay-joins-wave-of-crypto-firms-seeking-banking-licenses/",
+        "d": "pymnts.com",
+        "s": "20261120T001500Z"
+      },
+      {
         "t": "Hyperliquid Address Deposits $8 . 3 Million to Protect HYPE Long",
         "u": "https://econotimes.com/Hyperliquid-Address-Deposits-8-3-Million-to-Protect-HYPE-Long-1777162",
         "d": "econotimes.com",
@@ -189,15 +195,15 @@
         "u": "https://www.sci-tech-today.com/news/metaverse-wallets-statistics/",
         "d": "sci-tech-today.com",
         "s": "20261106T093000Z"
-      },
-      {
-        "t": "Jamie Dimon said on CLARITY Act allowing yield - paying stablecoins that JP Morgan will fight it, if we lose, we lose ; here how Democrat win means end of ... ",
-        "u": "https://timesofindia.indiatimes.com/technology/tech-news/jamie-dimon-said-on-clarity-act-allowing-yield-paying-stablecoins-that-jp-morgan-will-fight-it-if-we-lose-we-lose-heres-how-democrat-win-means-end-of-/articleshow/135592947.cms",
-        "d": "timesofindia.indiatimes.com",
-        "s": "20261106T050000Z"
       }
     ],
     "policy": [
+      {
+        "t": "PYMNTS | MoonPay Joins Wave of Crypto Firms Seeking Banking Licenses",
+        "u": "https://www.pymnts.com/cryptocurrency/2026/moonpay-joins-wave-of-crypto-firms-seeking-banking-licenses/",
+        "d": "pymnts.com",
+        "s": "20261120T001500Z"
+      },
       {
         "t": "Netcoins Appoints Andrew Leigh as Chief Compliance Officer – IT Business Net",
         "u": "https://itbusinessnet.com/2026/11/netcoins-appoints-andrew-leigh-as-chief-compliance-officer/",
@@ -323,12 +329,6 @@
         "u": "https://www.forexcrunch.com/blog/2026/10/24/occ-genius-act-final-rule-stablecoin-yield-ban/",
         "d": "forexcrunch.com",
         "s": "20261024T113000Z"
-      },
-      {
-        "t": "Coining in : How crypto is buying right - wing politics",
-        "u": "https://leftfootforward.org/2026/10/coining-in-how-crypto-is-buying-right-wing-politics/",
-        "d": "leftfootforward.org",
-        "s": "20261024T101500Z"
       }
     ],
     "public": [
