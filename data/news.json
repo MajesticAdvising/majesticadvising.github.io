@@ -1,7 +1,25 @@
 {
-  "fetched_at": "2026-11-24T05:56:23.766Z",
+  "fetched_at": "2026-11-24T20:35:45.881Z",
   "topics": {
     "overview": [
+      {
+        "t": "Stablecoins cant fix Nigeria FX liquidity crisis – Luno C",
+        "u": "https://punchng.com/stablecoins-cant-fix-nigerias-fx-liquidity-crisis-operator/",
+        "d": "punchng.com",
+        "s": "20261124T013000Z"
+      },
+      {
+        "t": "StraitsX, OCBC pilot cross - border stablecoin payments for businesses",
+        "u": "https://sbr.com.sg/news/straitsx-ocbc-pilot-cross-border-stablecoin-payments-businesses",
+        "d": "sbr.com.sg",
+        "s": "20261124T011500Z"
+      },
+      {
+        "t": "DOJ Moves to Recover $1 . 1B From North Korea - Linked Binance Theft",
+        "u": "https://cointelegraph.com/news/us-seeks-11b-crypto-stolen-north-korea-binance-hack",
+        "d": "cointelegraph.com",
+        "s": "20261124T003000Z"
+      },
       {
         "t": "Canada largest bank doubles down on crypto stocks",
         "u": "https://www.aol.com/articles/canadas-largest-bank-doubles-down-183936000.html",
@@ -211,6 +229,12 @@
     ],
     "policy": [
       {
+        "t": "Stablecoins cant fix Nigeria FX liquidity crisis – Luno C",
+        "u": "https://punchng.com/stablecoins-cant-fix-nigerias-fx-liquidity-crisis-operator/",
+        "d": "punchng.com",
+        "s": "20261124T013000Z"
+      },
+      {
         "t": "Canada largest bank doubles down on crypto stocks",
         "u": "https://www.aol.com/articles/canadas-largest-bank-doubles-down-183936000.html",
         "d": "aol.com",
@@ -341,12 +365,6 @@
         "u": "https://www.philstar.com/business/2026/10/25/2565469/visa-no-firm-timeline-stablecoin-adoption-philippines",
         "d": "philstar.com",
         "s": "20261024T171500Z"
-      },
-      {
-        "t": "OCC Rule Sets Reserve and Redemption Requirements for Stablecoin Issuers",
-        "u": "https://econotimes.com/OCC-Rule-Sets-Reserve-and-Redemption-Requirements-for-Stablecoin-Issuers-1762370",
-        "d": "econotimes.com",
-        "s": "20261024T151500Z"
       }
     ],
     "public": [
