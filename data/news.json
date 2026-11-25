@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-25T04:52:27.806Z",
+  "fetched_at": "2026-11-25T19:53:56.137Z",
   "topics": {
     "overview": [
       {
@@ -381,6 +381,18 @@
     ],
     "public": [
       {
+        "t": "Why Bitcoin Losses Deepened After the Binance Hack",
+        "u": "https://cointelegraph.com/news/bitcoin-selloff-weak-demand-forced-liquidations-21shares",
+        "d": "cointelegraph.com",
+        "s": "20261125T003000Z"
+      },
+      {
+        "t": "Preparing Israel for financial sanctions : The role of digital currencies",
+        "u": "https://www.jns.org/analysis/preparing-israel-for-financial-sanctions-the-role-of-digital-currencies",
+        "d": "jns.org",
+        "s": "20261124T201500Z"
+      },
+      {
         "t": "The Final Missing Pieces of America Stablecoin Rulebook Have Arrived at White House",
         "u": "https://www.latintimes.com/final-missing-pieces-americas-stablecoin-rulebook-have-arrived-white-house-601624",
         "d": "latintimes.com",
@@ -511,18 +523,6 @@
         "u": "https://econotimes.com/Chinese-national-faces-US-charges-over-36-9-million-crypto-scam-1761796",
         "d": "econotimes.com",
         "s": "20261024T003000Z"
-      },
-      {
-        "t": "Classifieds",
-        "u": "https://classifieds.miaminewtimes.com/",
-        "d": "classifieds.miaminewtimes.com",
-        "s": "20261023T234500Z"
-      },
-      {
-        "t": "Trump and crypto firm sued for profiting from foreign government",
-        "u": "https://www.paradisepost.com/2026/10/22/trump-world-liberty-financial-lawsuit/",
-        "d": "paradisepost.com",
-        "s": "20261023T130000Z"
       }
     ]
   }
