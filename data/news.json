@@ -1,7 +1,31 @@
 {
-  "fetched_at": "2026-11-24T20:35:45.881Z",
+  "fetched_at": "2026-11-25T04:52:27.806Z",
   "topics": {
     "overview": [
+      {
+        "t": "PYMNTS | FIs Can Count Stablecoins as Financial Resources, Not Cash",
+        "u": "https://www.pymnts.com/cryptocurrency/2026/cftc-says-financial-institutions-can-count-stablecoins-financial-resources-not-cash/",
+        "d": "pymnts.com",
+        "s": "20261125T023000Z"
+      },
+      {
+        "t": "Why Bitcoin Losses Deepened After the Binance Hack",
+        "u": "https://cointelegraph.com/news/bitcoin-selloff-weak-demand-forced-liquidations-21shares",
+        "d": "cointelegraph.com",
+        "s": "20261125T003000Z"
+      },
+      {
+        "t": "Is Anthropic IPO Still Draining Money From Crypto a Week Later ? ",
+        "u": "https://247wallst.com/investing/cryptocurrency/2026/11/24/is-anthropics-ipo-still-draining-money-from-crypto-a-week-later/",
+        "d": "247wallst.com",
+        "s": "20261124T214500Z"
+      },
+      {
+        "t": "Preparing Israel for financial sanctions : The role of digital currencies",
+        "u": "https://www.jns.org/analysis/preparing-israel-for-financial-sanctions-the-role-of-digital-currencies",
+        "d": "jns.org",
+        "s": "20261124T201500Z"
+      },
       {
         "t": "Stablecoins cant fix Nigeria FX liquidity crisis – Luno C",
         "u": "https://punchng.com/stablecoins-cant-fix-nigerias-fx-liquidity-crisis-operator/",
@@ -121,18 +145,6 @@
         "u": "https://www.esecurityplanet.com/threats/news-ai-agent-spending-limits-approval-bypass/",
         "d": "esecurityplanet.com",
         "s": "20261113T004500Z"
-      },
-      {
-        "t": "Netcoins Appoints Andrew Leigh as Chief Compliance Officer – IT Business Net",
-        "u": "https://itbusinessnet.com/2026/11/netcoins-appoints-andrew-leigh-as-chief-compliance-officer/",
-        "d": "itbusinessnet.com",
-        "s": "20261112T064500Z"
-      },
-      {
-        "t": "Circle product and tech chief sells 3 . 6 % of holdings under a trading plan ( NYSE : CRCL ) ",
-        "u": "https://www.dailypolitical.com/2026/11/11/circles-product-and-tech-chief-sells-3-6-of-holdings-under-a-trading-plan-nyse-crcl.html",
-        "d": "dailypolitical.com",
-        "s": "20261112T033000Z"
       }
     ],
     "banks": [
