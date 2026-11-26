@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-11-25T19:53:56.137Z",
+  "fetched_at": "2026-11-26T04:04:40.677Z",
   "topics": {
     "overview": [
       {
@@ -149,6 +149,42 @@
     ],
     "banks": [
       {
+        "t": "Banking in 2027 : AI rewrites the terms . Banks still carry the risk . ",
+        "u": "https://www.webwire.com/ViewPressRel.asp?aId=364670",
+        "d": "webwire.com",
+        "s": "20261126T004500Z"
+      },
+      {
+        "t": "Stablecoin Giant Tether Reportedly Sought a 20 % Cut to Return Stolen Crypto",
+        "u": "https://www.aol.com/articles/stablecoin-giant-tether-reportedly-sought-225526000.html",
+        "d": "aol.com",
+        "s": "20261126T001500Z"
+      },
+      {
+        "t": "PYMNTS | FIs Can Count Stablecoins as Financial Resources, Not Cash",
+        "u": "https://www.pymnts.com/cryptocurrency/2026/cftc-says-financial-institutions-can-count-stablecoins-financial-resources-not-cash/",
+        "d": "pymnts.com",
+        "s": "20261125T023000Z"
+      },
+      {
+        "t": "Preparing Israel for financial sanctions : The role of digital currencies",
+        "u": "https://www.jns.org/analysis/preparing-israel-for-financial-sanctions-the-role-of-digital-currencies",
+        "d": "jns.org",
+        "s": "20261124T201500Z"
+      },
+      {
+        "t": "Stablecoins cant fix Nigeria FX liquidity crisis – Luno C",
+        "u": "https://punchng.com/stablecoins-cant-fix-nigerias-fx-liquidity-crisis-operator/",
+        "d": "punchng.com",
+        "s": "20261124T013000Z"
+      },
+      {
+        "t": "StraitsX, OCBC pilot cross - border stablecoin payments for businesses",
+        "u": "https://sbr.com.sg/news/straitsx-ocbc-pilot-cross-border-stablecoin-payments-businesses",
+        "d": "sbr.com.sg",
+        "s": "20261124T011500Z"
+      },
+      {
         "t": "Canada largest bank doubles down on crypto stocks",
         "u": "https://www.aol.com/articles/canadas-largest-bank-doubles-down-183936000.html",
         "d": "aol.com",
@@ -207,39 +243,33 @@
         "u": "https://businessdayghana.com/photonpay-strengthens-north-american-regulatory-footprint-with-canadas-rpaa-registration/",
         "d": "businessdayghana.com",
         "s": "20261110T043000Z"
-      },
-      {
-        "t": " [ WDAF 2026 ] Institutions turn to tokenization as buyers, issuers : Ondo Finance",
-        "u": "https://www.koreaherald.com/article/10931814",
-        "d": "koreaherald.com",
-        "s": "20261110T023000Z"
-      },
-      {
-        "t": "Sharplink ( SBET ) Q3 2026 Earnings Call Transcript",
-        "u": "https://www.aol.com/articles/sharplink-sbet-q3-2026-earnings-001351000.html",
-        "d": "aol.com",
-        "s": "20261110T010000Z"
-      },
-      {
-        "t": "CBN Stablecoin Rules : Licences, Capital, Reserves",
-        "u": "https://www.forexcrunch.com/blog/2026/11/09/nigeria-cbn-stablecoin-licensing-rules/",
-        "d": "forexcrunch.com",
-        "s": "20261109T063000Z"
-      },
-      {
-        "t": "FMA Consults On Clearer Regulatory Pathway For NZD Referenced And Backed Payment Stablecoins",
-        "u": "https://www.scoop.co.nz/stories/BU2611/S00081/fma-consults-on-clearer-regulatory-pathway-for-nzd-referenced-and-backed-payment-stablecoins.htm",
-        "d": "scoop.co.nz",
-        "s": "20261109T053000Z"
-      },
-      {
-        "t": "PYMNTS | Samsung Bet Shows Stablecoin Wars Moving Beyond Crypto",
-        "u": "https://www.pymnts.com/blockchain/2026/samsungs-82-million-device-bet-shows-stablecoin-wars-moving-beyond-crypto/",
-        "d": "pymnts.com",
-        "s": "20261109T050000Z"
       }
     ],
     "policy": [
+      {
+        "t": "Firm Calls for Stronger Financial Connectivity to Unlock Cross - border Payments – THISDAYLIVE",
+        "u": "https://www.thisdaylive.com/2026/11/26/firm-calls-for-stronger-financial-connectivity-to-unlock-cross-border-payments/",
+        "d": "thisdaylive.com",
+        "s": "20261126T033000Z"
+      },
+      {
+        "t": "PYMNTS | FIs Can Count Stablecoins as Financial Resources, Not Cash",
+        "u": "https://www.pymnts.com/cryptocurrency/2026/cftc-says-financial-institutions-can-count-stablecoins-financial-resources-not-cash/",
+        "d": "pymnts.com",
+        "s": "20261125T023000Z"
+      },
+      {
+        "t": "Why Bitcoin Losses Deepened After the Binance Hack",
+        "u": "https://cointelegraph.com/news/bitcoin-selloff-weak-demand-forced-liquidations-21shares",
+        "d": "cointelegraph.com",
+        "s": "20261125T003000Z"
+      },
+      {
+        "t": "Preparing Israel for financial sanctions : The role of digital currencies",
+        "u": "https://www.jns.org/analysis/preparing-israel-for-financial-sanctions-the-role-of-digital-currencies",
+        "d": "jns.org",
+        "s": "20261124T201500Z"
+      },
       {
         "t": "Stablecoins cant fix Nigeria FX liquidity crisis – Luno C",
         "u": "https://punchng.com/stablecoins-cant-fix-nigerias-fx-liquidity-crisis-operator/",
@@ -353,30 +383,6 @@
         "u": "https://www.aol.com/articles/us-stocks-nosedive-democrat-victory-213240000.html",
         "d": "aol.com",
         "s": "20261105T220000Z"
-      },
-      {
-        "t": "WORPT Now Available Under Thailand Tourist DigiPay Regulatory Sandbox",
-        "u": "https://www.manilatimes.net/2026/10/26/tmt-newswire/globenewswire/worpt-now-available-under-thailands-tourist-digipay-regulatory-sandbox/2453651",
-        "d": "manilatimes.net",
-        "s": "20261026T071500Z"
-      },
-      {
-        "t": "JPMorgan Has Nearly $900 Million in Tokenized Funds on Ethereum and Solana . Which Chain Benefits More ? ",
-        "u": "https://www.aol.com/articles/jpmorgan-nearly-900-million-tokenized-183043000.html",
-        "d": "aol.com",
-        "s": "20261025T191500Z"
-      },
-      {
-        "t": "Singapore Crypto Economy Reaches $284B on Institutional Growth",
-        "u": "https://cointelegraph.com/news/singapore-crypto-economy-284b-institutional-activity-chainalysis?t=Singapore%20crypto%20activity%20grows%2055%%20as%20broader%20region%20contracts&fnp_t=1792921484.54649fbd0843409a",
-        "d": "cointelegraph.com",
-        "s": "20261025T103000Z"
-      },
-      {
-        "t": "Visa : No firm timeline for stablecoin adoption in Philippines",
-        "u": "https://www.philstar.com/business/2026/10/25/2565469/visa-no-firm-timeline-stablecoin-adoption-philippines",
-        "d": "philstar.com",
-        "s": "20261024T171500Z"
       }
     ],
     "public": [
