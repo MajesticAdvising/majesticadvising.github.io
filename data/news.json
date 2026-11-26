@@ -1,7 +1,37 @@
 {
-  "fetched_at": "2026-11-26T04:04:40.677Z",
+  "fetched_at": "2026-11-26T19:30:30.494Z",
   "topics": {
     "overview": [
+      {
+        "t": "Digital Asset Clearing Center Establishes Digital Asset Distribution Alliance – IT Business Net",
+        "u": "https://itbusinessnet.com/2026/11/digital-asset-clearing-center-establishes-digital-asset-distribution-alliance/",
+        "d": "itbusinessnet.com",
+        "s": "20261126T054500Z"
+      },
+      {
+        "t": "Justin Sun Prize and MathDB Award First Prize for Lean Formalization of the Poincaré Conjecture",
+        "u": "https://www.elliotlakestandard.ca/press-releases/newsfile/justin-sun-prize-and-mathdb-award-first-prize-for-lean-formalization-of-the-poincare-conjecture/",
+        "d": "elliotlakestandard.ca",
+        "s": "20261126T043000Z"
+      },
+      {
+        "t": "Firm Calls for Stronger Financial Connectivity to Unlock Cross - border Payments – THISDAYLIVE",
+        "u": "https://www.thisdaylive.com/2026/11/26/firm-calls-for-stronger-financial-connectivity-to-unlock-cross-border-payments/",
+        "d": "thisdaylive.com",
+        "s": "20261126T033000Z"
+      },
+      {
+        "t": "Banking in 2027 : AI rewrites the terms . Banks still carry the risk . ",
+        "u": "https://www.webwire.com/ViewPressRel.asp?aId=364670",
+        "d": "webwire.com",
+        "s": "20261126T004500Z"
+      },
+      {
+        "t": "Stablecoin Giant Tether Reportedly Sought a 20 % Cut to Return Stolen Crypto",
+        "u": "https://www.aol.com/articles/stablecoin-giant-tether-reportedly-sought-225526000.html",
+        "d": "aol.com",
+        "s": "20261126T001500Z"
+      },
       {
         "t": "PYMNTS | FIs Can Count Stablecoins as Financial Resources, Not Cash",
         "u": "https://www.pymnts.com/cryptocurrency/2026/cftc-says-financial-institutions-can-count-stablecoins-financial-resources-not-cash/",
@@ -43,108 +73,6 @@
         "u": "https://cointelegraph.com/news/us-seeks-11b-crypto-stolen-north-korea-binance-hack",
         "d": "cointelegraph.com",
         "s": "20261124T003000Z"
-      },
-      {
-        "t": "Canada largest bank doubles down on crypto stocks",
-        "u": "https://www.aol.com/articles/canadas-largest-bank-doubles-down-183936000.html",
-        "d": "aol.com",
-        "s": "20261122T223000Z"
-      },
-      {
-        "t": "Aave, Avalanche and the Best Crypto Presale to Buy as All 15 Aave",
-        "u": "https://www.openpr.com/news/4696593/aave-avalanche-and-the-best-crypto-presale-to-buy-as-all-15-aave",
-        "d": "openpr.com",
-        "s": "20261122T223000Z"
-      },
-      {
-        "t": "Claude AI Predicts the Better Buy Under $1 for 2030 : XRP, Stellar or Hedera",
-        "u": "https://247wallst.com/investing/cryptocurrency/2026/11/21/claude-ai-predicts-the-better-buy-under-1-for-2030-xrp-stellar-or-hedera/",
-        "d": "247wallst.com",
-        "s": "20261122T003000Z"
-      },
-      {
-        "t": "Crypto Senate Ally Ruben Gallego Says the Industry Is  F * cked  After Blue Wave",
-        "u": "https://gizmodo.com/crypto-senate-ally-ruben-gallego-says-the-industry-is-fcked-after-blue-wave-2000843344",
-        "d": "gizmodo.com",
-        "s": "20261121T163000Z"
-      },
-      {
-        "t": "XMR1 Exploit : Bitquery Traces $13 . 5M in Suspicious Token Sales",
-        "u": "https://cointelegraph.com/news/wrapped-monero-token-crashes-998-amid-suspected-135m-exploit",
-        "d": "cointelegraph.com",
-        "s": "20261120T214500Z"
-      },
-      {
-        "t": "Securitize Pays First Tokenized Apple Dividend on Solana",
-        "u": "https://econotimes.com/Securitize-Pays-First-Tokenized-Apple-Dividend-on-Solana-1780512",
-        "d": "econotimes.com",
-        "s": "20261120T214500Z"
-      },
-      {
-        "t": "Sky Protocol Sees $2B in Stablecoin Redemptions After Illicit Finance Report",
-        "u": "https://cointelegraph.com/news/sky-protocol-sees-2b-in-stablecoin-withdrawals-disputes-illicit-fund-claims",
-        "d": "cointelegraph.com",
-        "s": "20261120T214500Z"
-      },
-      {
-        "t": "The Final Missing Pieces of America Stablecoin Rulebook Have Arrived at White House",
-        "u": "https://www.latintimes.com/final-missing-pieces-americas-stablecoin-rulebook-have-arrived-white-house-601624",
-        "d": "latintimes.com",
-        "s": "20261120T214500Z"
-      },
-      {
-        "t": "OSL Group Publishes Executive Insight : Every Company Needs a Stablecoin Strategy",
-        "u": "https://www.recorder.ca/press-releases/globe-newswire/osl-group-publishes-executive-insight-every-company-needs-a-stablecoin-strategy/",
-        "d": "recorder.ca",
-        "s": "20261120T064500Z"
-      },
-      {
-        "t": "Optimizely Hack : Is Your Crypto Wallet or iPhone at Risk ? ",
-        "u": "https://memeburn.com/optimizely-hack-crypto-iphone/",
-        "d": "memeburn.com",
-        "s": "20261120T033000Z"
-      },
-      {
-        "t": "Binance $6 . 5B Freeze Order, Hong Kong  Suspiciou Of HYPE : Asia Express",
-        "u": "https://cointelegraph.com/magazine/binances-65b-freeze-order-hong-kong-suspicious-of-hype-asia-express",
-        "d": "cointelegraph.com",
-        "s": "20261120T024500Z"
-      },
-      {
-        "t": "Crypto Wallets Rival Meal Plans Among Illini Students",
-        "u": "https://dailyillini.com/sponsored/2026/11/19/crypto-wallets-rival-meal-plans-among-illini-students/",
-        "d": "dailyillini.com",
-        "s": "20261120T004500Z"
-      },
-      {
-        "t": "PYMNTS | MoonPay Joins Wave of Crypto Firms Seeking Banking Licenses",
-        "u": "https://www.pymnts.com/cryptocurrency/2026/moonpay-joins-wave-of-crypto-firms-seeking-banking-licenses/",
-        "d": "pymnts.com",
-        "s": "20261120T001500Z"
-      },
-      {
-        "t": "Crypto Market Today, Nov . 19 : Bitcoin Approaches $60, 000 as ETF Outflows Surpass $2 . 5 Billion in 2026",
-        "u": "https://www.fool.com/coverage/stock-market-today/2026/11/19/crypto-market-today-nov-19-bitcoin-approaches-usd60-000-as-etf-outflows-surpass-usd2-5-billion-in-2026/",
-        "d": "fool.com",
-        "s": "20261120T001500Z"
-      },
-      {
-        "t": "Hyperliquid Address Deposits $8 . 3 Million to Protect HYPE Long",
-        "u": "https://econotimes.com/Hyperliquid-Address-Deposits-8-3-Million-to-Protect-HYPE-Long-1777162",
-        "d": "econotimes.com",
-        "s": "20261115T074500Z"
-      },
-      {
-        "t": "Bitcoin Faces $14 . 2B Liquidity Drain . Is Crypto Running Dry ? ",
-        "u": "https://www.finanznachrichten.de/nachrichten-2026-11/70128044-bitcoin-faces-dollar-14-2b-liquidity-drain-is-crypto-running-dry-385.htm",
-        "d": "finanznachrichten.de",
-        "s": "20261113T180000Z"
-      },
-      {
-        "t": "AI Agents Bypassed Spending Limits : What Went Wrong",
-        "u": "https://www.esecurityplanet.com/threats/news-ai-agent-spending-limits-approval-bypass/",
-        "d": "esecurityplanet.com",
-        "s": "20261113T004500Z"
       }
     ],
     "banks": [
@@ -387,6 +315,12 @@
     ],
     "public": [
       {
+        "t": "Stablecoin Giant Tether Reportedly Sought a 20 % Cut to Return Stolen Crypto",
+        "u": "https://www.aol.com/articles/stablecoin-giant-tether-reportedly-sought-225526000.html",
+        "d": "aol.com",
+        "s": "20261126T001500Z"
+      },
+      {
         "t": "Why Bitcoin Losses Deepened After the Binance Hack",
         "u": "https://cointelegraph.com/news/bitcoin-selloff-weak-demand-forced-liquidations-21shares",
         "d": "cointelegraph.com",
@@ -523,12 +457,6 @@
         "u": "https://betakit.com/government-of-canada-unveils-proposed-stablecoin-regulations/",
         "d": "betakit.com",
         "s": "20261024T004500Z"
-      },
-      {
-        "t": "Chinese national faces US charges over $36 . 9 million crypto scam",
-        "u": "https://econotimes.com/Chinese-national-faces-US-charges-over-36-9-million-crypto-scam-1761796",
-        "d": "econotimes.com",
-        "s": "20261024T003000Z"
       }
     ]
   }
