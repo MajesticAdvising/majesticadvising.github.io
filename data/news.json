@@ -1,7 +1,49 @@
 {
-  "fetched_at": "2026-11-27T19:26:54.767Z",
+  "fetched_at": "2026-11-28T03:50:22.830Z",
   "topics": {
     "overview": [
+      {
+        "t": "Bitcoin Rises 1 . 63 % to US$61, 482 as Stocks Rally",
+        "u": "https://www.riotimesonline.com/crypto-markets-bitcoin-majors-friday-november-27-2026/",
+        "d": "riotimesonline.com",
+        "s": "20261128T014500Z"
+      },
+      {
+        "t": "Finery Markets & LINK expand stablecoin pricing access",
+        "u": "https://cfotech.news/story/finery-markets-link-expand-stablecoin-pricing-access",
+        "d": "cfotech.news",
+        "s": "20261127T203000Z"
+      },
+      {
+        "t": "ASEAN+3 Establishes Working Group for Digital - Asset and Cross - Border - Payment Talks",
+        "u": "https://econotimes.com/ASEAN-3-Establishes-Working-Group-for-Digital-Asset-and-Cross-Border-Payment-Talks-1781251",
+        "d": "econotimes.com",
+        "s": "20261127T203000Z"
+      },
+      {
+        "t": "WeFetch AI Corp . Hits 30M in Monthly AI Agent Traffic",
+        "u": "http://www.malaysiasun.com/news/279463219/wefetch-ai-corp-hits-30m-in-monthly-ai-agent-traffic",
+        "d": "malaysiasun.com",
+        "s": "20261127T043000Z"
+      },
+      {
+        "t": "WeFetch AI Corp . Hits 30M in Monthly AI Agent Traffic – Thailand Business News",
+        "u": "https://www.thailand-business-news.com/pr-news/wefetch-ai-corp-hits-30m-in-monthly-ai-agent-traffic",
+        "d": "thailand-business-news.com",
+        "s": "20261127T013000Z"
+      },
+      {
+        "t": "Powering Global Automotive Trade : How SAHIYOO Streamlines Cross - Border Payments with PhotonPay – Thailand Business News",
+        "u": "https://www.thailand-business-news.com/pr-news/powering-global-automotive-trade-how-sahiyoo-streamlines-cross-border-payments-with-photonpay",
+        "d": "thailand-business-news.com",
+        "s": "20261127T013000Z"
+      },
+      {
+        "t": "FSC plans to introduce digital asset bill - Asia Asset Management",
+        "u": "https://www.asiaasset.com/digital-assets/korea-digital-asset-bill-plans/",
+        "d": "asiaasset.com",
+        "s": "20261126T194500Z"
+      },
       {
         "t": "Digital Asset Clearing Center Establishes Digital Asset Distribution Alliance – IT Business Net",
         "u": "https://itbusinessnet.com/2026/11/digital-asset-clearing-center-establishes-digital-asset-distribution-alliance/",
@@ -19,60 +61,6 @@
         "u": "https://www.thisdaylive.com/2026/11/26/firm-calls-for-stronger-financial-connectivity-to-unlock-cross-border-payments/",
         "d": "thisdaylive.com",
         "s": "20261126T033000Z"
-      },
-      {
-        "t": "Banking in 2027 : AI rewrites the terms . Banks still carry the risk . ",
-        "u": "https://www.webwire.com/ViewPressRel.asp?aId=364670",
-        "d": "webwire.com",
-        "s": "20261126T004500Z"
-      },
-      {
-        "t": "Stablecoin Giant Tether Reportedly Sought a 20 % Cut to Return Stolen Crypto",
-        "u": "https://www.aol.com/articles/stablecoin-giant-tether-reportedly-sought-225526000.html",
-        "d": "aol.com",
-        "s": "20261126T001500Z"
-      },
-      {
-        "t": "PYMNTS | FIs Can Count Stablecoins as Financial Resources, Not Cash",
-        "u": "https://www.pymnts.com/cryptocurrency/2026/cftc-says-financial-institutions-can-count-stablecoins-financial-resources-not-cash/",
-        "d": "pymnts.com",
-        "s": "20261125T023000Z"
-      },
-      {
-        "t": "Why Bitcoin Losses Deepened After the Binance Hack",
-        "u": "https://cointelegraph.com/news/bitcoin-selloff-weak-demand-forced-liquidations-21shares",
-        "d": "cointelegraph.com",
-        "s": "20261125T003000Z"
-      },
-      {
-        "t": "Is Anthropic IPO Still Draining Money From Crypto a Week Later ? ",
-        "u": "https://247wallst.com/investing/cryptocurrency/2026/11/24/is-anthropics-ipo-still-draining-money-from-crypto-a-week-later/",
-        "d": "247wallst.com",
-        "s": "20261124T214500Z"
-      },
-      {
-        "t": "Preparing Israel for financial sanctions : The role of digital currencies",
-        "u": "https://www.jns.org/analysis/preparing-israel-for-financial-sanctions-the-role-of-digital-currencies",
-        "d": "jns.org",
-        "s": "20261124T201500Z"
-      },
-      {
-        "t": "Stablecoins cant fix Nigeria FX liquidity crisis – Luno C",
-        "u": "https://punchng.com/stablecoins-cant-fix-nigerias-fx-liquidity-crisis-operator/",
-        "d": "punchng.com",
-        "s": "20261124T013000Z"
-      },
-      {
-        "t": "StraitsX, OCBC pilot cross - border stablecoin payments for businesses",
-        "u": "https://sbr.com.sg/news/straitsx-ocbc-pilot-cross-border-stablecoin-payments-businesses",
-        "d": "sbr.com.sg",
-        "s": "20261124T011500Z"
-      },
-      {
-        "t": "DOJ Moves to Recover $1 . 1B From North Korea - Linked Binance Theft",
-        "u": "https://cointelegraph.com/news/us-seeks-11b-crypto-stolen-north-korea-binance-hack",
-        "d": "cointelegraph.com",
-        "s": "20261124T003000Z"
       }
     ],
     "banks": [
@@ -315,6 +303,12 @@
     ],
     "public": [
       {
+        "t": "Bitcoin Rises 1 . 63 % to US$61, 482 as Stocks Rally",
+        "u": "https://www.riotimesonline.com/crypto-markets-bitcoin-majors-friday-november-27-2026/",
+        "d": "riotimesonline.com",
+        "s": "20261128T014500Z"
+      },
+      {
         "t": "Stablecoin Giant Tether Reportedly Sought a 20 % Cut to Return Stolen Crypto",
         "u": "https://www.aol.com/articles/stablecoin-giant-tether-reportedly-sought-225526000.html",
         "d": "aol.com",
@@ -451,12 +445,6 @@
         "u": "https://www.edaily.co.kr/News/Read?newsId=02341926645616200&mediaCodeNo=257",
         "d": "edaily.co.kr",
         "s": "20261024T071500Z"
-      },
-      {
-        "t": "Government of Canada unveils proposed stablecoin regulations |",
-        "u": "https://betakit.com/government-of-canada-unveils-proposed-stablecoin-regulations/",
-        "d": "betakit.com",
-        "s": "20261024T004500Z"
       }
     ]
   }
